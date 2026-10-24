@@ -1,0 +1,25 @@
+[
+  { "id": 101, "storeId": 1, "name": "بدلة صوف كحلية", "price": 950, "sizes": ["48", "50", "52", "54"], "image": "/images/placeholder.svg", "featured": true },
+  { "id": 102, "storeId": 1, "name": "قميص رسمي أبيض", "price": 160, "sizes": ["S", "M", "L", "XL"], "image": "/images/placeholder.svg", "featured": false },
+  { "id": 103, "storeId": 1, "name": "بنطال قماش رمادي", "price": 220, "sizes": ["30", "32", "34", "36"], "image": "/images/placeholder.svg", "featured": false },
+  { "id": 104, "storeId": 1, "name": "ربطة عنق حرير سوداء", "price": 85, "sizes": ["مقاس واحد"], "image": "/images/placeholder.svg", "featured": false },
+  { "id": 105, "storeId": 1, "name": "بليزر كتان بيج", "price": 540, "sizes": ["48", "50", "52"], "image": "/images/placeholder.svg", "featured": false },
+
+  { "id": 201, "storeId": 2, "name": "قميص كتان أبيض", "price": 140, "sizes": ["S", "M", "L", "XL"], "image": "/images/placeholder.svg", "featured": true },
+  { "id": 202, "storeId": 2, "name": "تيشيرت قطن أساسي", "price": 65, "sizes": ["S", "M", "L", "XL", "XXL"], "image": "/images/placeholder.svg", "featured": false },
+  { "id": 203, "storeId": 2, "name": "بنطال تشينو زيتي", "price": 180, "sizes": ["30", "32", "34", "36"], "image": "/images/placeholder.svg", "featured": false },
+  { "id": 204, "storeId": 2, "name": "قميص بولو كحلي", "price": 95, "sizes": ["M", "L", "XL"], "image": "/images/placeholder.svg", "featured": false },
+  { "id": 205, "storeId": 2, "name": "شورت كتان", "price": 110, "sizes": ["30", "32", "34"], "image": "/images/placeholder.svg", "featured": false },
+
+  { "id": 301, "storeId": 3, "name": "جاكيت جلد أسود", "price": 780, "sizes": ["M", "L", "XL"], "image": "/images/placeholder.svg", "featured": true },
+  { "id": 302, "storeId": 3, "name": "كنزة صوف بياقة عالية", "price": 210, "sizes": ["S", "M", "L", "XL"], "image": "/images/placeholder.svg", "featured": false },
+  { "id": 303, "storeId": 3, "name": "معطف صوف طويل", "price": 890, "sizes": ["M", "L", "XL"], "image": "/images/placeholder.svg", "featured": false },
+  { "id": 304, "storeId": 3, "name": "شال صوف مطرّز", "price": 120, "sizes": ["مقاس واحد"], "image": "/images/placeholder.svg", "featured": false },
+  { "id": 305, "storeId": 3, "name": "جاكيت جينز داكن", "price": 260, "sizes": ["S", "M", "L", "XL"], "image": "/images/placeholder.svg", "featured": false },
+
+  { "id": 401, "storeId": 4, "name": "هودي واسع رمادي", "price": 170, "sizes": ["S", "M", "L", "XL"], "image": "/images/placeholder.svg", "featured": true },
+  { "id": 402, "storeId": 4, "name": "تيشيرت أوفرسايز أسود", "price": 79, "sizes": ["S", "M", "L", "XL"], "image": "/images/placeholder.svg", "featured": false },
+  { "id": 403, "storeId": 4, "name": "بنطال كارغو", "price": 190, "sizes": ["30", "32", "34", "36"], "image": "/images/placeholder.svg", "featured": false },
+  { "id": 404, "storeId": 4, "name": "بنطال رياضي", "price": 130, "sizes": ["S", "M", "L", "XL"], "image": "/images/placeholder.svg", "featured": false },
+  { "id": 405, "storeId": 4, "name": "قبعة قطن", "price": 55, "sizes": ["مقاس واحد"], "image": "/images/placeholder.svg", "featured": false }
+]

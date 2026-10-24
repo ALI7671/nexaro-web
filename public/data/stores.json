@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "دار الرجل",
+    "nameEn": "DAR AL RAJUL",
+    "city": "رام الله",
+    "description": "بدلات وقمصان رسمية بقصّات كلاسيكية وخامات فاخرة، للمناسبات وأيام العمل.",
+    "logo": "/images/placeholder.svg",
+    "featured": true
+  },
+  {
+    "id": 2,
+    "name": "خيوط",
+    "nameEn": "KHUYOOT",
+    "city": "نابلس",
+    "description": "قطع يومية بسيطة من القطن والكتان، مصنوعة محلياً بعناية بالتفاصيل.",
+    "logo": "/images/placeholder.svg",
+    "featured": true
+  },
+  {
+    "id": 3,
+    "name": "أصيل",
+    "nameEn": "ASEEL",
+    "city": "الخليل",
+    "description": "ملابس شتوية وجاكيتات جلد وصوف تجمع بين الحرفة التقليدية والتصميم العصري.",
+    "logo": "/images/placeholder.svg",
+    "featured": true
+  },
+  {
+    "id": 4,
+    "name": "نسيج",
+    "nameEn": "NASEEJ",
+    "city": "بيت لحم",
+    "description": "أزياء شبابية وستريت وير بألوان هادئة وقصّات واسعة مريحة.",
+    "logo": "/images/placeholder.svg",
+    "featured": true
+  }
+]
