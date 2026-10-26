@@ -1,57 +1,76 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>عن نيكسارو — Nexaro</title>
-  <meta name="description" content="تعرّف على نيكسارو، السوق الإلكتروني لمتاجر الملابس الرجالية الفلسطينية.">
-  <link rel="icon" href="/images/placeholder.svg" type="image/svg+xml">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n="pages.about.title">Nexaro</title>
+  <meta name="description" content="" data-i18n-attr="content:pages.about.description">
+  <meta name="theme-color" content="#0A0909">
+  <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
+  <script>(function () { var l = 'ar'; try { var p = new URLSearchParams(location.search).get('lang'); l = p === 'en' || p === 'ar' ? p : (localStorage.getItem('nexaro.lang') === 'en' ? 'en' : 'ar'); } catch (e) {} document.documentElement.lang = l; document.documentElement.dir = l === 'ar' ? 'rtl' : 'ltr'; })();</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500&family=Montserrat:wght@200;300;400;500&display=swap">
   <link rel="stylesheet" href="/css/style.css">
+  <script type="module" src="/js/pages/static.js"></script>
 </head>
-<body>
+<body data-nav="about">
+  <a class="skip-link" href="#main" data-i18n="a11y.skip"></a>
   <header class="site-header" id="site-header"></header>
-  <main>
-    <section class="hero">
-      <h1>About Nexaro</h1>
-      <p>منصّة فلسطينية تجمع متاجر الملابس الرجالية المحلية تحت سقف واحد.</p>
+
+  <main id="main" tabindex="-1">
+    <div class="page-head container">
+      <p class="eyebrow" data-i18n="about.eyebrow"></p>
+      <h1 class="page-title" data-i18n="about.title"></h1>
+      <p class="lead" data-i18n="about.lead"></p>
+    </div>
+
+    <section class="section section--line container" aria-labelledby="story-title">
+      <div class="split">
+        <h2 class="section-title reveal" id="story-title" data-i18n="about.storyTitle"></h2>
+        <div class="prose reveal">
+          <p data-i18n="about.p1"></p>
+          <p data-i18n="about.p2"></p>
+          <p data-i18n="about.p3"></p>
+        </div>
+      </div>
     </section>
 
-    <div class="container">
-      <section class="about-block">
-        <h2>الفكرة</h2>
+    <section class="section section--line container" aria-labelledby="values-title">
+      <div class="section-head reveal">
         <div>
-          <p>كثير من متاجر الملابس الرجالية في فلسطين تقدّم قطعاً بجودة عالية، لكن الوصول إليها يحتاج وقتاً وتنقّلاً بين المدن. نيكسارو يجمع هذه المتاجر في مكان واحد، لتتصفّح منتجاتها وتطلب ما يعجبك مباشرة.</p>
+          <p class="eyebrow" data-i18n="about.valuesEyebrow"></p>
+          <h2 class="section-title" id="values-title" data-i18n="about.valuesTitle"></h2>
         </div>
-      </section>
+      </div>
+      <ul class="info-grid info-grid--3">
+        <li class="info-item reveal" style="--i:0"><h3 class="info-item__title" data-i18n="about.value1Title"></h3><p class="info-item__text" data-i18n="about.value1Text"></p></li>
+        <li class="info-item reveal" style="--i:1"><h3 class="info-item__title" data-i18n="about.value2Title"></h3><p class="info-item__text" data-i18n="about.value2Text"></p></li>
+        <li class="info-item reveal" style="--i:2"><h3 class="info-item__title" data-i18n="about.value3Title"></h3><p class="info-item__text" data-i18n="about.value3Text"></p></li>
+      </ul>
+    </section>
 
-      <section class="about-block">
-        <h2>رسالتنا</h2>
-        <div>
-          <p>دعم المتاجر المحلية ومنحها واجهة رقمية أنيقة، وتقديم تجربة تسوّق بسيطة وراقية للرجل الفلسطيني.</p>
+    <section class="section section--line container" aria-labelledby="base-title">
+      <div class="split">
+        <div class="reveal">
+          <p class="eyebrow" data-i18n="about.baseEyebrow"></p>
+          <h2 class="page-title story__title mt-lg" id="base-title" data-i18n="about.baseTitle"></h2>
         </div>
-      </section>
+        <div class="prose reveal">
+          <p class="lead" data-i18n="about.baseText"></p>
+        </div>
+      </div>
+    </section>
 
-      <section class="about-block">
-        <h2>كيف يعمل؟</h2>
-        <div>
-          <p>اختر المتجر، تصفّح القطع والمقاسات، ثم اضغط «اطلب عبر واتساب». تصلك رسالة جاهزة فيها اسم المنتج والمتجر والسعر، وتكمل الطلب مباشرة مع المتجر.</p>
-        </div>
-      </section>
-
-      <section class="about-block">
-        <h2>لماذا نيكسارو؟</h2>
-        <div>
-          <p>متاجر مختارة بعناية، تصميم بسيط يركّز على القطعة، وتواصل مباشر بلا وسطاء.</p>
-          <p class="en muted">Wear Your Next</p>
-        </div>
-      </section>
-    </div>
+    <section class="section section--line container cta-band reveal" aria-labelledby="about-cta-title">
+      <h2 class="page-title" id="about-cta-title" data-i18n="about.ctaTitle"></h2>
+      <div class="btn-row">
+        <a class="btn btn--solid" href="/shop" data-i18n="about.ctaShop"></a>
+        <a class="btn" href="/stores" data-i18n="about.ctaStores"></a>
+      </div>
+    </section>
   </main>
-  <footer class="site-footer" id="site-footer"></footer>
-  <script src="/js/common.js"></script>
 
+  <footer class="site-footer" id="site-footer"></footer>
 </body>
 </html>

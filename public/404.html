@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n="pages.notFound.title">Nexaro</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#0A0909">
+  <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
+  <script>(function () { var l = 'ar'; try { var p = new URLSearchParams(location.search).get('lang'); l = p === 'en' || p === 'ar' ? p : (localStorage.getItem('nexaro.lang') === 'en' ? 'en' : 'ar'); } catch (e) {} document.documentElement.lang = l; document.documentElement.dir = l === 'ar' ? 'rtl' : 'ltr'; })();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500&family=Montserrat:wght@200;300;400;500&display=swap">
+  <link rel="stylesheet" href="/css/style.css">
+  <script type="module" src="/js/pages/static.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="a11y.skip"></a>
+  <header class="site-header" id="site-header"></header>
+
+  <main id="main" tabindex="-1">
+    <section class="page-message container">
+      <p class="display page-message__code" aria-hidden="true">404</p>
+      <h1 class="page-title" data-i18n="notFound.title"></h1>
+      <p class="muted" data-i18n="notFound.text"></p>
+      <div class="btn-row">
+        <a class="btn btn--solid" href="/" data-i18n="notFound.home"></a>
+        <a class="btn" href="/shop" data-i18n="notFound.shop"></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+</body>
+</html>

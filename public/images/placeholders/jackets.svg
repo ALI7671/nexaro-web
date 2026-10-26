@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" width="400" height="500">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#141312"/><stop offset="1" stop-color="#0A0909"/></linearGradient>
+    <radialGradient id="glow" cx="50%" cy="46%" r="55%"><stop offset="0" stop-color="#DCD9D4" stop-opacity="0.07"/><stop offset="1" stop-color="#DCD9D4" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="400" height="500" fill="url(#bg)"/>
+  <rect width="400" height="500" fill="url(#glow)"/>
+  <ellipse cx="200" cy="420" rx="125" ry="7" fill="#000" opacity="0.4"/>
+  <g fill="#DCD9D4" fill-opacity="0.04" stroke="#DCD9D4" stroke-opacity="0.55" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M150 106 L180 92 L200 116 L220 92 L250 106 L298 128 Q308 134 310 146 L324 346 L294 350 L280 194 L270 188 L270 404 L130 404 L130 188 L120 194 L106 350 L76 346 L90 146 Q92 134 102 128 Z"/>
+    <path d="M180 92 L166 150 L188 168 L200 250 L212 168 L234 150 L220 92" fill="none"/>
+    <path d="M200 250 L200 404" fill="none"/>
+    <path d="M146 330 L182 330 M218 330 L254 330 M222 204 L248 204" fill="none"/>
+  </g>
+  <g fill="#DCD9D4" fill-opacity="0.55">
+    <circle cx="200" cy="284" r="3"/><circle cx="200" cy="326" r="3"/>
+  </g>
+
+</svg>

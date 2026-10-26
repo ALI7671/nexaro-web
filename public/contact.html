@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n="pages.contact.title">Nexaro</title>
+  <meta name="description" content="" data-i18n-attr="content:pages.contact.description">
+  <meta name="theme-color" content="#0A0909">
+  <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
+  <script>(function () { var l = 'ar'; try { var p = new URLSearchParams(location.search).get('lang'); l = p === 'en' || p === 'ar' ? p : (localStorage.getItem('nexaro.lang') === 'en' ? 'en' : 'ar'); } catch (e) {} document.documentElement.lang = l; document.documentElement.dir = l === 'ar' ? 'rtl' : 'ltr'; })();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500&family=Montserrat:wght@200;300;400;500&display=swap">
+  <link rel="stylesheet" href="/css/style.css">
+  <script type="module" src="/js/pages/contact.js"></script>
+</head>
+<body data-nav="contact">
+  <a class="skip-link" href="#main" data-i18n="a11y.skip"></a>
+  <header class="site-header" id="site-header"></header>
+
+  <main id="main" tabindex="-1">
+    <div class="page-head container">
+      <p class="eyebrow" data-i18n="contact.eyebrow"></p>
+      <h1 class="page-title" data-i18n="contact.title"></h1>
+      <p class="lead" data-i18n="contact.intro"></p>
+    </div>
+
+    <section class="section section--line container" aria-labelledby="contact-form-title">
+      <div class="split">
+        <div class="reveal">
+          <h2 class="sr-only" data-i18n="contact.channelsTitle"></h2>
+          <ul class="contact-list" id="contact-channels"></ul>
+        </div>
+
+        <div class="reveal">
+          <h2 class="section-title form-title" id="contact-form-title" data-i18n="contact.formTitle"></h2>
+          <form class="form" id="contact-form" novalidate>
+            <div class="field">
+              <label class="field__label" for="contact-name" data-i18n="contact.name"></label>
+              <input class="field__input" id="contact-name" name="name" type="text" autocomplete="name" maxlength="80" required aria-describedby="contact-name-error">
+              <p class="field__error" id="contact-name-error" hidden></p>
+            </div>
+            <div class="field">
+              <label class="field__label" for="contact-message" data-i18n="contact.message"></label>
+              <textarea class="field__textarea" id="contact-message" name="message" maxlength="1000" required aria-describedby="contact-message-error"></textarea>
+              <p class="field__error" id="contact-message-error" hidden></p>
+            </div>
+            <button class="btn btn--solid btn--block" type="submit"><span data-icon="chat"></span><span data-i18n="contact.submit"></span></button>
+            <p class="form__note" data-i18n="contact.note"></p>
+            <p class="form__note" id="contact-opened" role="status" hidden></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+</body>
+</html>

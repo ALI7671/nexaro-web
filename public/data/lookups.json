@@ -1,0 +1,38 @@
+{
+  "cities": [
+    { "id": "ramallah", "name": { "ar": "رام الله", "en": "Ramallah" } },
+    { "id": "nablus", "name": { "ar": "نابلس", "en": "Nablus" } },
+    { "id": "hebron", "name": { "ar": "الخليل", "en": "Hebron" } },
+    { "id": "bethlehem", "name": { "ar": "بيت لحم", "en": "Bethlehem" } },
+    { "id": "jenin", "name": { "ar": "جنين", "en": "Jenin" } },
+    { "id": "jericho", "name": { "ar": "أريحا", "en": "Jericho" } }
+  ],
+  "categories": [
+    { "id": "shirts", "name": { "ar": "قمصان", "en": "Shirts" }, "image": "/images/placeholders/shirts.svg", "sizeGuide": "tops" },
+    { "id": "t-shirts", "name": { "ar": "تيشيرتات", "en": "T-shirts" }, "image": "/images/placeholders/t-shirts.svg", "sizeGuide": "tops" },
+    { "id": "pants", "name": { "ar": "بناطيل", "en": "Pants" }, "image": "/images/placeholders/pants.svg", "sizeGuide": "pants" },
+    { "id": "jackets", "name": { "ar": "جاكيتات", "en": "Jackets" }, "image": "/images/placeholders/jackets.svg", "sizeGuide": "tops" },
+    { "id": "shoes", "name": { "ar": "أحذية", "en": "Shoes" }, "image": "/images/placeholders/shoes.svg", "sizeGuide": "shoes" },
+    { "id": "accessories", "name": { "ar": "إكسسوارات", "en": "Accessories" }, "image": "/images/placeholders/accessories.svg", "sizeGuide": null }
+  ],
+  "colors": [
+    { "id": "black", "name": { "ar": "أسود", "en": "Black" } },
+    { "id": "white", "name": { "ar": "أبيض", "en": "White" } },
+    { "id": "grey", "name": { "ar": "رمادي", "en": "Grey" } },
+    { "id": "charcoal", "name": { "ar": "فحمي", "en": "Charcoal" } },
+    { "id": "navy", "name": { "ar": "كحلي", "en": "Navy" } },
+    { "id": "beige", "name": { "ar": "بيج", "en": "Beige" } },
+    { "id": "sand", "name": { "ar": "رملي", "en": "Sand" } },
+    { "id": "cream", "name": { "ar": "كريمي", "en": "Cream" } },
+    { "id": "olive", "name": { "ar": "زيتي", "en": "Olive" } },
+    { "id": "khaki", "name": { "ar": "كاكي", "en": "Khaki" } },
+    { "id": "brown", "name": { "ar": "بني", "en": "Brown" } },
+    { "id": "indigo", "name": { "ar": "نيلي", "en": "Indigo" } }
+  ],
+  "sizeGroups": [
+    { "id": "tops", "name": { "ar": "قمصان وجاكيتات", "en": "Tops" }, "sizes": ["S", "M", "L", "XL", "XXL"] },
+    { "id": "pants", "name": { "ar": "بناطيل (الخصر بالإنش)", "en": "Pants (waist, in)" }, "sizes": ["28", "30", "32", "34", "36", "38"] },
+    { "id": "shoes", "name": { "ar": "أحذية (EU)", "en": "Shoes (EU)" }, "sizes": ["39", "40", "41", "42", "43", "44", "45"] },
+    { "id": "one-size", "name": { "ar": "مقاس واحد", "en": "One size" }, "sizes": ["one-size"] }
+  ]
+}

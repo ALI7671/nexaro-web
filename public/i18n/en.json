@@ -1,0 +1,339 @@
+{
+  "brand": {
+    "name": "Nexaro",
+    "tagline": "Wear Your Next"
+  },
+  "lang": {
+    "switch": "عربي"
+  },
+  "a11y": {
+    "skip": "Skip to content",
+    "home": "Nexaro — home",
+    "mainNav": "Main navigation",
+    "breadcrumb": "Breadcrumb",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "openSearch": "Open search",
+    "closeSearch": "Close search",
+    "switchLang": "التبديل إلى العربية"
+  },
+  "nav": {
+    "home": "Home",
+    "shop": "Shop",
+    "stores": "Stores",
+    "howItWorks": "How it works",
+    "about": "About",
+    "contact": "Contact",
+    "join": "Join as a store",
+    "sizeGuide": "Size guide"
+  },
+  "auth": {
+    "signIn": "Sign in",
+    "signUp": "Sign up"
+  },
+  "search": {
+    "label": "Search Nexaro",
+    "placeholder": "Search pieces, stores or categories",
+    "hint": "Search in English or Arabic",
+    "products": "Pieces",
+    "stores": "Stores",
+    "categories": "Categories",
+    "empty": "No results for “{q}”",
+    "seeAll": "See all results",
+    "results": {
+      "one": "1 result",
+      "other": "{n} results"
+    }
+  },
+  "common": {
+    "priceOnRequest": "Price on request",
+    "viewAll": "View all",
+    "pieces": {
+      "one": "1 piece",
+      "other": "{n} pieces"
+    }
+  },
+  "sizes": {
+    "oneSize": "One size"
+  },
+  "footer": {
+    "about": "The best Palestinian men's clothing stores in one place, delivered to your door.",
+    "shop": "Shop",
+    "company": "Nexaro",
+    "contact": "Contact",
+    "allPieces": "All pieces",
+    "location": "Ramallah, Palestine",
+    "rights": "© {year} Nexaro. All rights reserved."
+  },
+  "pages": {
+    "home": {
+      "title": "Nexaro — Wear Your Next",
+      "description": "Nexaro brings the best Palestinian men's clothing stores into one place and delivers to your door, with no travelling between cities and no checkpoints."
+    },
+    "shop": {
+      "title": "Shop | Nexaro",
+      "description": "Shirts, T-shirts, pants, jackets, shoes and accessories from stores in Ramallah, Nablus, Hebron, Bethlehem, Jenin and Jericho."
+    },
+    "stores": {
+      "title": "Stores | Nexaro",
+      "description": "Six selected men's clothing stores from six Palestinian cities."
+    },
+    "store": {
+      "title": "Store | Nexaro",
+      "description": "Browse the store's collection and order on WhatsApp."
+    },
+    "product": {
+      "title": "Piece | Nexaro",
+      "description": "Choose your size and colour, then order on WhatsApp."
+    },
+    "about": {
+      "title": "About | Nexaro",
+      "description": "Nexaro, from Ramallah: the best Palestinian men's clothing stores in one place, delivered to your door."
+    },
+    "how": {
+      "title": "How it works | Nexaro",
+      "description": "Browse, choose your size and colour, order on WhatsApp, and receive it at your door."
+    },
+    "join": {
+      "title": "Join as a store | Nexaro",
+      "description": "Own a men's clothing store in Palestine? Join Nexaro and reach customers in every city."
+    },
+    "sizeGuide": {
+      "title": "Size guide | Nexaro",
+      "description": "Clear size charts for shirts, pants and shoes, and how to measure yourself."
+    },
+    "contact": {
+      "title": "Contact | Nexaro",
+      "description": "Get in touch with Nexaro on WhatsApp, Instagram or email."
+    },
+    "notFound": {
+      "title": "Page not found | Nexaro"
+    }
+  },
+  "home": {
+    "heroEyebrow": "The best of Palestinian menswear",
+    "heroText": "Six stores from six Palestinian cities, in one place. Choose your piece and we deliver it to your door: no travelling between cities, no checkpoints.",
+    "ctaShop": "Shop now",
+    "ctaStores": "Explore stores",
+    "statStores": "Stores",
+    "statCities": "Cities",
+    "statDoor": "Doorstep",
+    "categoriesEyebrow": "Categories",
+    "categoriesTitle": "Shop by category",
+    "featuredEyebrow": "Selected",
+    "featuredTitle": "Selected pieces",
+    "storesEyebrow": "The stores",
+    "storesTitle": "Six cities. Six stores.",
+    "storyEyebrow": "Our story",
+    "storyTitle": "Shopping without checkpoints",
+    "storyText": "In Palestine, visiting a store in another city can mean hours on the road and checkpoints along the way. Nexaro brings the best men's clothing stores into one place and delivers your order to your door.",
+    "storyLink": "Read our story",
+    "stepsEyebrow": "How it works",
+    "stepsTitle": "From the store to your door",
+    "stepsLink": "Details and questions",
+    "joinEyebrow": "For stores",
+    "joinTitle": "Own a store?",
+    "joinText": "Join Nexaro and reach customers in every city.",
+    "joinCta": "Join as a store"
+  },
+  "shop": {
+    "eyebrow": "Shop",
+    "title": "All pieces",
+    "filters": "Filters",
+    "city": "City",
+    "store": "Store",
+    "category": "Category",
+    "size": "Size",
+    "allCities": "All cities",
+    "allStores": "All stores",
+    "allCategories": "All categories",
+    "allSizes": "All sizes",
+    "clear": "Clear all",
+    "empty": "No pieces match your selection. Try changing the filters.",
+    "searchFor": "Search: {q}",
+    "remove": "Remove {label}"
+  },
+  "stores": {
+    "eyebrow": "Stores",
+    "title": "Our stores",
+    "intro": "Six selected stores from six Palestinian cities, each with its own style and story.",
+    "filterLabel": "Filter stores by city",
+    "all": "All",
+    "visit": "Visit store",
+    "empty": "No stores in this city yet."
+  },
+  "store": {
+    "collection": "The collection",
+    "filterLabel": "Filter products by category",
+    "all": "All",
+    "notFoundTitle": "Store not found",
+    "notFoundText": "This store's link may have changed, or it's no longer available.",
+    "backToStores": "All stores"
+  },
+  "product": {
+    "priceNote": "We send you the price on WhatsApp before you confirm.",
+    "color": "Colour",
+    "size": "Size",
+    "sizeGuide": "Size guide",
+    "order": "Order on WhatsApp",
+    "orderNote": "Opens WhatsApp with a ready message about this piece.",
+    "errorColor": "Choose a colour to continue",
+    "errorSize": "Choose a size to continue",
+    "perkDelivery": "Delivered from {city} to your door",
+    "perkPrice": "Price confirmed with you on WhatsApp before you order",
+    "perkStore": "An original piece from {store}",
+    "moreFrom": "More from {store}",
+    "notFoundTitle": "Piece not found",
+    "notFoundText": "This piece's link may have changed, or it's no longer available.",
+    "backToShop": "Back to the shop",
+    "whatsappMessage": "Hello Nexaro, I'd like to order this piece:\n\nPiece: {product}\nStore: {store} – {city}\nSize: {size}\nColour: {color}\n\n{url}"
+  },
+  "about": {
+    "eyebrow": "About",
+    "title": "Every store. One door.",
+    "lead": "Nexaro brings the best Palestinian men's clothing stores into one place and delivers to your door.",
+    "storyTitle": "Why Nexaro",
+    "p1": "Every Palestinian city has its own standout stores: Hebron's leather, Nablus's weaving, Ramallah's tailoring. But reaching them isn't always easy.",
+    "p2": "Travelling between cities means hours on the road and checkpoints that can close at any moment. So we decided to make the journey for you: you choose from home, and we go to the store and come back to you.",
+    "p3": "We're based in Ramallah and work with stores in Nablus, Hebron, Bethlehem, Jenin and Jericho, with new stores joining all the time.",
+    "valuesEyebrow": "What we believe",
+    "valuesTitle": "Our values",
+    "value1Title": "Local first",
+    "value1Text": "We support Palestinian stores and put their pieces in front of new customers in every city.",
+    "value2Title": "No checkpoints",
+    "value2Text": "Shop from any city without leaving home or waiting at a checkpoint.",
+    "value3Title": "Carefully chosen",
+    "value3Text": "We choose stores and pieces with care, so you find quality without a long search.",
+    "baseEyebrow": "Where we are",
+    "baseTitle": "Ramallah, Palestine",
+    "baseText": "From Ramallah we coordinate with the stores, arrange delivery to West Bank cities, and follow every order until it reaches you.",
+    "ctaTitle": "Start here",
+    "ctaShop": "Shop now",
+    "ctaStores": "Explore stores"
+  },
+  "how": {
+    "eyebrow": "How it works",
+    "title": "From the store to your door",
+    "intro": "From browsing to your doorstep in four simple steps.",
+    "stepsTitle": "The steps",
+    "step1Title": "Browse",
+    "step1Text": "Explore pieces from six stores in six cities. Search, or filter by city, store, category and size.",
+    "step2Title": "Choose",
+    "step2Text": "Pick your size and colour. Our size guide helps you get it right.",
+    "step3Title": "Order on WhatsApp",
+    "step3Text": "Tap the order button and a ready message with the details reaches us. We confirm the price and delivery with you.",
+    "step4Title": "Delivered to your door",
+    "step4Text": "We collect the piece from the store and bring it to you. No travel, no checkpoints.",
+    "faqEyebrow": "Questions",
+    "faqTitle": "Frequently asked",
+    "faq1Q": "Why are there no prices?",
+    "faq1A": "We're finalising price lists with each store. Until then, we send you the exact price on WhatsApp before you confirm your order.",
+    "faq2Q": "Where do you deliver?",
+    "faq2A": "We deliver to cities across the West Bank, and confirm the delivery time for your city before you order.",
+    "faq3Q": "How do I pay?",
+    "faq3A": "We agree on payment with you on WhatsApp when you confirm the order.",
+    "faq4Q": "What if the size doesn't fit?",
+    "faq4A": "Check the size guide before ordering. If the size doesn't fit, message us and we'll arrange an exchange under the store's policy.",
+    "faq5Q": "Are the pieces original, from the stores themselves?",
+    "faq5A": "Yes. Every piece comes directly from the store shown on its page.",
+    "ctaTitle": "Ready to choose your piece?",
+    "ctaShop": "Start shopping"
+  },
+  "join": {
+    "eyebrow": "For stores",
+    "title": "Join Nexaro",
+    "intro": "Own a men's clothing store in Palestine? Show your pieces to customers in every city, and we'll handle the orders and delivery.",
+    "benefit1Title": "New customers",
+    "benefit1Text": "Your pieces in front of customers from cities they rarely reach.",
+    "benefit2Title": "We handle delivery",
+    "benefit2Text": "We collect the order from your store and deliver it to the customer.",
+    "benefit3Title": "A presence that fits",
+    "benefit3Text": "A dedicated page for your store, designed to do your pieces justice.",
+    "formTitle": "Application",
+    "storeName": "Store name",
+    "ownerName": "Owner name",
+    "city": "City",
+    "phone": "Phone number",
+    "phoneHint": "e.g. 0599 123 456",
+    "instagram": "Instagram link",
+    "instagramHint": "e.g. instagram.com/yourstore",
+    "message": "Message",
+    "messagePlaceholder": "Tell us about your store and what it sells",
+    "submit": "Send application",
+    "sending": "Sending…",
+    "privacy": "We only use your details to contact you about joining.",
+    "successEyebrow": "Thank you",
+    "successTitle": "Application received",
+    "successText": "Thank you for your interest in Nexaro. Our team will contact you soon to learn more about your store.",
+    "successCta": "Back to home"
+  },
+  "sizeGuide": {
+    "eyebrow": "Size guide",
+    "title": "Find your size",
+    "intro": "Measurements are approximate and can vary slightly between stores. If you're not sure, ask us on WhatsApp before you order.",
+    "jumpLabel": "Jump to a chart",
+    "howTitle": "How to measure",
+    "chestTitle": "Chest",
+    "chestText": "Measure around the fullest part of your chest, just under the arms, keeping the tape level.",
+    "waistTitle": "Waist",
+    "waistText": "Measure around your waist where you usually wear your trousers.",
+    "inseamTitle": "Inseam",
+    "inseamText": "Measure from the top of your inner thigh to just below the ankle.",
+    "footTitle": "Foot",
+    "footText": "Stand on a sheet of paper, mark your heel and longest toe, then measure between them.",
+    "tops": "Shirts, T-shirts & Jackets",
+    "pants": "Pants",
+    "shoes": "Shoes",
+    "colSize": "Size",
+    "colChest": "Chest",
+    "colLength": "Length",
+    "colSleeve": "Sleeve",
+    "colWaistIn": "Size (in)",
+    "colWaist": "Waist",
+    "colHip": "Hip",
+    "colInseam": "Inseam",
+    "colFoot": "Foot length (cm)",
+    "unitNote": "All measurements in centimetres.",
+    "tip": "Between sizes? Size up for a relaxed fit, down for a slim fit.",
+    "askTitle": "Not sure of your size?",
+    "askText": "Send us your height, weight and the piece you want, and we'll help you choose.",
+    "askCta": "Ask us on WhatsApp",
+    "whatsappMessage": "Hello Nexaro, I need help choosing my size."
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Get in touch",
+    "intro": "For any question about a piece, a size or an order, get in touch and we'll reply quickly.",
+    "channelsTitle": "Ways to reach us",
+    "whatsapp": "WhatsApp",
+    "instagram": "Instagram",
+    "email": "Email",
+    "location": "Location",
+    "locationValue": "Ramallah, Palestine",
+    "hours": "Hours",
+    "hoursValue": "Saturday – Thursday, 10:00 – 20:00",
+    "whatsappHello": "Hello Nexaro",
+    "formTitle": "Send a message",
+    "name": "Name",
+    "message": "Your message",
+    "submit": "Send on WhatsApp",
+    "note": "WhatsApp opens with your message ready; you can edit it before sending.",
+    "opened": "WhatsApp opened in a new tab. If it didn't appear, allow pop-ups for this site.",
+    "whatsappMessage": "Hello Nexaro, I'm {name}.\n\n{message}"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "text": "The link you opened doesn't exist or has moved.",
+    "home": "Back to home",
+    "shop": "Shop"
+  },
+  "form": {
+    "optional": "(optional)",
+    "errors": {
+      "required": "This field is required",
+      "phone": "Enter a valid Palestinian mobile number, e.g. 0599 123 456",
+      "instagram": "Enter a valid Instagram link or username",
+      "generic": "Something went wrong while sending. Please try again."
+    }
+  }
+}

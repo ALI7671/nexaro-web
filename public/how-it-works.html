@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n="pages.how.title">Nexaro</title>
+  <meta name="description" content="" data-i18n-attr="content:pages.how.description">
+  <meta name="theme-color" content="#0A0909">
+  <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
+  <script>(function () { var l = 'ar'; try { var p = new URLSearchParams(location.search).get('lang'); l = p === 'en' || p === 'ar' ? p : (localStorage.getItem('nexaro.lang') === 'en' ? 'en' : 'ar'); } catch (e) {} document.documentElement.lang = l; document.documentElement.dir = l === 'ar' ? 'rtl' : 'ltr'; })();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500&family=Montserrat:wght@200;300;400;500&display=swap">
+  <link rel="stylesheet" href="/css/style.css">
+  <script type="module" src="/js/pages/static.js"></script>
+</head>
+<body data-nav="how">
+  <a class="skip-link" href="#main" data-i18n="a11y.skip"></a>
+  <header class="site-header" id="site-header"></header>
+
+  <main id="main" tabindex="-1">
+    <div class="page-head container">
+      <p class="eyebrow" data-i18n="how.eyebrow"></p>
+      <h1 class="page-title" data-i18n="how.title"></h1>
+      <p class="lead" data-i18n="how.intro"></p>
+    </div>
+
+    <section class="section section--line container" aria-labelledby="steps-title">
+      <h2 class="sr-only" id="steps-title" data-i18n="how.stepsTitle"></h2>
+      <ol class="info-grid info-grid--4">
+        <li class="info-item reveal" style="--i:0"><span class="info-item__num">01</span><h3 class="info-item__title" data-i18n="how.step1Title"></h3><p class="info-item__text" data-i18n="how.step1Text"></p></li>
+        <li class="info-item reveal" style="--i:1"><span class="info-item__num">02</span><h3 class="info-item__title" data-i18n="how.step2Title"></h3><p class="info-item__text" data-i18n="how.step2Text"></p></li>
+        <li class="info-item reveal" style="--i:2"><span class="info-item__num">03</span><h3 class="info-item__title" data-i18n="how.step3Title"></h3><p class="info-item__text" data-i18n="how.step3Text"></p></li>
+        <li class="info-item reveal" style="--i:3"><span class="info-item__num">04</span><h3 class="info-item__title" data-i18n="how.step4Title"></h3><p class="info-item__text" data-i18n="how.step4Text"></p></li>
+      </ol>
+    </section>
+
+    <section class="section section--line container" aria-labelledby="faq-title">
+      <div class="split split--wide-end">
+        <div class="reveal">
+          <p class="eyebrow" data-i18n="how.faqEyebrow"></p>
+          <h2 class="section-title mt-lg" id="faq-title" data-i18n="how.faqTitle"></h2>
+        </div>
+        <div class="faq reveal">
+          <details class="faq__item">
+            <summary><span data-i18n="how.faq1Q"></span><span data-icon="plus"></span></summary>
+            <p class="faq__answer" data-i18n="how.faq1A"></p>
+          </details>
+          <details class="faq__item">
+            <summary><span data-i18n="how.faq2Q"></span><span data-icon="plus"></span></summary>
+            <p class="faq__answer" data-i18n="how.faq2A"></p>
+          </details>
+          <details class="faq__item">
+            <summary><span data-i18n="how.faq3Q"></span><span data-icon="plus"></span></summary>
+            <p class="faq__answer" data-i18n="how.faq3A"></p>
+          </details>
+          <details class="faq__item">
+            <summary><span data-i18n="how.faq4Q"></span><span data-icon="plus"></span></summary>
+            <p class="faq__answer" data-i18n="how.faq4A"></p>
+          </details>
+          <details class="faq__item">
+            <summary><span data-i18n="how.faq5Q"></span><span data-icon="plus"></span></summary>
+            <p class="faq__answer" data-i18n="how.faq5A"></p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--line container cta-band reveal" aria-labelledby="how-cta-title">
+      <h2 class="page-title" id="how-cta-title" data-i18n="how.ctaTitle"></h2>
+      <div class="btn-row">
+        <a class="btn btn--solid" href="/shop" data-i18n="how.ctaShop"></a>
+        <a class="btn" href="/size-guide" data-i18n="nav.sizeGuide"></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+</body>
+</html>

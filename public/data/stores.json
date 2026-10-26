@@ -1,38 +1,62 @@
 [
   {
-    "id": 1,
-    "name": "دار الرجل",
-    "nameEn": "DAR AL RAJUL",
-    "city": "رام الله",
-    "description": "بدلات وقمصان رسمية بقصّات كلاسيكية وخامات فاخرة، للمناسبات وأيام العمل.",
-    "logo": "/images/placeholder.svg",
-    "featured": true
+    "id": "dar-alrajul",
+    "name": { "ar": "دار الرجل", "en": "Dar Al Rajul" },
+    "bio": {
+      "ar": "قمصان وبدلات وأحذية رسمية بقصّات كلاسيكية، لأيام العمل والمناسبات.",
+      "en": "Shirts, tailoring and formal shoes in classic cuts, for workdays and occasions."
+    },
+    "city": "ramallah",
+    "logo": null
   },
   {
-    "id": 2,
-    "name": "خيوط",
-    "nameEn": "KHUYOOT",
-    "city": "نابلس",
-    "description": "قطع يومية بسيطة من القطن والكتان، مصنوعة محلياً بعناية بالتفاصيل.",
-    "logo": "/images/placeholder.svg",
-    "featured": true
+    "id": "khuyoot",
+    "name": { "ar": "خيوط", "en": "Khuyoot" },
+    "bio": {
+      "ar": "قطع يومية من القطن والكتان، بعضها منسوج يدوياً في نابلس.",
+      "en": "Everyday pieces in cotton and linen, some hand-woven in Nablus."
+    },
+    "city": "nablus",
+    "logo": null
   },
   {
-    "id": 3,
-    "name": "أصيل",
-    "nameEn": "ASEEL",
-    "city": "الخليل",
-    "description": "ملابس شتوية وجاكيتات جلد وصوف تجمع بين الحرفة التقليدية والتصميم العصري.",
-    "logo": "/images/placeholder.svg",
-    "featured": true
+    "id": "aseel",
+    "name": { "ar": "أصيل", "en": "Aseel" },
+    "bio": {
+      "ar": "جلود وأحذية من ورش الخليل، مصنوعة لتدوم.",
+      "en": "Leather and footwear from Hebron's workshops, made to last."
+    },
+    "city": "hebron",
+    "logo": null
   },
   {
-    "id": 4,
-    "name": "نسيج",
-    "nameEn": "NASEEJ",
-    "city": "بيت لحم",
-    "description": "أزياء شبابية وستريت وير بألوان هادئة وقصّات واسعة مريحة.",
-    "logo": "/images/placeholder.svg",
-    "featured": true
+    "id": "siraj",
+    "name": { "ar": "سراج", "en": "Siraj" },
+    "bio": {
+      "ar": "أناقة يومية بين الرسمي والكاجوال، بتفاصيل مدروسة.",
+      "en": "Everyday elegance between smart and casual, with considered details."
+    },
+    "city": "bethlehem",
+    "logo": null
+  },
+  {
+    "id": "marj",
+    "name": { "ar": "مرج", "en": "Marj" },
+    "bio": {
+      "ar": "دنيم وملابس عمل متينة، مستوحاة من سهل مرج ابن عامر.",
+      "en": "Denim and durable workwear, inspired by the Marj Ibn Amer plain."
+    },
+    "city": "jenin",
+    "logo": null
+  },
+  {
+    "id": "waha",
+    "name": { "ar": "واحة", "en": "Waha" },
+    "bio": {
+      "ar": "ملابس صيفية خفيفة من الكتان والقطن، لأيام أريحا الدافئة.",
+      "en": "Light summer clothing in linen and cotton, for Jericho's warm days."
+    },
+    "city": "jericho",
+    "logo": null
   }
 ]

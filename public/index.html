@@ -1,58 +1,117 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nexaro — Wear Your Next</title>
-  <meta name="description" content="نيكسارو: سوق إلكتروني يجمع متاجر الملابس الرجالية الفلسطينية في مكان واحد.">
-  <link rel="icon" href="/images/placeholder.svg" type="image/svg+xml">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n="pages.home.title">Nexaro</title>
+  <meta name="description" content="" data-i18n-attr="content:pages.home.description">
+  <meta name="theme-color" content="#0A0909">
+  <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
+  <!-- Sets language and direction before the page paints, so the layout never flips -->
+  <script>(function () { var l = 'ar'; try { var p = new URLSearchParams(location.search).get('lang'); l = p === 'en' || p === 'ar' ? p : (localStorage.getItem('nexaro.lang') === 'en' ? 'en' : 'ar'); } catch (e) {} document.documentElement.lang = l; document.documentElement.dir = l === 'ar' ? 'rtl' : 'ltr'; })();</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500&family=Montserrat:wght@200;300;400;500&display=swap">
   <link rel="stylesheet" href="/css/style.css">
+  <script type="module" src="/js/pages/home.js"></script>
 </head>
-<body>
+<body data-nav="home">
+  <a class="skip-link" href="#main" data-i18n="a11y.skip"></a>
   <header class="site-header" id="site-header"></header>
-  <main>
-    <section class="hero">
-      <h1>Wear Your Next</h1>
-      <p>نيكسارو سوق إلكتروني يجمع أفضل متاجر الملابس الرجالية الفلسطينية في مكان واحد. اكتشف، اختر، واطلب مباشرة من المتجر.</p>
-      <a class="btn" href="/stores.html">تصفّح المتاجر</a>
+
+  <main id="main" tabindex="-1">
+    <section class="hero container" aria-labelledby="hero-title">
+      <p class="eyebrow" data-i18n="home.heroEyebrow"></p>
+      <!-- dir="ltr": the tagline is Latin, and its animated words must keep their order on the Arabic page -->
+      <h1 class="display hero__title" id="hero-title" dir="ltr"></h1>
+      <p class="hero__text" data-i18n="home.heroText"></p>
+      <div class="btn-row hero__actions">
+        <a class="btn btn--solid" href="/shop" data-i18n="home.ctaShop"></a>
+        <a class="btn" href="/stores" data-i18n="home.ctaStores"></a>
+      </div>
+      <span class="hero__line" aria-hidden="true"></span>
     </section>
 
-    <section class="section">
-      <div class="container">
-        <p class="intro">من رام الله إلى الخليل، نختار لك متاجر محلية بذوق رفيع وخامات مدروسة، ونوصلك بها بخطوة واحدة عبر واتساب.</p>
+    <div class="container">
+      <dl class="stats reveal">
+        <div class="stat"><dt class="stat__label" data-i18n="home.statStores"></dt><dd class="stat__num">06</dd></div>
+        <div class="stat"><dt class="stat__label" data-i18n="home.statCities"></dt><dd class="stat__num">06</dd></div>
+        <div class="stat"><dt class="stat__label" data-i18n="home.statDoor"></dt><dd class="stat__num">01</dd></div>
+      </dl>
+    </div>
+
+    <section class="section container" aria-labelledby="categories-title">
+      <div class="section-head reveal">
+        <div>
+          <p class="eyebrow" data-i18n="home.categoriesEyebrow"></p>
+          <h2 class="section-title" id="categories-title" data-i18n="home.categoriesTitle"></h2>
+        </div>
+        <a class="link-arrow" href="/shop"><span data-i18n="common.viewAll"></span><span data-icon="arrow"></span></a>
+      </div>
+      <div class="category-grid" id="home-categories"></div>
+    </section>
+
+    <section class="section section--line container" aria-labelledby="featured-title">
+      <div class="section-head reveal">
+        <div>
+          <p class="eyebrow" data-i18n="home.featuredEyebrow"></p>
+          <h2 class="section-title" id="featured-title" data-i18n="home.featuredTitle"></h2>
+        </div>
+        <a class="link-arrow" href="/shop"><span data-i18n="common.viewAll"></span><span data-icon="arrow"></span></a>
+      </div>
+      <div class="product-grid" id="home-featured"></div>
+    </section>
+
+    <section class="section section--line container" aria-labelledby="stores-title">
+      <div class="section-head reveal">
+        <div>
+          <p class="eyebrow" data-i18n="home.storesEyebrow"></p>
+          <h2 class="section-title" id="stores-title" data-i18n="home.storesTitle"></h2>
+        </div>
+        <a class="link-arrow" href="/stores"><span data-i18n="common.viewAll"></span><span data-icon="arrow"></span></a>
+      </div>
+      <div class="store-grid" id="home-stores"></div>
+    </section>
+
+    <section class="section section--line container" aria-labelledby="story-title">
+      <div class="split">
+        <div class="reveal">
+          <p class="eyebrow" data-i18n="home.storyEyebrow"></p>
+          <h2 class="page-title story__title mt-lg" id="story-title" data-i18n="home.storyTitle"></h2>
+        </div>
+        <div class="story__body prose reveal">
+          <p class="lead" data-i18n="home.storyText"></p>
+          <a class="link-arrow" href="/about"><span data-i18n="home.storyLink"></span><span data-icon="arrow"></span></a>
+        </div>
       </div>
     </section>
 
-    <section class="section">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <span class="eyebrow">Featured Stores</span>
-            <h2 class="section-title">متاجر مختارة</h2>
-          </div>
-          <a class="link-arrow" href="/stores.html">كل المتاجر</a>
+    <section class="section section--line container" aria-labelledby="steps-title">
+      <div class="section-head reveal">
+        <div>
+          <p class="eyebrow" data-i18n="home.stepsEyebrow"></p>
+          <h2 class="section-title" id="steps-title" data-i18n="home.stepsTitle"></h2>
         </div>
-        <div class="grid grid-4" id="featured-stores"><p class="loading">جارٍ التحميل…</p></div>
+        <a class="link-arrow" href="/how-it-works"><span data-i18n="home.stepsLink"></span><span data-icon="arrow"></span></a>
       </div>
+      <ol class="info-grid info-grid--4">
+        <li class="info-item reveal" style="--i:0"><span class="info-item__num">01</span><h3 class="info-item__title" data-i18n="how.step1Title"></h3><p class="info-item__text" data-i18n="how.step1Text"></p></li>
+        <li class="info-item reveal" style="--i:1"><span class="info-item__num">02</span><h3 class="info-item__title" data-i18n="how.step2Title"></h3><p class="info-item__text" data-i18n="how.step2Text"></p></li>
+        <li class="info-item reveal" style="--i:2"><span class="info-item__num">03</span><h3 class="info-item__title" data-i18n="how.step3Title"></h3><p class="info-item__text" data-i18n="how.step3Text"></p></li>
+        <li class="info-item reveal" style="--i:3"><span class="info-item__num">04</span><h3 class="info-item__title" data-i18n="how.step4Title"></h3><p class="info-item__text" data-i18n="how.step4Text"></p></li>
+      </ol>
     </section>
 
-    <section class="section">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <span class="eyebrow">Featured Pieces</span>
-            <h2 class="section-title">قطع مختارة</h2>
-          </div>
-        </div>
-        <div class="grid grid-4" id="featured-products"><p class="loading">جارٍ التحميل…</p></div>
+    <section class="section section--line container cta-band reveal" aria-labelledby="join-title">
+      <p class="eyebrow" data-i18n="home.joinEyebrow"></p>
+      <h2 class="page-title" id="join-title" data-i18n="home.joinTitle"></h2>
+      <p class="lead" data-i18n="home.joinText"></p>
+      <div class="btn-row">
+        <a class="btn" href="/join" data-i18n="home.joinCta"></a>
       </div>
     </section>
   </main>
+
   <footer class="site-footer" id="site-footer"></footer>
-  <script src="/js/common.js"></script>
-  <script src="/js/home.js"></script>
 </body>
 </html>

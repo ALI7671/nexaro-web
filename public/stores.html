@@ -1,33 +1,36 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>المتاجر — Nexaro</title>
-  <meta name="description" content="تصفّح جميع متاجر الملابس الرجالية الفلسطينية على نيكسارو.">
-  <link rel="icon" href="/images/placeholder.svg" type="image/svg+xml">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n="pages.stores.title">Nexaro</title>
+  <meta name="description" content="" data-i18n-attr="content:pages.stores.description">
+  <meta name="theme-color" content="#0A0909">
+  <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
+  <script>(function () { var l = 'ar'; try { var p = new URLSearchParams(location.search).get('lang'); l = p === 'en' || p === 'ar' ? p : (localStorage.getItem('nexaro.lang') === 'en' ? 'en' : 'ar'); } catch (e) {} document.documentElement.lang = l; document.documentElement.dir = l === 'ar' ? 'rtl' : 'ltr'; })();</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500&family=Montserrat:wght@200;300;400;500&display=swap">
   <link rel="stylesheet" href="/css/style.css">
+  <script type="module" src="/js/pages/stores.js"></script>
 </head>
-<body>
+<body data-nav="stores">
+  <a class="skip-link" href="#main" data-i18n="a11y.skip"></a>
   <header class="site-header" id="site-header"></header>
-  <main>
-    <section class="section">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <span class="eyebrow">Stores</span>
-            <h1 class="section-title">كل المتاجر</h1>
-          </div>
-        </div>
-        <div class="grid grid-4" id="stores"><p class="loading">جارٍ التحميل…</p></div>
-      </div>
+
+  <main id="main" tabindex="-1">
+    <div class="page-head container">
+      <p class="eyebrow" data-i18n="stores.eyebrow"></p>
+      <h1 class="page-title" id="stores-title" data-i18n="stores.title"></h1>
+      <p class="lead" data-i18n="stores.intro"></p>
+    </div>
+
+    <section class="container section-bottom" aria-labelledby="stores-title">
+      <div class="pill-row" id="city-filter" role="group" data-i18n-attr="aria-label:stores.filterLabel"></div>
+      <div class="store-grid mt-lg" id="stores-grid"></div>
     </section>
   </main>
+
   <footer class="site-footer" id="site-footer"></footer>
-  <script src="/js/common.js"></script>
-  <script src="/js/stores.js"></script>
 </body>
 </html>

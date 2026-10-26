@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n="pages.shop.title">Nexaro</title>
+  <meta name="description" content="" data-i18n-attr="content:pages.shop.description">
+  <meta name="theme-color" content="#0A0909">
+  <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
+  <script>(function () { var l = 'ar'; try { var p = new URLSearchParams(location.search).get('lang'); l = p === 'en' || p === 'ar' ? p : (localStorage.getItem('nexaro.lang') === 'en' ? 'en' : 'ar'); } catch (e) {} document.documentElement.lang = l; document.documentElement.dir = l === 'ar' ? 'rtl' : 'ltr'; })();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500&family=Montserrat:wght@200;300;400;500&display=swap">
+  <link rel="stylesheet" href="/css/style.css">
+  <script type="module" src="/js/pages/shop.js"></script>
+</head>
+<body data-nav="shop">
+  <a class="skip-link" href="#main" data-i18n="a11y.skip"></a>
+  <header class="site-header" id="site-header"></header>
+
+  <main id="main" tabindex="-1">
+    <div class="page-head container">
+      <p class="eyebrow" data-i18n="shop.eyebrow"></p>
+      <h1 class="page-title" id="shop-title" data-i18n="shop.title"></h1>
+    </div>
+
+    <section class="container section-bottom" aria-labelledby="shop-title">
+      <div class="filters" id="filters">
+        <div class="filters__top">
+          <button class="filters__toggle" id="filters-toggle" type="button" aria-expanded="false" aria-controls="filters-form">
+            <span data-icon="sliders"></span><span id="filters-toggle-label" data-i18n="shop.filters"></span>
+          </button>
+          <p class="filters__count" id="results-count" tabindex="-1" aria-live="polite"></p>
+        </div>
+        <form class="filters__panel" id="filters-form">
+          <div class="field">
+            <label class="field__label" for="filter-city" data-i18n="shop.city"></label>
+            <select class="field__select" id="filter-city" name="city"></select>
+          </div>
+          <div class="field">
+            <label class="field__label" for="filter-store" data-i18n="shop.store"></label>
+            <select class="field__select" id="filter-store" name="store"></select>
+          </div>
+          <div class="field">
+            <label class="field__label" for="filter-category" data-i18n="shop.category"></label>
+            <select class="field__select" id="filter-category" name="category"></select>
+          </div>
+          <div class="field">
+            <label class="field__label" for="filter-size" data-i18n="shop.size"></label>
+            <select class="field__select" id="filter-size" name="size"></select>
+          </div>
+        </form>
+      </div>
+
+      <div class="filters__active" id="active-filters" hidden></div>
+      <div class="product-grid" id="products-grid"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+</body>
+</html>
