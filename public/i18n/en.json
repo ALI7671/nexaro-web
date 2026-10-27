@@ -25,7 +25,8 @@
     "about": "About",
     "contact": "Contact",
     "join": "Join as a store",
-    "sizeGuide": "Size guide"
+    "sizeGuide": "Size guide",
+    "forStores": "For Stores"
   },
   "auth": {
     "signIn": "Sign in",
@@ -63,7 +64,13 @@
     "contact": "Contact",
     "allPieces": "All pieces",
     "location": "Ramallah, Palestine",
-    "rights": "© {year} Nexaro. All rights reserved."
+    "rights": "© {year} Nexaro. All rights reserved.",
+    "policies": "Policies",
+    "exchange": "Exchange policy",
+    "payment": "Payment",
+    "delivery": "Delivery",
+    "terms": "Terms of use",
+    "privacy": "Privacy policy"
   },
   "pages": {
     "home": {
@@ -94,10 +101,6 @@
       "title": "How it works | Nexaro",
       "description": "Browse, choose your size and colour, order on WhatsApp, and receive it at your door."
     },
-    "join": {
-      "title": "Join as a store | Nexaro",
-      "description": "Own a clothing store in Palestine? Join Nexaro and reach customers in every city."
-    },
     "sizeGuide": {
       "title": "Size guide | Nexaro",
       "description": "Clear size charts for shirts, pants and shoes, and how to measure yourself."
@@ -108,6 +111,22 @@
     },
     "notFound": {
       "title": "Page not found | Nexaro"
+    },
+    "forStores": {
+      "title": "For Stores | Nexaro",
+      "description": "Reach customers across Palestine, free at launch, with orders arriving on WhatsApp."
+    },
+    "policies": {
+      "title": "Exchange, payment & delivery | Nexaro",
+      "description": "Exchange, payment and delivery policies at Nexaro."
+    },
+    "terms": {
+      "title": "Terms of use | Nexaro",
+      "description": "Terms of use for the Nexaro website."
+    },
+    "privacy": {
+      "title": "Privacy policy | Nexaro",
+      "description": "How Nexaro collects and uses your data."
     }
   },
   "home": {
@@ -192,7 +211,11 @@
     "notFoundTitle": "Piece not found",
     "notFoundText": "This piece's link may have changed, or it's no longer available.",
     "backToShop": "Back to the shop",
-    "whatsappMessage": "Hello Nexaro, I'd like to order this piece:\n\nPiece: {product}\nStore: {store} – {city}\nSize: {size}\nColour: {color}\n\n{url}"
+    "whatsappMessage": "Hello Nexaro, I'd like to order this piece:\n\nPiece: {product}\nStore: {store} – {city}\nSize: {size}\nColour: {color}\n\n{url}",
+    "trustLabel": "Ordering with confidence",
+    "badgeCod": "Cash on delivery",
+    "badgeExchange": "Exchange within 3 days",
+    "badgeDelivery": "Delivery to all cities"
   },
   "about": {
     "eyebrow": "About",
@@ -212,7 +235,7 @@
     "value3Text": "We choose stores and pieces with care, so you find quality without a long search.",
     "baseEyebrow": "Where we are",
     "baseTitle": "Ramallah, Palestine",
-    "baseText": "From Ramallah we coordinate with the stores, arrange delivery to West Bank cities, and follow every order until it reaches you.",
+    "baseText": "From Ramallah we coordinate with the stores, arrange delivery to every city, and follow every order until it reaches you.",
     "ctaTitle": "Start here",
     "ctaShop": "Shop now",
     "ctaStores": "Explore stores"
@@ -235,27 +258,18 @@
     "faq1Q": "Why are there no prices?",
     "faq1A": "We're finalising price lists with each store. Until then, we send you the exact price on WhatsApp before you confirm your order.",
     "faq2Q": "Where do you deliver?",
-    "faq2A": "We deliver to cities across the West Bank, and confirm the delivery time for your city before you order.",
+    "faq2A": "We deliver to all cities, through the store itself or a partner delivery company. We confirm the delivery fee and timing with you on WhatsApp before you order.",
     "faq3Q": "How do I pay?",
-    "faq3A": "We agree on payment with you on WhatsApp when you confirm the order.",
+    "faq3A": "Cash on delivery. Online payment is coming later.",
     "faq4Q": "What if the size doesn't fit?",
-    "faq4A": "Check the size guide before ordering. If the size doesn't fit, message us and we'll arrange an exchange under the store's policy.",
+    "faq4A": "You can exchange a piece within 3 days of receiving it, if it's unworn with its tags still on. Message us on WhatsApp and we'll arrange it with the store.",
     "faq5Q": "Are the pieces original, from the stores themselves?",
     "faq5A": "Yes. Every piece comes directly from the store shown on its page.",
     "ctaTitle": "Ready to choose your piece?",
     "ctaShop": "Start shopping"
   },
   "join": {
-    "eyebrow": "For stores",
-    "title": "Join Nexaro",
-    "intro": "Own a clothing store in Palestine, for men, women or youth? Show your pieces to customers in every city, and we'll handle the orders and delivery.",
-    "benefit1Title": "New customers",
-    "benefit1Text": "Your pieces in front of customers from cities they rarely reach.",
-    "benefit2Title": "We handle delivery",
-    "benefit2Text": "We collect the order from your store and deliver it to the customer.",
-    "benefit3Title": "A presence that fits",
-    "benefit3Text": "A dedicated page for your store, designed to do your pieces justice.",
-    "formTitle": "Application",
+    "formTitle": "Store details",
     "storeName": "Store name",
     "ownerName": "Owner name",
     "city": "City",
@@ -340,6 +354,208 @@
       "phone": "Enter a valid Palestinian mobile number, e.g. 0599 123 456",
       "instagram": "Enter a valid Instagram link or username",
       "generic": "Something went wrong while sending. Please try again."
+    }
+  },
+  "forStores": {
+    "eyebrow": "For Stores",
+    "title": "Reach customers across Palestine",
+    "intro": "Nexaro puts your store in front of customers from every city and sends you ready orders on WhatsApp. You focus on your pieces; we take care of the rest.",
+    "ctaApply": "Apply to join",
+    "ctaWhatsapp": "Talk to us on WhatsApp",
+    "whatsappMessage": "Hello Nexaro, I own a store and would like to know more about joining.",
+    "benefitsEyebrow": "Why Nexaro",
+    "benefitsTitle": "What your store gets",
+    "benefit1Title": "Free for the first months",
+    "benefit1Text": "Listing your store is free at launch: no subscription and no commission on orders.",
+    "benefit2Title": "Customers from every city",
+    "benefit2Text": "Reach customers in cities that rarely make it to your door, without them leaving home.",
+    "benefit3Title": "Orders on WhatsApp",
+    "benefit3Text": "Every order arrives as a clear message: piece, size and colour. No new system to learn.",
+    "benefit4Title": "Delivery your way",
+    "benefit4Text": "Keep the delivery company you already use, or we arrange a partner company for you.",
+    "stepsEyebrow": "How it works",
+    "stepsTitle": "Three steps",
+    "step1Title": "Register",
+    "step1Text": "Fill in the form below or message us on WhatsApp, and we'll get back to you within a few days.",
+    "step2Title": "Send your products",
+    "step2Text": "Send us photos of your pieces with the available sizes and colours, and we set up your store page.",
+    "step3Title": "Receive orders",
+    "step3Text": "Orders reach you on WhatsApp; you prepare the piece and it gets delivered to the customer.",
+    "applyEyebrow": "Join now",
+    "applyTitle": "Apply to join",
+    "applyText": "The form takes a minute. We review your application and contact you to learn about your store."
+  },
+  "legal": {
+    "draft": "First draft",
+    "draftText": "This text is an early version and may change before the official launch.",
+    "updated": "Last updated: October 2026",
+    "policies": {
+      "eyebrow": "Policies",
+      "title": "Exchange, payment & delivery",
+      "intro": "Everything you need to know before you order, clearly.",
+      "jumpLabel": "Jump to a section",
+      "sections": [
+        {
+          "id": "exchange",
+          "title": "Exchange policy",
+          "body": [
+            "You can exchange a piece within 3 days of receiving it, as long as:"
+          ],
+          "list": [
+            "it hasn't been worn,",
+            "its tags are still attached,",
+            "it's in the original condition you received it in."
+          ],
+          "after": [
+            "To request an exchange, message us on WhatsApp at {whatsapp} with the piece and the size you'd like. We arrange the exchange with the store, depending on the size and colour available.",
+            "Any delivery fee for the exchange is confirmed with you on WhatsApp before it goes ahead."
+          ]
+        },
+        {
+          "id": "payment",
+          "title": "Payment",
+          "body": [
+            "For now, payment is cash on delivery: you pay in cash when your order arrives.",
+            "We confirm the final price and the delivery fee with you on WhatsApp before your order is confirmed, so there are no surprises at the door.",
+            "Online payment is coming later, and we'll announce it when it's available."
+          ]
+        },
+        {
+          "id": "delivery",
+          "title": "Delivery",
+          "body": [
+            "We deliver orders to all cities, through the store itself or a partner delivery company.",
+            "The delivery fee and timing depend on your city, and we confirm both with you on WhatsApp before your order is confirmed.",
+            "If your order is late or something goes wrong, message us at {whatsapp} and we'll follow it up with you."
+          ]
+        }
+      ]
+    },
+    "terms": {
+      "eyebrow": "Terms of use",
+      "title": "Nexaro terms of use",
+      "intro": "By using the Nexaro website or ordering through it, you agree to these terms.",
+      "sections": [
+        {
+          "id": "about",
+          "title": "About Nexaro",
+          "body": [
+            "Nexaro is a platform from Ramallah that shows products from Palestinian clothing stores in one place and coordinates orders between customers and stores. The pieces are sold by the stores themselves."
+          ]
+        },
+        {
+          "id": "orders",
+          "title": "Orders",
+          "body": [
+            "Orders are sent through WhatsApp. An order is only confirmed once we've confirmed the price, size, colour and delivery fee with you.",
+            "We may have to decline an order if a piece is no longer available; we'll tell you straight away."
+          ]
+        },
+        {
+          "id": "prices",
+          "title": "Prices and payment",
+          "body": [
+            "Prices aren't shown on the website yet; we send them to you when you order. Payment is cash on delivery, as described in our payment policy."
+          ]
+        },
+        {
+          "id": "delivery",
+          "title": "Delivery and exchanges",
+          "body": [
+            "Delivery and exchanges follow the policies on our exchange, payment and delivery page."
+          ]
+        },
+        {
+          "id": "products",
+          "title": "Product information",
+          "body": [
+            "We work to keep information accurate, but colours may differ slightly from the images. Some images are currently illustrations until the stores' own photos are added.",
+            "Each store is responsible for the quality of its pieces and for matching their description; we follow up with the store on any issue you raise."
+          ]
+        },
+        {
+          "id": "use",
+          "title": "Using the website",
+          "body": [
+            "Please use the website for lawful purposes only, and don't copy its content or images without permission."
+          ]
+        },
+        {
+          "id": "changes",
+          "title": "Changes to these terms",
+          "body": [
+            "We may update these terms from time to time, and we'll publish the new version on this page with its update date."
+          ]
+        },
+        {
+          "id": "contact",
+          "title": "Contact us",
+          "body": [
+            "For any question about these terms: WhatsApp {whatsapp} or email {email}."
+          ]
+        }
+      ]
+    },
+    "privacy": {
+      "eyebrow": "Privacy",
+      "title": "Privacy policy",
+      "intro": "We collect as little data as possible and use it only to get your order to you.",
+      "sections": [
+        {
+          "id": "collect",
+          "title": "What we collect",
+          "body": [
+            "We only collect what we need:"
+          ],
+          "list": [
+            "When you order on WhatsApp: your name, phone number, delivery address and order details.",
+            "When a store applies to join: the store name, owner's name, city, phone number, Instagram link and message.",
+            "On your device only: the site language you chose, saved in your browser."
+          ]
+        },
+        {
+          "id": "use",
+          "title": "How we use it",
+          "body": [
+            "To confirm and deliver your order and contact you about it, and to get in touch with stores that apply to join."
+          ]
+        },
+        {
+          "id": "share",
+          "title": "Who we share it with",
+          "body": [
+            "We share with the store and the delivery company only what's needed to deliver your order, such as your name, phone and address. We never sell your data."
+          ]
+        },
+        {
+          "id": "keep",
+          "title": "How long we keep it",
+          "body": [
+            "We keep data only as long as we need it to serve your order, or as required by law."
+          ]
+        },
+        {
+          "id": "rights",
+          "title": "Your rights",
+          "body": [
+            "You can ask to see, correct or delete the data we hold about you, on WhatsApp {whatsapp} or by email {email}."
+          ]
+        },
+        {
+          "id": "analytics",
+          "title": "Analytics",
+          "body": [
+            "The website doesn't currently use tracking or advertising tools, though it loads its fonts from Google Fonts. If we add analytics later, we'll update this policy first."
+          ]
+        },
+        {
+          "id": "contact",
+          "title": "Contact us",
+          "body": [
+            "For any question about your privacy: WhatsApp {whatsapp} or email {email}."
+          ]
+        }
+      ]
     }
   }
 }

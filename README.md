@@ -15,10 +15,13 @@ Open the pages through the server (not by double-clicking the HTML files), becau
 ## Structure
 
 ```
-server.js                 Express: serves public/, clean URLs (/shop → shop.html), 404 page
+server.js                 Express: serves public/, clean URLs (/shop → shop.html), /join → /for-stores, 404 page
 public/
   *.html                  One file per page. Store and product pages are templates:
                           /store?id=aseel   /product?id=aseel-02
+  for-stores.html         For Stores page: benefits, 3 steps, and the store application form
+  policies.html, terms.html, privacy.html
+                          Legal pages; their text is in the i18n files under "legal" (js/pages/legal.js draws it)
   css/style.css           All styles. Brand colors and fonts are at the top (section 1)
   js/config.js            WhatsApp number, contact details, languages
   js/data.js              ★ The only file that loads data (JSON now, Supabase in Phase 2)
@@ -90,3 +93,5 @@ First time on a new computer: `npm install`, then `npx playwright install chromi
 2. **Phase 2:** Supabase auth (the header has an empty `#auth-slot` ready), wishlist, reviews with approval, newsletter, saving store applications (`submitStoreApplication` in `data.js`)
 3. **Phase 3:** admin dashboard, discount codes, GA4 + Meta Pixel, UTM tracking
 4. **Phase 4:** SEO, deploy to Render, custom domain
+
+**Render:** the server reads the port from `process.env.PORT` and starts with `npm start`. Use `npm ci --omit=dev` as the build command, so the promo-video tools (Playwright and an ~80 MB ffmpeg) aren't installed on the server.

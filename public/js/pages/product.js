@@ -56,6 +56,11 @@ startPage(async () => {
             ${icon('chat')}<span>${t('product.order')}</span>
           </a>
           <p class="order__note">${t('product.orderNote')}</p>
+          <ul class="trust-badges" aria-label="${t('product.trustLabel')}">
+            <li><a href="/policies#payment">${icon('cash')}<span>${t('product.badgeCod')}</span></a></li>
+            <li><a href="/policies#exchange">${icon('swap')}<span>${t('product.badgeExchange')}</span></a></li>
+            <li><a href="/policies#delivery">${icon('truck')}<span>${t('product.badgeDelivery')}</span></a></li>
+          </ul>
         </div>
 
         <ul class="perks">

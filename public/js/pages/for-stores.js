@@ -1,10 +1,11 @@
-// Join as a store: validates the form, then hands it to the data layer.
-// Phase 1 only shows a success message; Phase 2 saves it to Supabase (see data.js).
+// For Stores page: a WhatsApp link for store owners, and the application form.
+// The form is validated here, then handed to the data layer. Phase 1 only shows
+// a success message; Phase 2 saves it to Supabase (see data.js).
 import { startPage } from '../layout.js';
 import { getLookups, submitStoreApplication } from '../data.js';
 import { t, localize } from '../i18n.js';
 import { validateForm, clearErrorsOnInput, required } from '../forms.js';
-import { escapeHtml } from '../utils.js';
+import { escapeHtml, whatsappLink } from '../utils.js';
 
 // Palestinian mobile numbers: 059/056 + 7 digits, optionally with +970 / +972 / 00970
 const PHONE_PATTERN = /^(?:(?:\+|00)?97[02]|0)5[69]\d{7}$/;
@@ -16,6 +17,8 @@ startPage(async () => {
   const success = document.getElementById('join-success');
   const formError = document.getElementById('join-form-error');
   const submit = form.querySelector('[type="submit"]');
+
+  document.getElementById('stores-whatsapp').href = whatsappLink(t('forStores.whatsappMessage'));
 
   const { cities } = await getLookups();
   document.getElementById('city-options').innerHTML = cities

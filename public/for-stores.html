@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title data-i18n="pages.join.title">Nexaro</title>
-  <meta name="description" content="" data-i18n-attr="content:pages.join.description">
+  <title data-i18n="pages.forStores.title">Nexaro</title>
+  <meta name="description" content="" data-i18n-attr="content:pages.forStores.description">
   <meta name="theme-color" content="#0A0909">
   <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
   <script>(function () { var l = 'ar'; try { var p = new URLSearchParams(location.search).get('lang'); l = p === 'en' || p === 'ar' ? p : (localStorage.getItem('nexaro.lang') === 'en' ? 'en' : 'ar'); } catch (e) {} document.documentElement.lang = l; document.documentElement.dir = l === 'ar' ? 'rtl' : 'ltr'; })();</script>
@@ -12,26 +12,59 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500&family=Montserrat:wght@200;300;400;500&display=swap">
   <link rel="stylesheet" href="/css/style.css">
-  <script type="module" src="/js/pages/join.js"></script>
+  <script type="module" src="/js/pages/for-stores.js"></script>
 </head>
-<body data-nav="join">
+<body data-nav="for-stores">
   <a class="skip-link" href="#main" data-i18n="a11y.skip"></a>
   <header class="site-header" id="site-header"></header>
 
   <main id="main" tabindex="-1">
     <div class="page-head container">
-      <p class="eyebrow" data-i18n="join.eyebrow"></p>
-      <h1 class="page-title" data-i18n="join.title"></h1>
-      <p class="lead" data-i18n="join.intro"></p>
+      <p class="eyebrow" data-i18n="forStores.eyebrow"></p>
+      <h1 class="page-title" data-i18n="forStores.title"></h1>
+      <p class="lead" data-i18n="forStores.intro"></p>
+      <div class="btn-row mt-lg">
+        <a class="btn btn--solid" href="#apply" data-i18n="forStores.ctaApply"></a>
+        <a class="btn" id="stores-whatsapp" href="/contact" target="_blank" rel="noopener"><span data-icon="chat"></span><span data-i18n="forStores.ctaWhatsapp"></span></a>
+      </div>
     </div>
 
-    <section class="section section--line container" aria-labelledby="join-form-title">
+    <section class="section section--line container" aria-labelledby="benefits-title">
+      <div class="section-head reveal">
+        <div>
+          <p class="eyebrow" data-i18n="forStores.benefitsEyebrow"></p>
+          <h2 class="section-title" id="benefits-title" data-i18n="forStores.benefitsTitle"></h2>
+        </div>
+      </div>
+      <ul class="info-grid info-grid--4">
+        <li class="info-item reveal" style="--i:0"><h3 class="info-item__title" data-i18n="forStores.benefit1Title"></h3><p class="info-item__text" data-i18n="forStores.benefit1Text"></p></li>
+        <li class="info-item reveal" style="--i:1"><h3 class="info-item__title" data-i18n="forStores.benefit2Title"></h3><p class="info-item__text" data-i18n="forStores.benefit2Text"></p></li>
+        <li class="info-item reveal" style="--i:2"><h3 class="info-item__title" data-i18n="forStores.benefit3Title"></h3><p class="info-item__text" data-i18n="forStores.benefit3Text"></p></li>
+        <li class="info-item reveal" style="--i:3"><h3 class="info-item__title" data-i18n="forStores.benefit4Title"></h3><p class="info-item__text" data-i18n="forStores.benefit4Text"></p></li>
+      </ul>
+    </section>
+
+    <section class="section section--line container" aria-labelledby="store-steps-title">
+      <div class="section-head reveal">
+        <div>
+          <p class="eyebrow" data-i18n="forStores.stepsEyebrow"></p>
+          <h2 class="section-title" id="store-steps-title" data-i18n="forStores.stepsTitle"></h2>
+        </div>
+      </div>
+      <ol class="info-grid info-grid--3">
+        <li class="info-item reveal" style="--i:0"><span class="info-item__num">01</span><h3 class="info-item__title" data-i18n="forStores.step1Title"></h3><p class="info-item__text" data-i18n="forStores.step1Text"></p></li>
+        <li class="info-item reveal" style="--i:1"><span class="info-item__num">02</span><h3 class="info-item__title" data-i18n="forStores.step2Title"></h3><p class="info-item__text" data-i18n="forStores.step2Text"></p></li>
+        <li class="info-item reveal" style="--i:2"><span class="info-item__num">03</span><h3 class="info-item__title" data-i18n="forStores.step3Title"></h3><p class="info-item__text" data-i18n="forStores.step3Text"></p></li>
+      </ol>
+    </section>
+
+    <section class="section section--line container" id="apply" aria-labelledby="join-form-title">
       <div class="split split--wide-end">
-        <ul class="info-grid info-grid--stack">
-          <li class="info-item reveal"><span class="info-item__num">01</span><h2 class="info-item__title" data-i18n="join.benefit1Title"></h2><p class="info-item__text" data-i18n="join.benefit1Text"></p></li>
-          <li class="info-item reveal"><span class="info-item__num">02</span><h2 class="info-item__title" data-i18n="join.benefit2Title"></h2><p class="info-item__text" data-i18n="join.benefit2Text"></p></li>
-          <li class="info-item reveal"><span class="info-item__num">03</span><h2 class="info-item__title" data-i18n="join.benefit3Title"></h2><p class="info-item__text" data-i18n="join.benefit3Text"></p></li>
-        </ul>
+        <div class="reveal">
+          <p class="eyebrow" data-i18n="forStores.applyEyebrow"></p>
+          <h2 class="page-title story__title mt-lg" data-i18n="forStores.applyTitle"></h2>
+          <p class="lead muted mt-lg" data-i18n="forStores.applyText"></p>
+        </div>
 
         <div class="reveal">
           <h2 class="section-title form-title" id="join-form-title" data-i18n="join.formTitle"></h2>
@@ -79,7 +112,7 @@
 
             <p class="field__error" id="join-form-error" role="alert" hidden></p>
             <button class="btn btn--solid btn--block" type="submit" data-i18n="join.submit"></button>
-            <p class="form__note" data-i18n="join.privacy"></p>
+            <p class="form__note"><span data-i18n="join.privacy"></span> <a class="text-link" href="/privacy" data-i18n="footer.privacy"></a></p>
           </form>
 
           <div class="success-panel" id="join-success" role="status" hidden>

@@ -11,6 +11,7 @@ const NAV_LINKS = [
   { page: 'home', href: '/', key: 'nav.home' },
   { page: 'shop', href: '/shop', key: 'nav.shop' },
   { page: 'stores', href: '/stores', key: 'nav.stores' },
+  { page: 'for-stores', href: '/for-stores', key: 'nav.forStores' },
   { page: 'how', href: '/how-it-works', key: 'nav.howItWorks' },
   { page: 'about', href: '/about', key: 'nav.about' },
   { page: 'contact', href: '/contact', key: 'nav.contact' },
@@ -60,7 +61,7 @@ function renderHeader() {
       ${logo()}
       <nav class="header__nav" id="site-nav" aria-label="${t('a11y.mainNav')}">
         <ul class="nav-list">${links}</ul>
-        <a class="link-arrow nav-extra" href="/join">${t('nav.join')}${icon('arrow')}</a>
+        <a class="link-arrow nav-extra" href="/for-stores#apply">${t('nav.join')}${icon('arrow')}</a>
       </nav>
       <div class="header__actions">
         <button class="icon-btn" type="button" data-search-open aria-expanded="false" aria-controls="search-panel" aria-label="${t('a11y.openSearch')}">${icon('search')}</button>
@@ -117,7 +118,17 @@ function renderFooter() {
           <ul class="footer__links">
             ${link('/about', 'nav.about')}
             ${link('/how-it-works', 'nav.howItWorks')}
-            ${link('/join', 'nav.join')}
+            ${link('/for-stores', 'nav.forStores')}
+          </ul>
+        </nav>
+        <nav aria-label="${t('footer.policies')}">
+          <h2 class="footer__title">${t('footer.policies')}</h2>
+          <ul class="footer__links">
+            ${link('/policies#exchange', 'footer.exchange')}
+            ${link('/policies#payment', 'footer.payment')}
+            ${link('/policies#delivery', 'footer.delivery')}
+            ${link('/terms', 'footer.terms')}
+            ${link('/privacy', 'footer.privacy')}
           </ul>
         </nav>
         <div>
@@ -183,7 +194,7 @@ function initMenu() {
   document.addEventListener('nexaro:search-open', () => {
     if (isOpen()) setOpen(false);
   });
-  window.matchMedia('(min-width: 1024px)').addEventListener('change', (event) => {
+  window.matchMedia('(min-width: 1200px)').addEventListener('change', (event) => {
     if (event.matches && isOpen()) setOpen(false);
   });
 }

@@ -68,6 +68,11 @@ export function t(key, vars = {}) {
   return value.replace(/\{(\w+)\}/g, (match, name) => (name in vars ? vars[name] : match));
 }
 
+// Returns a whole part of the translation file (e.g. a list of policy sections)
+export function tRaw(key) {
+  return lookup(key);
+}
+
 // Plurals: the JSON holds forms like { "one": "...", "few": "...", "other": "{n} ..." }.
 // Intl.PluralRules picks the right one (Arabic has six forms, English two).
 export function tn(key, count, vars = {}) {

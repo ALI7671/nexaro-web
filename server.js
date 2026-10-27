@@ -8,6 +8,9 @@ const isProduction = process.env.NODE_ENV === 'production';
 
 app.disable('x-powered-by');
 
+// The join form moved to the For Stores page; keep old links working
+app.get(['/join', '/join.html'], (req, res) => res.redirect(301, '/for-stores'));
+
 // Serve everything in public/. `extensions` gives clean URLs: /stores → stores.html
 app.use(express.static(PUBLIC_DIR, {
   extensions: ['html'],

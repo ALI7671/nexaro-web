@@ -668,7 +668,8 @@ a:hover .link-arrow {
   align-self: flex-start;
 }
 
-@media (min-width: 1024px) {
+/* Six links need room: the full navigation shows from 1200px, the menu button below */
+@media (min-width: 1200px) {
   .header__bar {
     grid-template-columns: auto 1fr auto;
     gap: 32px;
@@ -910,22 +911,23 @@ html[lang="ar"] .search-group__title {
 
 .footer__grid {
   display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 48px 32px;
 }
 
-@media (min-width: 640px) {
-  .footer__grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
+.footer__brand {
+  grid-column: 1 / -1;
+}
 
-  .footer__brand {
-    grid-column: 1 / -1;
+@media (min-width: 720px) {
+  .footer__grid {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
 @media (min-width: 1024px) {
   .footer__grid {
-    grid-template-columns: 2fr 1fr 1fr 1fr;
+    grid-template-columns: 2fr repeat(4, 1fr);
   }
 
   .footer__brand {
@@ -2109,6 +2111,92 @@ html[lang="ar"] .product__price {
   color: var(--text);
 }
 
+/* Small trust badges under the WhatsApp button */
+.trust-badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: -12px;
+}
+
+.trust-badges a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 34px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  font-size: 0.75rem;
+  color: var(--muted);
+  transition: color var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+
+.trust-badges a:hover {
+  color: var(--text);
+  border-color: var(--line-strong);
+}
+
+.trust-badges .icon {
+  width: 15px;
+  height: 15px;
+  color: var(--text);
+}
+
+/* Policies, Terms and Privacy */
+.draft-note {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  margin-bottom: 28px;
+  padding: 10px 16px;
+  border: 1px solid var(--line-strong);
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.draft-note strong {
+  font-weight: 500;
+  color: var(--text);
+}
+
+.legal-updated {
+  margin-top: 20px;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.legal-section {
+  display: grid;
+  gap: 20px;
+  padding-block: clamp(40px, 5vw, 64px);
+  border-top: 1px solid var(--line);
+  scroll-margin-top: var(--header-h);
+}
+
+@media (min-width: 900px) {
+  .legal-section {
+    grid-template-columns: 4fr 8fr;
+    gap: 64px;
+  }
+}
+
+.legal-section__title {
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+}
+
+/* Two classes, so this beats the general "ul[class] { list-style: none }" reset */
+.legal-section .legal-list {
+  margin: 1.25em 0;
+  padding-inline-start: 1.2em;
+  list-style: disc;
+  color: var(--muted);
+}
+
+.legal-list li + li {
+  margin-top: 0.6em;
+}
+
 /* 15. Size tables
    ========================================================================== */
 
@@ -2265,6 +2353,10 @@ html:not(.is-ready) body {
   clip: rect(0 0 0 0);
   white-space: nowrap;
   border: 0;
+}
+
+.nowrap {
+  white-space: nowrap;
 }
 
 .mt-lg {
