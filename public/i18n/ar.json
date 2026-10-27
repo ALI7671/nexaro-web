@@ -60,7 +60,8 @@
       "few": "{n} قطع",
       "many": "{n} قطعة",
       "other": "{n} قطعة"
-    }
+    },
+    "madeInPalestine": "صُنع في فلسطين"
   },
   "sizes": {
     "oneSize": "مقاس واحد"
@@ -163,7 +164,9 @@
     "joinText": "انضم إلى Nexaro ووصِل منتجاتك إلى زبائن في كل المدن.",
     "joinCta": "انضم كمتجر",
     "audienceEyebrow": "للجميع",
-    "audienceTitle": "لمن تتسوّق؟"
+    "audienceTitle": "لمن تتسوّق؟",
+    "occasionEyebrow": "مناسبات",
+    "occasionTitle": "تسوّق حسب المناسبة"
   },
   "shop": {
     "eyebrow": "تسوّق",
@@ -184,7 +187,10 @@
     "audience": "لمن",
     "style": "الأسلوب",
     "allAudiences": "الجميع",
-    "allStyles": "كل الأساليب"
+    "allStyles": "كل الأساليب",
+    "occasion": "المناسبة",
+    "allOccasions": "كل المناسبات",
+    "madeInPalestine": "صُنع في فلسطين فقط"
   },
   "stores": {
     "eyebrow": "المتاجر",
@@ -201,7 +207,14 @@
     "all": "الكل",
     "notFoundTitle": "المتجر غير موجود",
     "notFoundText": "ربما تغيّر رابط هذا المتجر أو لم يعد متوفراً.",
-    "backToStores": "كل المتاجر"
+    "backToStores": "كل المتاجر",
+    "verified": "متجر موثّق",
+    "share": "مشاركة المتجر",
+    "copyLink": "نسخ الرابط",
+    "copied": "تم نسخ الرابط",
+    "copyFailed": "تعذّر النسخ تلقائياً. انسخ الرابط من الخانة: {url}",
+    "shareWhatsapp": "مشاركة على واتساب",
+    "shareMessage": "شوف متجر {store} من {city} على Nexaro:\n{url}"
   },
   "product": {
     "priceNote": "نرسل لك السعر عبر واتساب قبل تأكيد الطلب.",
@@ -219,11 +232,22 @@
     "notFoundTitle": "القطعة غير موجودة",
     "notFoundText": "ربما تغيّر رابط هذه القطعة أو لم تعد متوفرة.",
     "backToShop": "العودة إلى التسوّق",
-    "whatsappMessage": "مرحباً Nexaro، أود طلب هذه القطعة:\n\nالقطعة: {product}\nالمتجر: {store} – {city}\nالمقاس: {size}\nاللون: {color}\n\n{url}",
+    "whatsappMessage": "مرحباً Nexaro، أود طلب هذه القطعة:\n\nالقطعة: {product}\nالمتجر: {store} – {city}\nالمقاس: {size}\nاللون: {color}\nطريقة الاستلام: {method}{gift}\n\n{url}",
     "trustLabel": "ضمانات الطلب",
     "badgeCod": "الدفع عند الاستلام",
     "badgeExchange": "تبديل خلال 3 أيام",
-    "badgeDelivery": "توصيل لكل المدن"
+    "badgeDelivery": "توصيل لكل المدن",
+    "receive": "طريقة الاستلام",
+    "receiveDelivery": "توصيل للبيت",
+    "receivePickup": "احجز واستلم من المحل",
+    "receiveGift": "أرسلها هدية",
+    "pickupNote": "نحجز القطعة لك في متجر {store} في {city}، وننسّق معك موعد الاستلام عبر واتساب.",
+    "giftTitle": "تفاصيل الهدية",
+    "giftName": "اسم المستلم",
+    "giftCity": "مدينة المستلم",
+    "giftMessage": "رسالة قصيرة مع الهدية",
+    "whatsappGift": "\n\nهدية إلى: {name} – {city}",
+    "whatsappGiftMessage": "\nرسالة الهدية: {message}"
   },
   "about": {
     "eyebrow": "من نحن",

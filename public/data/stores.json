@@ -1,62 +1,74 @@
 [
   {
     "id": "dar-alrajul",
+    "slug": "dar-alrajul",
     "name": { "ar": "دار الرجل", "en": "Dar Al Rajul" },
     "bio": {
       "ar": "قمصان وبدلات وأحذية رسمية بقصّات كلاسيكية، لأيام العمل والمناسبات.",
       "en": "Shirts, tailoring and formal shoes in classic cuts, for workdays and occasions."
     },
     "city": "ramallah",
+    "verified": true,
     "logo": null
   },
   {
     "id": "khuyoot",
+    "slug": "khuyoot",
     "name": { "ar": "خيوط", "en": "Khuyoot" },
     "bio": {
       "ar": "قطع يومية من القطن والكتان، بعضها منسوج يدوياً في نابلس.",
       "en": "Everyday pieces in cotton and linen, some hand-woven in Nablus."
     },
     "city": "nablus",
+    "verified": true,
     "logo": null
   },
   {
     "id": "aseel",
+    "slug": "aseel",
     "name": { "ar": "أصيل", "en": "Aseel" },
     "bio": {
       "ar": "جلود وأحذية من ورش الخليل، مصنوعة لتدوم.",
       "en": "Leather and footwear from Hebron's workshops, made to last."
     },
     "city": "hebron",
+    "verified": true,
     "logo": null
   },
   {
     "id": "siraj",
+    "slug": "siraj",
     "name": { "ar": "سراج", "en": "Siraj" },
     "bio": {
       "ar": "أناقة يومية بين الرسمي والكاجوال، بتفاصيل مدروسة.",
       "en": "Everyday elegance between smart and casual, with considered details."
     },
     "city": "bethlehem",
+    "verified": false,
     "logo": null
   },
   {
     "id": "marj",
+    "slug": "marj",
     "name": { "ar": "مرج", "en": "Marj" },
     "bio": {
       "ar": "دنيم وملابس عمل متينة، مستوحاة من سهل مرج ابن عامر.",
       "en": "Denim and durable workwear, inspired by the Marj Ibn Amer plain."
     },
     "city": "jenin",
+    "verified": true,
     "logo": null
   },
   {
     "id": "waha",
+    "slug": "waha",
     "name": { "ar": "واحة", "en": "Waha" },
     "bio": {
       "ar": "ملابس صيفية خفيفة من الكتان والقطن، لأيام أريحا الدافئة.",
       "en": "Light summer clothing in linen and cotton, for Jericho's warm days."
     },
     "city": "jericho",
+    "verified": false,
     "logo": null
   }
 ]

@@ -1,13 +1,23 @@
-// Store page template: /store?id=<store id>
+// Store page template: /store/<slug>, e.g. /store/dar-alrajul
+// (server.js sends store.html for every /store/... address)
 import { startPage, observeReveals } from '../layout.js';
-import { getStore, getProducts, getLookups } from '../data.js';
+import { getStore, getStoreBySlug, getProducts, getLookups } from '../data.js';
 import { t, tn, localize } from '../i18n.js';
-import { productCard, storeVisual, breadcrumb, notFound } from '../components.js';
-import { escapeHtml, getParam } from '../utils.js';
+import { productCard, storeVisual, verifiedBadge, breadcrumb, notFound, icon } from '../components.js';
+import { escapeHtml, getParam, storeUrl, whatsappShareLink, copyText } from '../utils.js';
+
+// "/store/dar-alrajul" → "dar-alrajul"; old links "/store?id=dar-alrajul" still work
+async function findStore() {
+  const slug = decodeURIComponent(location.pathname.match(/^\/store\/([^/]+)/)?.[1] ?? '');
+  if (slug) return getStoreBySlug(slug);
+  const store = await getStore(getParam('id'));
+  if (store) history.replaceState(null, '', storeUrl(store)); // show the clean URL
+  return store;
+}
 
 startPage(async () => {
   const root = document.getElementById('store-root');
-  const store = await getStore(getParam('id'));
+  const store = await findStore();
 
   if (!store) {
     document.title = `${t('store.notFoundTitle')} | Nexaro`;
@@ -34,8 +44,15 @@ startPage(async () => {
       <div class="store-hero__text reveal">
         <p class="eyebrow">${escapeHtml(localize(store.cityName))}</p>
         <h1 class="page-title">${escapeHtml(name)}</h1>
+        ${verifiedBadge(store)}
         <p class="lead">${escapeHtml(localize(store.bio))}</p>
         <p class="muted store-hero__count">${tn('common.pieces', products.length)}</p>
+        <div class="share-row" role="group" aria-label="${t('store.share')}">
+          <button class="btn btn--small" type="button" id="copy-link">${icon('link')}<span>${t('store.copyLink')}</span></button>
+          <a class="btn btn--small" id="share-whatsapp" href="#" target="_blank" rel="noopener">${icon('share')}<span>${t('store.shareWhatsapp')}</span></a>
+        </div>
+        <input class="field__input share-url" id="share-url" type="text" dir="ltr" readonly aria-label="${t('store.copyLink')}" hidden>
+        <p class="sr-only" id="share-status" role="status"></p>
       </div>
     </section>
     <section class="section section--line container" aria-labelledby="collection-title">
@@ -48,6 +65,8 @@ startPage(async () => {
       </div>
       <div class="product-grid" id="store-products"></div>
     </section>`;
+
+  initShare(store);
 
   const grid = document.getElementById('store-products');
   const filter = document.getElementById('category-filter');
@@ -68,3 +87,34 @@ startPage(async () => {
 
   render('');
 });
+
+// "Copy link" and "Share on WhatsApp" both use the clean, shareable URL
+function initShare(store) {
+  const url = `${location.origin}${storeUrl(store)}`;
+  const copyButton = document.getElementById('copy-link');
+  const label = copyButton.querySelector('span');
+  const status = document.getElementById('share-status');
+  let resetTimer;
+
+  document.getElementById('share-whatsapp').href = whatsappShareLink(t('store.shareMessage', {
+    store: localize(store.name),
+    city: localize(store.cityName),
+    url,
+  }));
+
+  copyButton.addEventListener('click', async () => {
+    const copied = await copyText(url);
+    const message = t(copied ? 'store.copied' : 'store.copyFailed', { url });
+    label.textContent = copied ? t('store.copied') : t('store.copyLink');
+    status.textContent = message; // read out by screen readers
+    if (!copied) {
+      // Last resort: show the link, selected, so the user can copy it by hand
+      const box = document.getElementById('share-url');
+      box.value = url;
+      box.hidden = false;
+      box.select();
+    }
+    clearTimeout(resetTimer);
+    resetTimer = setTimeout(() => { label.textContent = t('store.copyLink'); }, 2500);
+  });
+}

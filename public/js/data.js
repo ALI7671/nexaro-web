@@ -29,13 +29,14 @@ function loadCatalog() {
 }
 
 // Joins the raw files together, like a database join would:
-// each product gets its store, category, audience, style and color names attached.
+// each product gets its store, category, audience, style, occasion and color names attached.
 function buildCatalog(rawStores, rawProducts, lookups) {
   const byId = (list) => Object.fromEntries(list.map((item) => [item.id, item]));
   const cities = byId(lookups.cities);
   const categories = byId(lookups.categories);
   const audiences = byId(lookups.audiences);
   const styles = byId(lookups.styles);
+  const occasions = byId(lookups.occasions);
   const colors = byId(lookups.colors);
 
   // All names in both languages, normalized once, so search is fast
@@ -58,23 +59,27 @@ function buildCatalog(rawStores, rawProducts, lookups) {
     const category = categories[product.category];
     const audienceName = audiences[product.audience]?.name;
     const styleName = styles[product.style]?.name;
+    const occasionOptions = product.occasions.map((id) => ({ id, name: occasions[id]?.name ?? { ar: id, en: id } }));
     return {
       ...product,
       store,
       categoryName: category?.name,
       audienceName,
       styleName,
+      occasionOptions,
       sizeGuide: category?.sizeGuide ?? null,
       colorOptions: product.colors.map((id) => ({ id, name: colors[id]?.name ?? { ar: id, en: id } })),
       nameText: searchText(product.name),
-      searchText: searchText(product.name, category?.name, audienceName, styleName, store?.name, store?.cityName),
+      searchText: searchText(product.name, category?.name, audienceName, styleName,
+        ...occasionOptions.map((occasion) => occasion.name), store?.name, store?.cityName),
     };
   });
 
-  // Adds how many products use each value (shown on the home page tiles)
+  // Adds how many products use each value (shown on the home page tiles).
+  // Works for single values ("audience": "men") and lists ("occasions": ["eid", "work"]).
   const withCount = (list, field) => list.map((item) => ({
     ...item,
-    productCount: products.filter((product) => product[field] === item.id).length,
+    productCount: products.filter((product) => [].concat(product[field]).includes(item.id)).length,
   }));
   const categoryList = withCount(lookups.categories, 'category').map((category) => ({
     ...category,
@@ -89,6 +94,7 @@ function buildCatalog(rawStores, rawProducts, lookups) {
       categories: categoryList,
       audiences: withCount(lookups.audiences, 'audience'),
       styles: withCount(lookups.styles, 'style'),
+      occasions: withCount(lookups.occasions, 'occasions'),
     },
   };
 }
@@ -107,7 +113,7 @@ function matchesTerms(text, terms) {
 
 /* ---------- Public API ---------- */
 
-// Cities, categories, audiences and styles (with product counts), colors and size groups
+// Cities, categories, audiences, styles and occasions (with product counts), colors and size groups
 export async function getLookups() {
   return (await loadCatalog()).lookups;
 }
@@ -122,8 +128,16 @@ export async function getStore(id) {
   return stores.find((store) => store.id === id) ?? null;
 }
 
+// For clean URLs: /store/dar-alrajul
+export async function getStoreBySlug(slug) {
+  const { stores } = await loadCatalog();
+  return stores.find((store) => store.slug === slug) ?? null;
+}
+
 // Every filter left empty matches everything; filters that are set must all match
-export async function getProducts({ city, storeId, category, audience, style, size, featured, q } = {}) {
+export async function getProducts({
+  city, storeId, category, audience, style, occasion, madeInPalestine, size, featured, q,
+} = {}) {
   const { products } = await loadCatalog();
   const terms = searchTerms(q);
   return products.filter((product) =>
@@ -132,6 +146,8 @@ export async function getProducts({ city, storeId, category, audience, style, si
     (!category || product.category === category) &&
     (!audience || product.audience === audience) &&
     (!style || product.style === style) &&
+    (!occasion || product.occasions.includes(occasion)) &&
+    (!madeInPalestine || product.madeInPalestine) &&
     (!size || product.sizes.includes(size)) &&
     (!featured || product.featured) &&
     matchesTerms(product.searchText, terms));

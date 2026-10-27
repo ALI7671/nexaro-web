@@ -399,6 +399,17 @@ html[lang="ar"] .page-title {
   color: var(--text);
 }
 
+.btn--small {
+  min-height: 44px;
+  padding: 0 18px;
+  gap: 10px;
+}
+
+.btn--small .icon {
+  width: 16px;
+  height: 16px;
+}
+
 .btn--block {
   width: 100%;
 }
@@ -1014,6 +1025,7 @@ html[lang="ar"] .footer__title {
 
 .product-card__media,
 .category-tile__media {
+  position: relative; /* the "Made in Palestine" tag sits in this box's corner */
   aspect-ratio: 4 / 5;
   overflow: hidden;
   background: var(--surface);
@@ -1248,6 +1260,131 @@ html[lang="ar"] .audience-tile__name {
   transform: scaleX(-1) translateX(6px);
 }
 
+/* Wedding / University / Eid / Work / Everyday on the home page */
+.occasion-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+/* An odd last tile spans the full row on phones */
+.occasion-grid > :last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+
+@media (min-width: 720px) {
+  .occasion-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .occasion-grid > :last-child:nth-child(odd) {
+    grid-column: auto;
+  }
+}
+
+/* One row of five only where "UNIVERSITY" still fits in a tile */
+@media (min-width: 1200px) {
+  .occasion-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+
+.audience-tile--small {
+  min-height: clamp(120px, 16vw, 200px);
+  padding: clamp(18px, 2vw, 28px);
+}
+
+.audience-tile--small .audience-tile__name {
+  font-size: clamp(1.25rem, 1.55vw, 1.7rem);
+  letter-spacing: 0.08em;
+}
+
+.audience-tile--small::after {
+  inset: 8px;
+}
+
+/* ✓ Verified store */
+.verified-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  color: var(--text);
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.verified-badge .icon {
+  width: 15px;
+  height: 15px;
+}
+
+.verified-badge--compact {
+  margin-inline-start: 5px;
+}
+
+.verified-badge--compact .icon {
+  width: 13px;
+  height: 13px;
+}
+
+.store-card .verified-badge,
+.store-hero .verified-badge {
+  margin-top: 10px;
+}
+
+/* "Made in Palestine" tag */
+.made-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 14px;
+  border: 1px solid var(--text);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+html[lang="ar"] .made-badge {
+  font-size: 0.82rem;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.made-badge--overlay {
+  position: absolute;
+  top: 10px;
+  inset-inline-start: 10px;
+  min-height: 26px;
+  padding: 0 9px;
+  background: rgb(10 9 9 / 0.78);
+  border-color: var(--line-strong);
+  font-size: 0.6rem;
+}
+
+html[lang="ar"] .made-badge--overlay {
+  font-size: 0.7rem;
+}
+
+/* Copy link / Share on WhatsApp on the store page */
+.share-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.share-url {
+  margin-top: 14px;
+  max-width: 420px;
+  font-size: 0.85rem;
+}
+
 .empty-state {
   grid-column: 1 / -1;
   display: grid;
@@ -1335,6 +1472,10 @@ html[lang="ar"] .field__label {
 .field__textarea {
   min-height: 140px;
   resize: vertical;
+}
+
+.field__textarea--short {
+  min-height: 80px;
 }
 
 /* Phone numbers and links stay LTR inside Arabic forms, but line up on the right */
@@ -1899,7 +2040,7 @@ html[lang="ar"] .filters__toggle {
   .filters__panel {
     grid-column: 1;
     grid-row: 1;
-    grid-template-columns: repeat(3, minmax(0, 1fr)); /* six filters → two rows of three */
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 28px 32px;
     padding-top: 0;
   }
@@ -1909,6 +2050,48 @@ html[lang="ar"] .filters__toggle {
     grid-row: 1;
     padding-bottom: 12px;
   }
+}
+
+/* Eight filters → two rows of four on wide screens */
+@media (min-width: 1200px) {
+  .filters__panel {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* "Made in Palestine only" checkbox, drawn in brand colors instead of the browser's blue */
+.check-field {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  align-self: end;
+  min-height: 46px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.check-field input {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  border: 1px solid var(--line-strong);
+  border-radius: 0;
+  background: transparent;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  transition: background-color 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+
+.check-field input:checked {
+  border-color: var(--text);
+  background: var(--text) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230A0909' stroke-width='2.4'%3E%3Cpath d='m5 12.5 4.5 4.5L19 7.5'/%3E%3C/svg%3E") center / 14px no-repeat;
+}
+
+.check-field input:focus-visible {
+  outline: 1px solid var(--text);
+  outline-offset: 3px;
 }
 
 .filters__active {
@@ -2020,8 +2203,54 @@ html[lang="ar"] .filters__toggle {
   object-fit: cover;
 }
 
+.product__store-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 14px;
+}
+
 .product__store {
+  display: inline;
   transition: color var(--dur) var(--ease);
+}
+
+/* Pick-up note and gift details under "How would you like it?" */
+.order__detail {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: -12px;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.order__detail .icon {
+  width: 18px;
+  height: 18px;
+  color: var(--text);
+}
+
+.gift-fields {
+  display: grid;
+  gap: 24px;
+  min-width: 0;
+  margin: -12px 0 0;
+  padding: 20px 18px 22px;
+  border: 1px solid var(--line-strong);
+}
+
+.gift-fields .option-group__legend {
+  align-items: center;
+  margin-bottom: 0;
+}
+
+.gift-fields .option-group__legend .icon {
+  width: 16px;
+  height: 16px;
+  color: var(--text);
 }
 
 .product__store:hover {

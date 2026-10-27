@@ -26,6 +26,13 @@
     { "id": "suits", "name": { "ar": "بدلات", "en": "Suits" } },
     { "id": "casual", "name": { "ar": "كاجوال", "en": "Casual" } }
   ],
+  "occasions": [
+    { "id": "wedding", "name": { "ar": "عرس", "en": "Wedding" } },
+    { "id": "university", "name": { "ar": "جامعة", "en": "University" } },
+    { "id": "eid", "name": { "ar": "عيد", "en": "Eid" } },
+    { "id": "work", "name": { "ar": "شغل", "en": "Work" } },
+    { "id": "casual", "name": { "ar": "يومي", "en": "Everyday" } }
+  ],
   "colors": [
     { "id": "black", "name": { "ar": "أسود", "en": "Black" } },
     { "id": "white", "name": { "ar": "أبيض", "en": "White" } },

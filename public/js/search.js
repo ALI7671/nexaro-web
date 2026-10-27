@@ -2,8 +2,8 @@
 // Keyboard: ↑ ↓ move through results, Enter opens one, Esc closes. "/" or Ctrl+K opens search.
 import { search } from './data.js';
 import { t, tn, localize } from './i18n.js';
-import { escapeHtml, debounce } from './utils.js';
-import { icon } from './components.js';
+import { escapeHtml, debounce, storeUrl } from './utils.js';
+import { icon, verifiedBadge } from './components.js';
 
 export function initSearch() {
   const panel = document.getElementById('search-panel');
@@ -86,12 +86,12 @@ export function initSearch() {
       `/product?id=${encodeURIComponent(product.id)}`,
       `<img class="search-option__thumb" src="${escapeHtml(product.image)}" alt="" width="40" height="50">
        <span><span class="search-option__title">${escapeHtml(localize(product.name))}</span>
-       <span class="search-option__meta">${escapeHtml(localize(product.store.name))} · ${escapeHtml(localize(product.categoryName))}</span></span>`,
+       <span class="search-option__meta">${escapeHtml(localize(product.store.name))}${verifiedBadge(product.store, { compact: true })} · ${escapeHtml(localize(product.categoryName))}</span></span>`,
     ));
     const stores = results.stores.map((store) => option(
-      `/store?id=${encodeURIComponent(store.id)}`,
+      storeUrl(store),
       `<span class="search-option__mono" aria-hidden="true">${escapeHtml(store.name.en.charAt(0))}</span>
-       <span><span class="search-option__title">${escapeHtml(localize(store.name))}</span>
+       <span><span class="search-option__title">${escapeHtml(localize(store.name))}${verifiedBadge(store, { compact: true })}</span>
        <span class="search-option__meta">${escapeHtml(localize(store.cityName))}</span></span>`,
     ));
     const categories = results.categories.map((category) => option(

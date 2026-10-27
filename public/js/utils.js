@@ -54,3 +54,32 @@ export function setParams(values) {
 export function whatsappLink(message) {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 }
+
+// No phone number: WhatsApp asks the user which chat to share with
+export function whatsappShareLink(message) {
+  return `https://wa.me/?text=${encodeURIComponent(message)}`;
+}
+
+// The one place store links are built: /store/dar-alrajul
+export function storeUrl(store) {
+  return `/store/${encodeURIComponent(store.slug)}`;
+}
+
+// Copies text to the clipboard. Returns true if it worked.
+export async function copyText(text) {
+  try {
+    await navigator.clipboard.writeText(text);
+    return true;
+  } catch {
+    // Older browsers, or the page isn't on https: fall back to a hidden text box
+    const box = document.createElement('textarea');
+    box.value = text;
+    box.setAttribute('readonly', '');
+    box.style.cssText = 'position:fixed;top:0;opacity:0';
+    document.body.append(box);
+    box.select();
+    const copied = document.execCommand('copy');
+    box.remove();
+    return copied;
+  }
+}

@@ -52,7 +52,8 @@
     "pieces": {
       "one": "1 piece",
       "other": "{n} pieces"
-    }
+    },
+    "madeInPalestine": "Made in Palestine"
   },
   "sizes": {
     "oneSize": "One size"
@@ -155,7 +156,9 @@
     "joinText": "Join Nexaro and reach customers in every city.",
     "joinCta": "Join as a store",
     "audienceEyebrow": "For everyone",
-    "audienceTitle": "Who are you shopping for?"
+    "audienceTitle": "Who are you shopping for?",
+    "occasionEyebrow": "Occasions",
+    "occasionTitle": "Shop by occasion"
   },
   "shop": {
     "eyebrow": "Shop",
@@ -176,7 +179,10 @@
     "audience": "For",
     "style": "Style",
     "allAudiences": "Everyone",
-    "allStyles": "All styles"
+    "allStyles": "All styles",
+    "occasion": "Occasion",
+    "allOccasions": "All occasions",
+    "madeInPalestine": "Made in Palestine only"
   },
   "stores": {
     "eyebrow": "Stores",
@@ -193,7 +199,14 @@
     "all": "All",
     "notFoundTitle": "Store not found",
     "notFoundText": "This store's link may have changed, or it's no longer available.",
-    "backToStores": "All stores"
+    "backToStores": "All stores",
+    "verified": "Verified",
+    "share": "Share this store",
+    "copyLink": "Copy link",
+    "copied": "Link copied",
+    "copyFailed": "Couldn't copy automatically. Copy the link from the box: {url}",
+    "shareWhatsapp": "Share on WhatsApp",
+    "shareMessage": "Have a look at {store} from {city} on Nexaro:\n{url}"
   },
   "product": {
     "priceNote": "We send you the price on WhatsApp before you confirm.",
@@ -211,11 +224,22 @@
     "notFoundTitle": "Piece not found",
     "notFoundText": "This piece's link may have changed, or it's no longer available.",
     "backToShop": "Back to the shop",
-    "whatsappMessage": "Hello Nexaro, I'd like to order this piece:\n\nPiece: {product}\nStore: {store} – {city}\nSize: {size}\nColour: {color}\n\n{url}",
+    "whatsappMessage": "Hello Nexaro, I'd like to order this piece:\n\nPiece: {product}\nStore: {store} – {city}\nSize: {size}\nColour: {color}\nHow I'd like it: {method}{gift}\n\n{url}",
     "trustLabel": "Ordering with confidence",
     "badgeCod": "Cash on delivery",
     "badgeExchange": "Exchange within 3 days",
-    "badgeDelivery": "Delivery to all cities"
+    "badgeDelivery": "Delivery to all cities",
+    "receive": "How would you like it?",
+    "receiveDelivery": "Home delivery",
+    "receivePickup": "Reserve & pick up in store",
+    "receiveGift": "Send as a gift",
+    "pickupNote": "We'll reserve the piece for you at {store} in {city} and arrange the pick-up time with you on WhatsApp.",
+    "giftTitle": "Gift details",
+    "giftName": "Recipient's name",
+    "giftCity": "Recipient's city",
+    "giftMessage": "A short gift message",
+    "whatsappGift": "\n\nGift for: {name} – {city}",
+    "whatsappGiftMessage": "\nGift message: {message}"
   },
   "about": {
     "eyebrow": "About",

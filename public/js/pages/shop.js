@@ -1,13 +1,16 @@
-// Shop: all products with filters (audience, style, city, store, category, size) and ?q= search.
-// Filters live in the URL, so a filtered view can be shared or bookmarked,
-// e.g. /shop?audience=women&style=elegance
+// Shop: all products with filters (audience, style, occasion, city, store, category, size,
+// made in Palestine) and ?q= search. Filters live in the URL, so a filtered view can be
+// shared or bookmarked, e.g. /shop?audience=women&occasion=eid&madeInPalestine=1
 import { startPage, observeReveals } from '../layout.js';
 import { getLookups, getStores, getProducts } from '../data.js';
 import { t, tn, localize } from '../i18n.js';
 import { productCard, emptyState, icon, sizeLabel } from '../components.js';
 import { escapeHtml, getParam, setParams } from '../utils.js';
 
-const state = { audience: '', style: '', city: '', store: '', category: '', size: '', q: '' };
+// madeInPalestine is '1' when the checkbox is ticked, '' otherwise (so it fits the URL)
+const state = {
+  audience: '', style: '', occasion: '', city: '', store: '', category: '', size: '', madeInPalestine: '', q: '',
+};
 const els = {};
 let lookups = null;
 let stores = [];
@@ -50,10 +53,12 @@ function readStateFromUrl() {
   const allowed = {
     audience: lookups.audiences.map((audience) => audience.id),
     style: lookups.styles.map((style) => style.id),
+    occasion: lookups.occasions.map((occasion) => occasion.id),
     city: lookups.cities.map((city) => city.id),
     store: stores.map((store) => store.id),
     category: lookups.categories.map((category) => category.id),
     size: lookups.sizeGroups.flatMap((group) => group.sizes),
+    madeInPalestine: ['1'],
   };
   for (const [key, values] of Object.entries(allowed)) {
     const value = getParam(key);
@@ -76,6 +81,9 @@ function renderSelects() {
   elements.style.innerHTML = optionsHtml(
     lookups.styles.map((style) => ({ value: style.id, label: localize(style.name) })),
     t('shop.allStyles'), state.style);
+  elements.occasion.innerHTML = optionsHtml(
+    lookups.occasions.map((occasion) => ({ value: occasion.id, label: localize(occasion.name) })),
+    t('shop.allOccasions'), state.occasion);
   elements.city.innerHTML = optionsHtml(
     lookups.cities.map((city) => ({ value: city.id, label: localize(city.name) })),
     t('shop.allCities'), state.city);
@@ -88,19 +96,22 @@ function renderSelects() {
       <optgroup label="${escapeHtml(localize(group.name))}">
         ${group.sizes.map((size) => `<option value="${size}"${size === state.size ? ' selected' : ''}>${escapeHtml(sizeLabel(size))}</option>`).join('')}
       </optgroup>`).join('');
+  elements.madeInPalestine.checked = state.madeInPalestine === '1';
 }
 
-// The store list only shows stores in the chosen city
+// The store list only shows stores in the chosen city. Verified stores get a ✓
+// (a <select> can't hold the badge itself, only text).
 function renderStoreOptions() {
   const available = state.city ? stores.filter((store) => store.city === state.city) : stores;
   els.form.elements.store.innerHTML = optionsHtml(
-    available.map((store) => ({ value: store.id, label: localize(store.name) })),
+    available.map((store) => ({ value: store.id, label: `${localize(store.name)}${store.verified ? ' ✓' : ''}` })),
     t('shop.allStores'), state.store);
 }
 
 function onFilterChange(event) {
-  const { name, value } = event.target;
+  const { name, type, checked } = event.target;
   if (!(name in state)) return;
+  const value = type === 'checkbox' ? (checked ? '1' : '') : event.target.value;
   state[name] = value;
   if (name === 'city') {
     if (value && state.store && storeCity(state.store) !== value) state.store = '';
@@ -125,20 +136,23 @@ async function update() {
   const products = await getProducts({
     audience: state.audience,
     style: state.style,
+    occasion: state.occasion,
     city: state.city,
     storeId: state.store,
     category: state.category,
     size: state.size,
+    madeInPalestine: state.madeInPalestine === '1',
     q: state.q,
   });
   if (id !== requestId) return; // a newer change is already on its way
 
   setParams(state);
 
-  // The heading names the main filters, e.g. "Women · Elegance · Jackets"
+  // The heading names the main filters, e.g. "Women · Eid · Jackets"
   const titleParts = [
     state.audience && nameOf('audiences', state.audience),
     state.style && nameOf('styles', state.style),
+    state.occasion && nameOf('occasions', state.occasion),
     state.category && nameOf('categories', state.category),
   ].filter(Boolean);
   els.title.textContent = titleParts.length ? titleParts.join(' · ') : t('shop.title');
@@ -158,10 +172,12 @@ function renderActiveFilters() {
     q: state.q && t('shop.searchFor', { q: state.q }),
     audience: state.audience && nameOf('audiences', state.audience),
     style: state.style && nameOf('styles', state.style),
+    occasion: state.occasion && nameOf('occasions', state.occasion),
     city: state.city && nameOf('cities', state.city),
     store: state.store && localize(stores.find((s) => s.id === state.store).name),
     category: state.category && nameOf('categories', state.category),
     size: state.size && sizeLabel(state.size),
+    madeInPalestine: state.madeInPalestine && t('common.madeInPalestine'),
   };
   const active = Object.entries(labels).filter(([, label]) => label);
 
