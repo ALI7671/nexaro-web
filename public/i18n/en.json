@@ -57,7 +57,7 @@
     "oneSize": "One size"
   },
   "footer": {
-    "about": "The best Palestinian men's clothing stores in one place, delivered to your door.",
+    "about": "The best Palestinian fashion stores for men, women and youth, in one place and delivered to your door.",
     "shop": "Shop",
     "company": "Nexaro",
     "contact": "Contact",
@@ -68,15 +68,15 @@
   "pages": {
     "home": {
       "title": "Nexaro — Wear Your Next",
-      "description": "Nexaro brings the best Palestinian men's clothing stores into one place and delivers to your door, with no travelling between cities and no checkpoints."
+      "description": "Nexaro brings the best Palestinian fashion stores for men, women and youth into one place and delivers to your door, with no travelling between cities and no checkpoints."
     },
     "shop": {
       "title": "Shop | Nexaro",
-      "description": "Shirts, T-shirts, pants, jackets, shoes and accessories from stores in Ramallah, Nablus, Hebron, Bethlehem, Jenin and Jericho."
+      "description": "Fashion for men, women and youth: shirts, T-shirts, pants, jackets, shoes and accessories from stores in Ramallah, Nablus, Hebron, Bethlehem, Jenin and Jericho."
     },
     "stores": {
       "title": "Stores | Nexaro",
-      "description": "Six selected men's clothing stores from six Palestinian cities."
+      "description": "Six selected fashion stores from six Palestinian cities."
     },
     "store": {
       "title": "Store | Nexaro",
@@ -88,7 +88,7 @@
     },
     "about": {
       "title": "About | Nexaro",
-      "description": "Nexaro, from Ramallah: the best Palestinian men's clothing stores in one place, delivered to your door."
+      "description": "Nexaro, from Ramallah: the best Palestinian fashion stores in one place, delivered to your door."
     },
     "how": {
       "title": "How it works | Nexaro",
@@ -96,7 +96,7 @@
     },
     "join": {
       "title": "Join as a store | Nexaro",
-      "description": "Own a men's clothing store in Palestine? Join Nexaro and reach customers in every city."
+      "description": "Own a clothing store in Palestine? Join Nexaro and reach customers in every city."
     },
     "sizeGuide": {
       "title": "Size guide | Nexaro",
@@ -111,8 +111,8 @@
     }
   },
   "home": {
-    "heroEyebrow": "The best of Palestinian menswear",
-    "heroText": "Six stores from six Palestinian cities, in one place. Choose your piece and we deliver it to your door: no travelling between cities, no checkpoints.",
+    "heroEyebrow": "The best of Palestinian fashion",
+    "heroText": "Six stores from six Palestinian cities, in one place, with pieces for men, women and youth. Choose yours and we deliver it to your door: no travelling between cities, no checkpoints.",
     "ctaShop": "Shop now",
     "ctaStores": "Explore stores",
     "statStores": "Stores",
@@ -126,7 +126,7 @@
     "storesTitle": "Six cities. Six stores.",
     "storyEyebrow": "Our story",
     "storyTitle": "Shopping without checkpoints",
-    "storyText": "In Palestine, visiting a store in another city can mean hours on the road and checkpoints along the way. Nexaro brings the best men's clothing stores into one place and delivers your order to your door.",
+    "storyText": "In Palestine, visiting a store in another city can mean hours on the road and checkpoints along the way. Nexaro brings the best clothing stores into one place and delivers your order to your door.",
     "storyLink": "Read our story",
     "stepsEyebrow": "How it works",
     "stepsTitle": "From the store to your door",
@@ -134,7 +134,9 @@
     "joinEyebrow": "For stores",
     "joinTitle": "Own a store?",
     "joinText": "Join Nexaro and reach customers in every city.",
-    "joinCta": "Join as a store"
+    "joinCta": "Join as a store",
+    "audienceEyebrow": "For everyone",
+    "audienceTitle": "Who are you shopping for?"
   },
   "shop": {
     "eyebrow": "Shop",
@@ -151,7 +153,11 @@
     "clear": "Clear all",
     "empty": "No pieces match your selection. Try changing the filters.",
     "searchFor": "Search: {q}",
-    "remove": "Remove {label}"
+    "remove": "Remove {label}",
+    "audience": "For",
+    "style": "Style",
+    "allAudiences": "Everyone",
+    "allStyles": "All styles"
   },
   "stores": {
     "eyebrow": "Stores",
@@ -191,7 +197,7 @@
   "about": {
     "eyebrow": "About",
     "title": "Every store. One door.",
-    "lead": "Nexaro brings the best Palestinian men's clothing stores into one place and delivers to your door.",
+    "lead": "Nexaro brings the best Palestinian fashion stores for men, women and youth into one place and delivers to your door.",
     "storyTitle": "Why Nexaro",
     "p1": "Every Palestinian city has its own standout stores: Hebron's leather, Nablus's weaving, Ramallah's tailoring. But reaching them isn't always easy.",
     "p2": "Travelling between cities means hours on the road and checkpoints that can close at any moment. So we decided to make the journey for you: you choose from home, and we go to the store and come back to you.",
@@ -217,7 +223,7 @@
     "intro": "From browsing to your doorstep in four simple steps.",
     "stepsTitle": "The steps",
     "step1Title": "Browse",
-    "step1Text": "Explore pieces from six stores in six cities. Search, or filter by city, store, category and size.",
+    "step1Text": "Explore pieces from six stores in six cities. Search, or choose men, women or youth, then filter by style, city and size.",
     "step2Title": "Choose",
     "step2Text": "Pick your size and colour. Our size guide helps you get it right.",
     "step3Title": "Order on WhatsApp",
@@ -242,7 +248,7 @@
   "join": {
     "eyebrow": "For stores",
     "title": "Join Nexaro",
-    "intro": "Own a men's clothing store in Palestine? Show your pieces to customers in every city, and we'll handle the orders and delivery.",
+    "intro": "Own a clothing store in Palestine, for men, women or youth? Show your pieces to customers in every city, and we'll handle the orders and delivery.",
     "benefit1Title": "New customers",
     "benefit1Text": "Your pieces in front of customers from cities they rarely reach.",
     "benefit2Title": "We handle delivery",
@@ -270,7 +276,7 @@
   "sizeGuide": {
     "eyebrow": "Size guide",
     "title": "Find your size",
-    "intro": "Measurements are approximate and can vary slightly between stores. If you're not sure, ask us on WhatsApp before you order.",
+    "intro": "Measurements are approximate and fit most men's and youth pieces; they can vary slightly between stores and for women's pieces. If you're not sure, ask us on WhatsApp before you order.",
     "jumpLabel": "Jump to a chart",
     "howTitle": "How to measure",
     "chestTitle": "Chest",

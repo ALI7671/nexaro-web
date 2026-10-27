@@ -29,11 +29,13 @@ function loadCatalog() {
 }
 
 // Joins the raw files together, like a database join would:
-// each product gets its store, category name and color names attached.
+// each product gets its store, category, audience, style and color names attached.
 function buildCatalog(rawStores, rawProducts, lookups) {
   const byId = (list) => Object.fromEntries(list.map((item) => [item.id, item]));
   const cities = byId(lookups.cities);
   const categories = byId(lookups.categories);
+  const audiences = byId(lookups.audiences);
+  const styles = byId(lookups.styles);
   const colors = byId(lookups.colors);
 
   // All names in both languages, normalized once, so search is fast
@@ -54,24 +56,41 @@ function buildCatalog(rawStores, rawProducts, lookups) {
   const products = rawProducts.map((product) => {
     const store = storesById[product.storeId];
     const category = categories[product.category];
+    const audienceName = audiences[product.audience]?.name;
+    const styleName = styles[product.style]?.name;
     return {
       ...product,
       store,
       categoryName: category?.name,
+      audienceName,
+      styleName,
       sizeGuide: category?.sizeGuide ?? null,
       colorOptions: product.colors.map((id) => ({ id, name: colors[id]?.name ?? { ar: id, en: id } })),
       nameText: searchText(product.name),
-      searchText: searchText(product.name, category?.name, store?.name, store?.cityName),
+      searchText: searchText(product.name, category?.name, audienceName, styleName, store?.name, store?.cityName),
     };
   });
 
-  const categoryList = lookups.categories.map((category) => ({
+  // Adds how many products use each value (shown on the home page tiles)
+  const withCount = (list, field) => list.map((item) => ({
+    ...item,
+    productCount: products.filter((product) => product[field] === item.id).length,
+  }));
+  const categoryList = withCount(lookups.categories, 'category').map((category) => ({
     ...category,
-    productCount: products.filter((product) => product.category === category.id).length,
     searchText: searchText(category.name),
   }));
 
-  return { stores, products, lookups: { ...lookups, categories: categoryList } };
+  return {
+    stores,
+    products,
+    lookups: {
+      ...lookups,
+      categories: categoryList,
+      audiences: withCount(lookups.audiences, 'audience'),
+      styles: withCount(lookups.styles, 'style'),
+    },
+  };
 }
 
 // Splits a query into words. A leading "ال" is dropped so "القميص" finds "قميص".
@@ -88,7 +107,7 @@ function matchesTerms(text, terms) {
 
 /* ---------- Public API ---------- */
 
-// Cities, categories (with product counts), colors and size groups
+// Cities, categories, audiences and styles (with product counts), colors and size groups
 export async function getLookups() {
   return (await loadCatalog()).lookups;
 }
@@ -103,13 +122,16 @@ export async function getStore(id) {
   return stores.find((store) => store.id === id) ?? null;
 }
 
-export async function getProducts({ city, storeId, category, size, featured, q } = {}) {
+// Every filter left empty matches everything; filters that are set must all match
+export async function getProducts({ city, storeId, category, audience, style, size, featured, q } = {}) {
   const { products } = await loadCatalog();
   const terms = searchTerms(q);
   return products.filter((product) =>
     (!city || product.store.city === city) &&
     (!storeId || product.storeId === storeId) &&
     (!category || product.category === category) &&
+    (!audience || product.audience === audience) &&
+    (!style || product.style === style) &&
     (!size || product.sizes.includes(size)) &&
     (!featured || product.featured) &&
     matchesTerms(product.searchText, terms));

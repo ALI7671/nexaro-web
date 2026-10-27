@@ -42,6 +42,10 @@ startPage(async () => {
         <h1 class="product__name">${escapeHtml(name)}</h1>
         <p class="product__price">${t('common.priceOnRequest')}</p>
         <p class="product__price-note">${t('product.priceNote')}</p>
+        <div class="pill-row product__tags">
+          <a class="pill" href="/shop?audience=${product.audience}">${escapeHtml(localize(product.audienceName))}</a>
+          <a class="pill" href="/shop?style=${product.style}">${escapeHtml(localize(product.styleName))}</a>
+        </div>
         <p class="product__desc">${escapeHtml(localize(product.description))}</p>
 
         <div class="order">

@@ -1,259 +1,343 @@
 [
   {
-    "id": "dar-alrajul-01", "storeId": "dar-alrajul", "category": "shirts", "featured": true,
+    "id": "dar-alrajul-01", "storeId": "dar-alrajul", "category": "shirts", "audience": "men", "style": "elegance", "featured": true,
     "name": { "ar": "قميص أكسفورد", "en": "Oxford Shirt" },
     "description": { "ar": "قطن أكسفورد متين بياقة بأزرار، يناسب العمل والسهرات.", "en": "Sturdy cotton Oxford with a button-down collar, for the office and the evening." },
     "sizes": ["S", "M", "L", "XL", "XXL"], "colors": ["white", "navy"],
     "image": "/images/placeholders/shirts.svg"
   },
   {
-    "id": "dar-alrajul-02", "storeId": "dar-alrajul", "category": "shirts", "featured": false,
+    "id": "dar-alrajul-02", "storeId": "dar-alrajul", "category": "shirts", "audience": "men", "style": "elegance", "featured": false,
     "name": { "ar": "قميص بوبلين بقصّة ضيّقة", "en": "Slim Poplin Shirt" },
     "description": { "ar": "بوبلين قطني ناعم بلمعة خفيفة وقصّة ضيّقة.", "en": "Smooth cotton poplin with a subtle sheen and a slim cut." },
     "sizes": ["S", "M", "L", "XL"], "colors": ["white", "black"],
     "image": "/images/placeholders/shirts.svg"
   },
   {
-    "id": "dar-alrajul-03", "storeId": "dar-alrajul", "category": "pants", "featured": false,
+    "id": "dar-alrajul-03", "storeId": "dar-alrajul", "category": "pants", "audience": "men", "style": "suits", "featured": false,
     "name": { "ar": "بنطال صوف مفصّل", "en": "Tailored Wool Trousers" },
     "description": { "ar": "صوف خفيف بكسرة أمامية وخصر مريح.", "en": "Lightweight wool with a pressed crease and a comfortable waist." },
     "sizes": ["30", "32", "34", "36", "38"], "colors": ["charcoal", "navy"],
     "image": "/images/placeholders/pants.svg"
   },
   {
-    "id": "dar-alrajul-04", "storeId": "dar-alrajul", "category": "jackets", "featured": false,
+    "id": "dar-alrajul-04", "storeId": "dar-alrajul", "category": "jackets", "audience": "men", "style": "suits", "featured": false,
     "name": { "ar": "بليزر صوف", "en": "Wool Blend Blazer" },
     "description": { "ar": "بليزر بصفّ أزرار واحد وكتف ناعم، للمناسبات والعمل.", "en": "A single-breasted blazer with a soft shoulder, for occasions and work." },
     "sizes": ["S", "M", "L", "XL"], "colors": ["charcoal", "black"],
     "image": "/images/placeholders/jackets.svg"
   },
   {
-    "id": "dar-alrajul-05", "storeId": "dar-alrajul", "category": "shoes", "featured": false,
+    "id": "dar-alrajul-05", "storeId": "dar-alrajul", "category": "shoes", "audience": "men", "style": "elegance", "featured": false,
     "name": { "ar": "حذاء أكسفورد جلد", "en": "Leather Oxford Shoes" },
     "description": { "ar": "جلد طبيعي مصقول على نعل جلدي.", "en": "Polished full-grain leather on a leather sole." },
     "sizes": ["40", "41", "42", "43", "44", "45"], "colors": ["black", "brown"],
     "image": "/images/placeholders/shoes.svg"
   },
   {
-    "id": "dar-alrajul-06", "storeId": "dar-alrajul", "category": "accessories", "featured": false,
+    "id": "dar-alrajul-06", "storeId": "dar-alrajul", "category": "accessories", "audience": "men", "style": "suits", "featured": false,
     "name": { "ar": "ربطة عنق حرير", "en": "Silk Tie" },
     "description": { "ar": "حرير منسوج بعرض كلاسيكي.", "en": "Woven silk in a classic width." },
     "sizes": ["one-size"], "colors": ["black", "navy"],
     "image": "/images/placeholders/accessories.svg"
   },
+  {
+    "id": "dar-alrajul-07", "storeId": "dar-alrajul", "category": "jackets", "audience": "women", "style": "suits", "featured": true,
+    "name": { "ar": "بليزر نسائي مفصّل", "en": "Tailored Women's Blazer" },
+    "description": { "ar": "بليزر بقصّة محدّدة وكتف ناعم، يكتمل مع بنطال مستقيم.", "en": "A sharply cut blazer with a soft shoulder, made to pair with straight trousers." },
+    "sizes": ["S", "M", "L"], "colors": ["black", "beige"],
+    "image": "/images/placeholders/jackets.svg"
+  },
+  {
+    "id": "dar-alrajul-08", "storeId": "dar-alrajul", "category": "shirts", "audience": "youth", "style": "elegance", "featured": false,
+    "name": { "ar": "قميص أكسفورد للشباب", "en": "Youth Oxford Shirt" },
+    "description": { "ar": "قميص أكسفورد بقصّة أنحف للمناسبات والمدرسة.", "en": "An Oxford shirt in a slimmer cut, for occasions and school." },
+    "sizes": ["S", "M", "L"], "colors": ["white", "navy"],
+    "image": "/images/placeholders/shirts.svg"
+  },
 
   {
-    "id": "khuyoot-01", "storeId": "khuyoot", "category": "t-shirts", "featured": true,
+    "id": "khuyoot-01", "storeId": "khuyoot", "category": "t-shirts", "audience": "men", "style": "casual", "featured": false,
     "name": { "ar": "تيشيرت قطن ثقيل", "en": "Heavyweight Cotton Tee" },
     "description": { "ar": "قطن كثيف يحافظ على شكله بعد كل غسلة.", "en": "Dense cotton that keeps its shape wash after wash." },
     "sizes": ["S", "M", "L", "XL", "XXL"], "colors": ["black", "white", "grey"],
     "image": "/images/placeholders/t-shirts.svg"
   },
   {
-    "id": "khuyoot-02", "storeId": "khuyoot", "category": "shirts", "featured": false,
+    "id": "khuyoot-02", "storeId": "khuyoot", "category": "shirts", "audience": "men", "style": "casual", "featured": false,
     "name": { "ar": "قميص كتان", "en": "Linen Shirt" },
     "description": { "ar": "كتان خفيف يتنفّس، لأيام الصيف الطويلة.", "en": "Light, breathable linen for long summer days." },
     "sizes": ["M", "L", "XL", "XXL"], "colors": ["cream", "sand", "white"],
     "image": "/images/placeholders/shirts.svg"
   },
   {
-    "id": "khuyoot-03", "storeId": "khuyoot", "category": "t-shirts", "featured": false,
+    "id": "khuyoot-03", "storeId": "khuyoot", "category": "t-shirts", "audience": "youth", "style": "casual", "featured": false,
     "name": { "ar": "تيشيرت بجيب", "en": "Pocket Tee" },
     "description": { "ar": "تيشيرت يومي بجيب على الصدر وقصّة مريحة.", "en": "An everyday tee with a chest pocket and a relaxed fit." },
     "sizes": ["S", "M", "L", "XL"], "colors": ["olive", "black"],
     "image": "/images/placeholders/t-shirts.svg"
   },
   {
-    "id": "khuyoot-04", "storeId": "khuyoot", "category": "pants", "featured": false,
+    "id": "khuyoot-04", "storeId": "khuyoot", "category": "pants", "audience": "men", "style": "casual", "featured": false,
     "name": { "ar": "بنطال تشينو قطني", "en": "Cotton Chinos" },
     "description": { "ar": "تشينو بقصّة مستقيمة من قطن متين.", "en": "Straight-leg chinos in durable cotton twill." },
     "sizes": ["28", "30", "32", "34", "36"], "colors": ["beige", "olive", "navy"],
     "image": "/images/placeholders/pants.svg"
   },
   {
-    "id": "khuyoot-05", "storeId": "khuyoot", "category": "jackets", "featured": false,
+    "id": "khuyoot-05", "storeId": "khuyoot", "category": "jackets", "audience": "men", "style": "casual", "featured": false,
     "name": { "ar": "جاكيت قميصي قطني", "en": "Cotton Overshirt" },
     "description": { "ar": "طبقة خفيفة بين القميص والجاكيت، بجيبين أماميين.", "en": "A light layer between shirt and jacket, with two chest pockets." },
     "sizes": ["M", "L", "XL"], "colors": ["khaki", "black"],
     "image": "/images/placeholders/jackets.svg"
   },
   {
-    "id": "khuyoot-06", "storeId": "khuyoot", "category": "accessories", "featured": false,
+    "id": "khuyoot-06", "storeId": "khuyoot", "category": "accessories", "audience": "men", "style": "casual", "featured": false,
     "name": { "ar": "شال قطن منسوج", "en": "Woven Cotton Scarf" },
     "description": { "ar": "منسوج يدوياً في نابلس بأطراف مهدّبة.", "en": "Hand-woven in Nablus with fringed edges." },
     "sizes": ["one-size"], "colors": ["cream", "grey"],
     "image": "/images/placeholders/accessories.svg"
   },
+  {
+    "id": "khuyoot-07", "storeId": "khuyoot", "category": "shirts", "audience": "women", "style": "casual", "featured": true,
+    "name": { "ar": "بلوزة كتان", "en": "Linen Blouse" },
+    "description": { "ar": "كتان خفيف بقصّة واسعة وأكمام مرفوعة.", "en": "Light linen in a relaxed cut with rolled sleeves." },
+    "sizes": ["S", "M", "L", "XL"], "colors": ["cream", "white"],
+    "image": "/images/placeholders/shirts.svg"
+  },
+  {
+    "id": "khuyoot-08", "storeId": "khuyoot", "category": "jackets", "audience": "youth", "style": "casual", "featured": false,
+    "name": { "ar": "هودي قطني", "en": "Cotton Hoodie" },
+    "description": { "ar": "قطن ناعم من الداخل بقبعة وجيب أمامي.", "en": "Brushed cotton with a hood and a front pocket." },
+    "sizes": ["S", "M", "L", "XL"], "colors": ["grey", "black"],
+    "image": "/images/placeholders/jackets.svg"
+  },
 
   {
-    "id": "aseel-01", "storeId": "aseel", "category": "jackets", "featured": true,
+    "id": "aseel-01", "storeId": "aseel", "category": "jackets", "audience": "men", "style": "casual", "featured": true,
     "name": { "ar": "جاكيت جلد", "en": "Leather Jacket" },
     "description": { "ar": "جلد طبيعي بسحّاب معدني وبطانة قطنية.", "en": "Genuine leather with a metal zip and cotton lining." },
     "sizes": ["M", "L", "XL", "XXL"], "colors": ["black", "brown"],
     "image": "/images/placeholders/jackets.svg"
   },
   {
-    "id": "aseel-02", "storeId": "aseel", "category": "shoes", "featured": true,
+    "id": "aseel-02", "storeId": "aseel", "category": "shoes", "audience": "men", "style": "elegance", "featured": false,
     "name": { "ar": "بوت تشيلسي شمواه", "en": "Suede Chelsea Boots" },
     "description": { "ar": "شمواه ناعم بجوانب مطاطية ونعل مريح.", "en": "Soft suede with elastic sides and a cushioned sole." },
     "sizes": ["40", "41", "42", "43", "44", "45"], "colors": ["brown", "black"],
     "image": "/images/placeholders/shoes.svg"
   },
   {
-    "id": "aseel-03", "storeId": "aseel", "category": "shoes", "featured": false,
+    "id": "aseel-03", "storeId": "aseel", "category": "shoes", "audience": "men", "style": "elegance", "featured": false,
     "name": { "ar": "حذاء ديربي جلد", "en": "Leather Derby Shoes" },
     "description": { "ar": "جلد بخياطة يدوية من ورش الخليل.", "en": "Hand-stitched leather from Hebron's workshops." },
     "sizes": ["39", "40", "41", "42", "43", "44"], "colors": ["black", "brown"],
     "image": "/images/placeholders/shoes.svg"
   },
   {
-    "id": "aseel-04", "storeId": "aseel", "category": "accessories", "featured": false,
+    "id": "aseel-04", "storeId": "aseel", "category": "accessories", "audience": "men", "style": "elegance", "featured": false,
     "name": { "ar": "حزام جلد طبيعي", "en": "Full-Grain Leather Belt" },
     "description": { "ar": "جلد سميك بإبزيم معدني مطفأ.", "en": "Thick full-grain leather with a matte metal buckle." },
     "sizes": ["one-size"], "colors": ["black", "brown"],
     "image": "/images/placeholders/accessories.svg"
   },
   {
-    "id": "aseel-05", "storeId": "aseel", "category": "shirts", "featured": false,
+    "id": "aseel-05", "storeId": "aseel", "category": "shirts", "audience": "men", "style": "casual", "featured": false,
     "name": { "ar": "قميص فلانيل", "en": "Flannel Shirt" },
     "description": { "ar": "فلانيل قطني دافئ لأيام الشتاء.", "en": "Warm brushed-cotton flannel for winter days." },
     "sizes": ["S", "M", "L", "XL"], "colors": ["charcoal", "olive"],
     "image": "/images/placeholders/shirts.svg"
   },
   {
-    "id": "aseel-06", "storeId": "aseel", "category": "pants", "featured": false,
+    "id": "aseel-06", "storeId": "aseel", "category": "pants", "audience": "men", "style": "casual", "featured": false,
     "name": { "ar": "بنطال قطيفة", "en": "Corduroy Trousers" },
     "description": { "ar": "قطيفة ناعمة بقصّة مستقيمة.", "en": "Soft corduroy in a straight cut." },
     "sizes": ["30", "32", "34", "36"], "colors": ["brown", "beige"],
     "image": "/images/placeholders/pants.svg"
   },
+  {
+    "id": "aseel-07", "storeId": "aseel", "category": "accessories", "audience": "women", "style": "elegance", "featured": false,
+    "name": { "ar": "حقيبة جلد", "en": "Leather Tote Bag" },
+    "description": { "ar": "حقيبة واسعة من جلد طبيعي بخياطة يدوية.", "en": "A roomy tote in full-grain leather, hand-stitched." },
+    "sizes": ["one-size"], "colors": ["black", "brown"],
+    "image": "/images/placeholders/accessories.svg"
+  },
+  {
+    "id": "aseel-08", "storeId": "aseel", "category": "shoes", "audience": "youth", "style": "sport", "featured": true,
+    "name": { "ar": "حذاء رياضي جلد", "en": "Leather Sneakers" },
+    "description": { "ar": "حذاء رياضي خفيف من الجلد بنعل مريح.", "en": "Light leather sneakers on a cushioned sole." },
+    "sizes": ["39", "40", "41", "42", "43"], "colors": ["white", "black"],
+    "image": "/images/placeholders/shoes.svg"
+  },
 
   {
-    "id": "siraj-01", "storeId": "siraj", "category": "t-shirts", "featured": false,
+    "id": "siraj-01", "storeId": "siraj", "category": "t-shirts", "audience": "men", "style": "elegance", "featured": false,
     "name": { "ar": "بولو صوف ميرينو", "en": "Merino Polo" },
     "description": { "ar": "صوف ميرينو ناعم يناسب كل المواسم.", "en": "Fine merino wool that works in every season." },
     "sizes": ["S", "M", "L", "XL"], "colors": ["navy", "black", "cream"],
     "image": "/images/placeholders/t-shirts.svg"
   },
   {
-    "id": "siraj-02", "storeId": "siraj", "category": "shirts", "featured": true,
+    "id": "siraj-02", "storeId": "siraj", "category": "shirts", "audience": "men", "style": "casual", "featured": false,
     "name": { "ar": "قميص بياقة كوبية", "en": "Camp Collar Shirt" },
     "description": { "ar": "قميص بياقة مفتوحة وقماش منسدل.", "en": "An open-collar shirt in a fluid fabric." },
     "sizes": ["S", "M", "L", "XL"], "colors": ["black", "cream"],
     "image": "/images/placeholders/shirts.svg"
   },
   {
-    "id": "siraj-03", "storeId": "siraj", "category": "pants", "featured": false,
+    "id": "siraj-03", "storeId": "siraj", "category": "pants", "audience": "men", "style": "elegance", "featured": false,
     "name": { "ar": "بنطال بكسرات", "en": "Pleated Trousers" },
     "description": { "ar": "قصّة واسعة بكسرتين أماميتين.", "en": "A wider cut with two front pleats." },
     "sizes": ["30", "32", "34", "36", "38"], "colors": ["grey", "black"],
     "image": "/images/placeholders/pants.svg"
   },
   {
-    "id": "siraj-04", "storeId": "siraj", "category": "jackets", "featured": false,
+    "id": "siraj-04", "storeId": "siraj", "category": "jackets", "audience": "men", "style": "casual", "featured": false,
     "name": { "ar": "جاكيت هارينغتون", "en": "Harrington Jacket" },
     "description": { "ar": "جاكيت خفيف بياقة قصيرة وبطانة مربّعات.", "en": "A light jacket with a short collar and a checked lining." },
     "sizes": ["M", "L", "XL", "XXL"], "colors": ["navy", "beige"],
     "image": "/images/placeholders/jackets.svg"
   },
   {
-    "id": "siraj-05", "storeId": "siraj", "category": "shoes", "featured": false,
+    "id": "siraj-05", "storeId": "siraj", "category": "shoes", "audience": "men", "style": "elegance", "featured": false,
     "name": { "ar": "حذاء لوفر جلد", "en": "Leather Loafers" },
     "description": { "ar": "لوفر كلاسيكي بلا رباط من جلد ناعم.", "en": "Classic slip-on loafers in soft leather." },
     "sizes": ["40", "41", "42", "43", "44", "45"], "colors": ["black", "brown"],
     "image": "/images/placeholders/shoes.svg"
   },
   {
-    "id": "siraj-06", "storeId": "siraj", "category": "accessories", "featured": false,
+    "id": "siraj-06", "storeId": "siraj", "category": "accessories", "audience": "men", "style": "elegance", "featured": false,
     "name": { "ar": "حافظة بطاقات جلد", "en": "Leather Card Holder" },
     "description": { "ar": "رفيعة وتتسع لست بطاقات.", "en": "Slim, and holds up to six cards." },
     "sizes": ["one-size"], "colors": ["black", "brown"],
     "image": "/images/placeholders/accessories.svg"
   },
+  {
+    "id": "siraj-07", "storeId": "siraj", "category": "pants", "audience": "women", "style": "elegance", "featured": false,
+    "name": { "ar": "بنطال واسع بخصر عالٍ", "en": "High-Waist Wide Trousers" },
+    "description": { "ar": "قماش منسدل بخصر عالٍ وكسرة أمامية.", "en": "A fluid fabric with a high waist and a pressed crease." },
+    "sizes": ["28", "30", "32"], "colors": ["black", "beige"],
+    "image": "/images/placeholders/pants.svg"
+  },
+  {
+    "id": "siraj-08", "storeId": "siraj", "category": "t-shirts", "audience": "youth", "style": "casual", "featured": false,
+    "name": { "ar": "قميص بولو قطني", "en": "Cotton Polo Shirt" },
+    "description": { "ar": "بولو قطني بياقة مضلّعة لكل يوم.", "en": "A cotton polo with a ribbed collar, for every day." },
+    "sizes": ["S", "M", "L"], "colors": ["navy", "white"],
+    "image": "/images/placeholders/t-shirts.svg"
+  },
 
   {
-    "id": "marj-01", "storeId": "marj", "category": "pants", "featured": true,
+    "id": "marj-01", "storeId": "marj", "category": "pants", "audience": "men", "style": "casual", "featured": true,
     "name": { "ar": "جينز خام", "en": "Raw Denim Jeans" },
     "description": { "ar": "دنيم خام يتشكّل مع جسمك مع الوقت.", "en": "Raw denim that shapes to you over time." },
     "sizes": ["28", "30", "32", "34", "36", "38"], "colors": ["indigo", "black"],
     "image": "/images/placeholders/pants.svg"
   },
   {
-    "id": "marj-02", "storeId": "marj", "category": "jackets", "featured": true,
+    "id": "marj-02", "storeId": "marj", "category": "jackets", "audience": "men", "style": "casual", "featured": false,
     "name": { "ar": "جاكيت جينز", "en": "Denim Trucker Jacket" },
     "description": { "ar": "جاكيت جينز كلاسيكي بجيبين على الصدر.", "en": "The classic denim jacket with two chest pockets." },
     "sizes": ["S", "M", "L", "XL", "XXL"], "colors": ["indigo", "black"],
     "image": "/images/placeholders/jackets.svg"
   },
   {
-    "id": "marj-03", "storeId": "marj", "category": "shirts", "featured": false,
+    "id": "marj-03", "storeId": "marj", "category": "shirts", "audience": "men", "style": "casual", "featured": false,
     "name": { "ar": "قميص عمل قطني", "en": "Cotton Work Shirt" },
     "description": { "ar": "قماش متين بخياطة مزدوجة.", "en": "Tough fabric with double stitching." },
     "sizes": ["M", "L", "XL", "XXL"], "colors": ["khaki", "navy"],
     "image": "/images/placeholders/shirts.svg"
   },
   {
-    "id": "marj-04", "storeId": "marj", "category": "t-shirts", "featured": false,
+    "id": "marj-04", "storeId": "marj", "category": "t-shirts", "audience": "men", "style": "casual", "featured": false,
     "name": { "ar": "تيشيرت بأكمام طويلة", "en": "Long Sleeve Tee" },
     "description": { "ar": "قطن ناعم بأكمام طويلة وياقة مستديرة.", "en": "Soft cotton with long sleeves and a crew neck." },
     "sizes": ["S", "M", "L", "XL"], "colors": ["white", "charcoal"],
     "image": "/images/placeholders/t-shirts.svg"
   },
   {
-    "id": "marj-05", "storeId": "marj", "category": "shoes", "featured": false,
+    "id": "marj-05", "storeId": "marj", "category": "shoes", "audience": "men", "style": "casual", "featured": false,
     "name": { "ar": "بوت عمل جلد", "en": "Leather Work Boots" },
     "description": { "ar": "بوت متين بنعل مانع للانزلاق.", "en": "Sturdy boots on a non-slip sole." },
     "sizes": ["41", "42", "43", "44", "45"], "colors": ["brown", "black"],
     "image": "/images/placeholders/shoes.svg"
   },
   {
-    "id": "marj-06", "storeId": "marj", "category": "accessories", "featured": false,
+    "id": "marj-06", "storeId": "marj", "category": "accessories", "audience": "youth", "style": "sport", "featured": false,
     "name": { "ar": "قبعة قماش", "en": "Canvas Cap" },
     "description": { "ar": "قبعة قطنية بحزام قابل للتعديل.", "en": "A cotton canvas cap with an adjustable strap." },
     "sizes": ["one-size"], "colors": ["black", "khaki"],
     "image": "/images/placeholders/accessories.svg"
   },
+  {
+    "id": "marj-07", "storeId": "marj", "category": "jackets", "audience": "women", "style": "casual", "featured": true,
+    "name": { "ar": "جاكيت جينز نسائي", "en": "Women's Denim Jacket" },
+    "description": { "ar": "جاكيت جينز بقصّة قصيرة وأزرار معدنية.", "en": "A cropped denim jacket with metal buttons." },
+    "sizes": ["S", "M", "L"], "colors": ["indigo", "black"],
+    "image": "/images/placeholders/jackets.svg"
+  },
+  {
+    "id": "marj-08", "storeId": "marj", "category": "pants", "audience": "youth", "style": "sport", "featured": false,
+    "name": { "ar": "بنطال رياضي", "en": "Track Pants" },
+    "description": { "ar": "بنطال رياضي مريح بخصر مطاطي وجيوب بسحّاب.", "en": "Comfortable track pants with an elastic waist and zip pockets." },
+    "sizes": ["S", "M", "L", "XL"], "colors": ["black", "grey"],
+    "image": "/images/placeholders/pants.svg"
+  },
 
   {
-    "id": "waha-01", "storeId": "waha", "category": "shirts", "featured": false,
+    "id": "waha-01", "storeId": "waha", "category": "shirts", "audience": "men", "style": "casual", "featured": false,
     "name": { "ar": "قميص كتان بأكمام قصيرة", "en": "Short Sleeve Linen Shirt" },
     "description": { "ar": "كتان خفيف لحرّ أريحا.", "en": "Light linen made for Jericho heat." },
     "sizes": ["S", "M", "L", "XL"], "colors": ["white", "sand"],
     "image": "/images/placeholders/shirts.svg"
   },
   {
-    "id": "waha-02", "storeId": "waha", "category": "t-shirts", "featured": false,
+    "id": "waha-02", "storeId": "waha", "category": "t-shirts", "audience": "men", "style": "sport", "featured": false,
     "name": { "ar": "تيشيرت قطن خفيف", "en": "Lightweight Cotton Tee" },
     "description": { "ar": "قطن رقيق يتنفّس في الأيام الحارة.", "en": "Fine cotton that breathes on hot days." },
     "sizes": ["S", "M", "L", "XL", "XXL"], "colors": ["white", "sand", "black"],
     "image": "/images/placeholders/t-shirts.svg"
   },
   {
-    "id": "waha-03", "storeId": "waha", "category": "pants", "featured": true,
+    "id": "waha-03", "storeId": "waha", "category": "pants", "audience": "men", "style": "casual", "featured": false,
     "name": { "ar": "بنطال كتان برباط", "en": "Linen Drawstring Trousers" },
     "description": { "ar": "خصر برباط وقصّة واسعة مريحة.", "en": "A drawstring waist and an easy, wide cut." },
     "sizes": ["30", "32", "34", "36"], "colors": ["sand", "white", "black"],
     "image": "/images/placeholders/pants.svg"
   },
   {
-    "id": "waha-04", "storeId": "waha", "category": "jackets", "featured": false,
+    "id": "waha-04", "storeId": "waha", "category": "jackets", "audience": "men", "style": "casual", "featured": false,
     "name": { "ar": "جاكيت بومبر خفيف", "en": "Lightweight Bomber" },
     "description": { "ar": "طبقة خفيفة لأمسيات الصيف.", "en": "A light layer for summer evenings." },
     "sizes": ["M", "L", "XL"], "colors": ["olive", "black"],
     "image": "/images/placeholders/jackets.svg"
   },
   {
-    "id": "waha-05", "storeId": "waha", "category": "shoes", "featured": false,
+    "id": "waha-05", "storeId": "waha", "category": "shoes", "audience": "men", "style": "casual", "featured": false,
     "name": { "ar": "صندل جلد", "en": "Leather Sandals" },
     "description": { "ar": "صندل جلد على نعل مريح.", "en": "Leather sandals on a cushioned footbed." },
     "sizes": ["40", "41", "42", "43", "44", "45"], "colors": ["brown", "black"],
     "image": "/images/placeholders/shoes.svg"
   },
   {
-    "id": "waha-06", "storeId": "waha", "category": "accessories", "featured": false,
+    "id": "waha-06", "storeId": "waha", "category": "accessories", "audience": "men", "style": "casual", "featured": false,
     "name": { "ar": "نظارة شمسية", "en": "Classic Sunglasses" },
     "description": { "ar": "إطار كلاسيكي بعدسات تحمي من الأشعة.", "en": "A classic frame with UV-protective lenses." },
     "sizes": ["one-size"], "colors": ["black", "brown"],
     "image": "/images/placeholders/accessories.svg"
+  },
+  {
+    "id": "waha-07", "storeId": "waha", "category": "t-shirts", "audience": "women", "style": "sport", "featured": false,
+    "name": { "ar": "تيشيرت رياضي نسائي", "en": "Women's Training Tee" },
+    "description": { "ar": "قماش خفيف يجف بسرعة، للتمارين والأيام الحارة.", "en": "A light, quick-drying fabric for training and hot days." },
+    "sizes": ["S", "M", "L"], "colors": ["black", "white"],
+    "image": "/images/placeholders/t-shirts.svg"
+  },
+  {
+    "id": "waha-08", "storeId": "waha", "category": "pants", "audience": "youth", "style": "sport", "featured": true,
+    "name": { "ar": "شورت رياضي", "en": "Sports Shorts" },
+    "description": { "ar": "شورت خفيف بخصر مطاطي لأيام أريحا الدافئة.", "en": "Light shorts with an elastic waist, for warm Jericho days." },
+    "sizes": ["S", "M", "L", "XL"], "colors": ["black", "grey"],
+    "image": "/images/placeholders/pants.svg"
   }
 ]

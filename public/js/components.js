@@ -76,6 +76,15 @@ export function categoryTile(category, index = 0) {
     </a>`;
 }
 
+// Large typographic tile for Men / Women / Youth on the home page
+export function audienceTile(audience, index = 0) {
+  return `
+    <a class="audience-tile reveal" style="--i:${index % 3}" href="/shop?audience=${encodeURIComponent(audience.id)}">
+      <span class="audience-tile__name">${escapeHtml(localize(audience.name))}</span>
+      <span class="audience-tile__meta">${tn('common.pieces', audience.productCount)}${icon('arrow')}</span>
+    </a>`;
+}
+
 // items: [{ href, label }, ..., { label }] (the last one is the current page)
 export function breadcrumb(items) {
   const links = items.map((item) => item.href

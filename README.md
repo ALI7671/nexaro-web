@@ -1,6 +1,6 @@
 # Nexaro — Wear Your Next
 
-A marketplace that brings the best Palestinian men's clothing stores into one place and delivers to your door. Based in Ramallah. (University marketing project.)
+A marketplace that brings the best Palestinian fashion stores (for men, women and youth) into one place and delivers to your door. Based in Ramallah. (University marketing project.)
 
 ## Run
 
@@ -31,8 +31,8 @@ public/
   js/pages/*.js           One small script per page
   i18n/ar.json, en.json   ALL interface text, in Arabic and English
   data/stores.json        6 stores
-  data/products.json      36 products (6 per store)
-  data/lookups.json       Cities, categories, colors and size groups (names in both languages)
+  data/products.json      48 products (8 per store)
+  data/lookups.json       Cities, categories, audiences, styles, colors and size groups (names in both languages)
   images/logo.png         Your logo (add it; a text "NEXARO" shows until it exists)
   images/placeholders/    Monochrome product placeholders, one per category
 ```
@@ -56,11 +56,26 @@ public/
 
 **Product** (`data/products.json`)
 ```json
-{ "id": "aseel-02", "storeId": "aseel", "category": "shoes", "featured": true,
+{ "id": "aseel-02", "storeId": "aseel", "category": "shoes", "audience": "men", "style": "elegance", "featured": true,
   "name": { "ar": "…", "en": "…" }, "description": { "ar": "…", "en": "…" },
   "sizes": ["40", "41"], "colors": ["brown", "black"], "image": "/images/placeholders/shoes.svg" }
 ```
-`category`, `colors` and `sizes` must match ids in `lookups.json`. `featured: true` puts a product on the home page. Product images look best at a 4:5 portrait ratio.
+`category`, `audience` (men / women / youth), `style` (sport / elegance / suits / casual), `colors` and `sizes` must match ids in `lookups.json`. The shop filters by audience and style with `?audience=women&style=elegance`. `featured: true` puts a product on the home page. Product images look best at a 4:5 portrait ratio.
+
+## Promo video
+
+```
+npm run demo:record                          # both versions (about a minute)
+node scripts/record-demo.js --only=vertical  # just the Reel
+node scripts/record-demo.js --fps=60         # smoother, takes twice as long
+```
+
+- `videos/nexaro-demo.mp4`: 1080x1920 (9:16) for Instagram Reels, mobile layout
+- `videos/nexaro-demo-horizontal.mp4`: 1920x1080 (16:9) for Facebook, desktop layout
+
+The script uses the site if it's already running on http://localhost:3000; otherwise it starts it. It renders frame by frame instead of using Playwright's real-time recorder (which is blurry and can stutter). The scenes are in `playScenes()` in [scripts/record-demo.js](scripts/record-demo.js).
+
+First time on a new computer: `npm install`, then `npx playwright install chromium`. If npm says the `ffmpeg-static` install script was blocked, run `npm install-scripts approve ffmpeg-static` and `npm install` again.
 
 ## Placeholders to replace before launch
 

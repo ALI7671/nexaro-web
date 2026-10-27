@@ -1,12 +1,13 @@
-// Shop: all products with filters (city, store, category, size) and ?q= search.
-// Filters live in the URL, so a filtered view can be shared or bookmarked.
+// Shop: all products with filters (audience, style, city, store, category, size) and ?q= search.
+// Filters live in the URL, so a filtered view can be shared or bookmarked,
+// e.g. /shop?audience=women&style=elegance
 import { startPage, observeReveals } from '../layout.js';
 import { getLookups, getStores, getProducts } from '../data.js';
 import { t, tn, localize } from '../i18n.js';
 import { productCard, emptyState, icon, sizeLabel } from '../components.js';
 import { escapeHtml, getParam, setParams } from '../utils.js';
 
-const state = { city: '', store: '', category: '', size: '', q: '' };
+const state = { audience: '', style: '', city: '', store: '', category: '', size: '', q: '' };
 const els = {};
 let lookups = null;
 let stores = [];
@@ -41,9 +42,14 @@ startPage(async () => {
 
 const storeCity = (id) => stores.find((store) => store.id === id)?.city;
 
+// Display name of a lookup value, e.g. nameOf('audiences', 'women') → "نساء"
+const nameOf = (list, id) => localize(lookups[list].find((item) => item.id === id)?.name);
+
 // Only accept values that exist, so a broken link can't break the page
 function readStateFromUrl() {
   const allowed = {
+    audience: lookups.audiences.map((audience) => audience.id),
+    style: lookups.styles.map((style) => style.id),
     city: lookups.cities.map((city) => city.id),
     store: stores.map((store) => store.id),
     category: lookups.categories.map((category) => category.id),
@@ -64,6 +70,12 @@ function optionsHtml(items, allLabel, selected) {
 
 function renderSelects() {
   const { elements } = els.form;
+  elements.audience.innerHTML = optionsHtml(
+    lookups.audiences.map((audience) => ({ value: audience.id, label: localize(audience.name) })),
+    t('shop.allAudiences'), state.audience);
+  elements.style.innerHTML = optionsHtml(
+    lookups.styles.map((style) => ({ value: style.id, label: localize(style.name) })),
+    t('shop.allStyles'), state.style);
   elements.city.innerHTML = optionsHtml(
     lookups.cities.map((city) => ({ value: city.id, label: localize(city.name) })),
     t('shop.allCities'), state.city);
@@ -111,14 +123,25 @@ function onRemoveFilter(event) {
 async function update() {
   const id = ++requestId;
   const products = await getProducts({
-    city: state.city, storeId: state.store, category: state.category, size: state.size, q: state.q,
+    audience: state.audience,
+    style: state.style,
+    city: state.city,
+    storeId: state.store,
+    category: state.category,
+    size: state.size,
+    q: state.q,
   });
   if (id !== requestId) return; // a newer change is already on its way
 
   setParams(state);
 
-  const category = lookups.categories.find((c) => c.id === state.category);
-  els.title.textContent = category ? localize(category.name) : t('shop.title');
+  // The heading names the main filters, e.g. "Women · Elegance · Jackets"
+  const titleParts = [
+    state.audience && nameOf('audiences', state.audience),
+    state.style && nameOf('styles', state.style),
+    state.category && nameOf('categories', state.category),
+  ].filter(Boolean);
+  els.title.textContent = titleParts.length ? titleParts.join(' · ') : t('shop.title');
   document.title = `${els.title.textContent} | Nexaro`;
 
   els.count.textContent = tn('common.pieces', products.length);
@@ -133,9 +156,11 @@ async function update() {
 function renderActiveFilters() {
   const labels = {
     q: state.q && t('shop.searchFor', { q: state.q }),
-    city: state.city && localize(lookups.cities.find((c) => c.id === state.city).name),
+    audience: state.audience && nameOf('audiences', state.audience),
+    style: state.style && nameOf('styles', state.style),
+    city: state.city && nameOf('cities', state.city),
     store: state.store && localize(stores.find((s) => s.id === state.store).name),
-    category: state.category && localize(lookups.categories.find((c) => c.id === state.category).name),
+    category: state.category && nameOf('categories', state.category),
     size: state.size && sizeLabel(state.size),
   };
   const active = Object.entries(labels).filter(([, label]) => label);

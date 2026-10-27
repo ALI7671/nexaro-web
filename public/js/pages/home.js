@@ -1,7 +1,7 @@
 import { startPage } from '../layout.js';
 import { getLookups, getProducts, getStores } from '../data.js';
 import { t } from '../i18n.js';
-import { productCard, storeCard, categoryTile } from '../components.js';
+import { productCard, storeCard, categoryTile, audienceTile } from '../components.js';
 import { escapeHtml } from '../utils.js';
 
 startPage(async () => {
@@ -13,6 +13,7 @@ startPage(async () => {
     getStores(),
   ]);
 
+  document.getElementById('home-audiences').innerHTML = lookups.audiences.map(audienceTile).join('');
   document.getElementById('home-categories').innerHTML = lookups.categories.map(categoryTile).join('');
   document.getElementById('home-featured').innerHTML = featured.slice(0, 8).map(productCard).join('');
   document.getElementById('home-stores').innerHTML = stores.map(storeCard).join('');

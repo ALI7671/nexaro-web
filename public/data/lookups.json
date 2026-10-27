@@ -15,6 +15,17 @@
     { "id": "shoes", "name": { "ar": "أحذية", "en": "Shoes" }, "image": "/images/placeholders/shoes.svg", "sizeGuide": "shoes" },
     { "id": "accessories", "name": { "ar": "إكسسوارات", "en": "Accessories" }, "image": "/images/placeholders/accessories.svg", "sizeGuide": null }
   ],
+  "audiences": [
+    { "id": "men", "name": { "ar": "رجال", "en": "Men" } },
+    { "id": "women", "name": { "ar": "نساء", "en": "Women" } },
+    { "id": "youth", "name": { "ar": "شباب", "en": "Youth" } }
+  ],
+  "styles": [
+    { "id": "sport", "name": { "ar": "رياضي", "en": "Sport" } },
+    { "id": "elegance", "name": { "ar": "أناقة", "en": "Elegance" } },
+    { "id": "suits", "name": { "ar": "بدلات", "en": "Suits" } },
+    { "id": "casual", "name": { "ar": "كاجوال", "en": "Casual" } }
+  ],
   "colors": [
     { "id": "black", "name": { "ar": "أسود", "en": "Black" } },
     { "id": "white", "name": { "ar": "أبيض", "en": "White" } },
@@ -30,7 +41,7 @@
     { "id": "indigo", "name": { "ar": "نيلي", "en": "Indigo" } }
   ],
   "sizeGroups": [
-    { "id": "tops", "name": { "ar": "قمصان وجاكيتات", "en": "Tops" }, "sizes": ["S", "M", "L", "XL", "XXL"] },
+    { "id": "tops", "name": { "ar": "مقاسات الملابس", "en": "Clothing (S–XXL)" }, "sizes": ["S", "M", "L", "XL", "XXL"] },
     { "id": "pants", "name": { "ar": "بناطيل (الخصر بالإنش)", "en": "Pants (waist, in)" }, "sizes": ["28", "30", "32", "34", "36", "38"] },
     { "id": "shoes", "name": { "ar": "أحذية (EU)", "en": "Shoes (EU)" }, "sizes": ["39", "40", "41", "42", "43", "44", "45"] },
     { "id": "one-size", "name": { "ar": "مقاس واحد", "en": "One size" }, "sizes": ["one-size"] }

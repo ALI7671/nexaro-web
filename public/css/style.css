@@ -811,11 +811,18 @@ a:hover .link-arrow {
   color: var(--muted);
 }
 
+/* The padding gives the hover background room to extend past the text without
+   making the list wider than the panel (which caused a horizontal scrollbar) */
 .search-results {
   max-height: min(60vh, 540px);
+  overflow-x: hidden;
   overflow-y: auto;
   margin-top: 12px;
+  margin-inline: -12px;
+  padding-inline: 12px;
   overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--line-strong) transparent;
 }
 
 .search-group {
@@ -1160,6 +1167,83 @@ html[lang="ar"] .category-tile__name {
 .category-tile__count {
   font-size: 0.75rem;
   color: var(--muted);
+}
+
+/* Men / Women / Youth tiles on the home page */
+.audience-grid {
+  display: grid;
+  gap: 14px;
+}
+
+@media (min-width: 720px) {
+  .audience-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+  }
+}
+
+.audience-tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: clamp(160px, 30vw, 400px);
+  padding: clamp(24px, 3vw, 40px);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  transition: background-color var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+
+.audience-tile::after {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  border: 1px solid var(--line);
+  pointer-events: none;
+}
+
+.audience-tile:hover {
+  background: var(--surface-strong);
+  border-color: var(--line-strong);
+}
+
+.audience-tile__name {
+  font-family: var(--font-latin);
+  font-weight: 200;
+  font-size: clamp(2.25rem, 5vw, 4rem);
+  line-height: 1;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+html[lang="ar"] .audience-tile__name {
+  font-family: var(--font-arabic);
+  font-weight: 300;
+  letter-spacing: 0;
+}
+
+.audience-tile__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.audience-tile__meta .icon {
+  width: 18px;
+  height: 18px;
+  color: var(--text);
+  transition: transform var(--dur) var(--ease);
+}
+
+.audience-tile:hover .audience-tile__meta .icon {
+  transform: translateX(6px);
+}
+
+[dir="rtl"] .audience-tile:hover .audience-tile__meta .icon {
+  transform: scaleX(-1) translateX(6px);
 }
 
 .empty-state {
@@ -1813,8 +1897,8 @@ html[lang="ar"] .filters__toggle {
   .filters__panel {
     grid-column: 1;
     grid-row: 1;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 32px;
+    grid-template-columns: repeat(3, minmax(0, 1fr)); /* six filters → two rows of three */
+    gap: 28px 32px;
     padding-top: 0;
   }
 
@@ -1971,6 +2055,10 @@ html[lang="ar"] .product__price {
   margin-top: 6px;
   font-size: 0.82rem;
   color: var(--muted);
+}
+
+.product__tags {
+  margin-top: 22px;
 }
 
 .product__desc {
