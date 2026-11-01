@@ -4,7 +4,7 @@ import { CONTACT } from './config.js';
 import { initI18n, t, translateDom, getLang, setLang } from './i18n.js';
 import { initSearch } from './search.js';
 import { icon } from './components.js';
-import { whatsappLink } from './utils.js';
+import { whatsappLink, escapeHtml } from './utils.js';
 
 // `page` matches <body data-nav="..."> so the current link is marked
 const NAV_LINKS = [
@@ -27,6 +27,7 @@ export async function startPage(init) {
     initLogos();
     initMenu();
     initSearch();
+    initAuthSlot(); // not awaited: the page never waits for the login check
     if (init) await init();
   } catch (error) {
     console.error(error);
@@ -66,8 +67,8 @@ function renderHeader() {
       <div class="header__actions">
         <button class="icon-btn" type="button" data-search-open aria-expanded="false" aria-controls="search-panel" aria-label="${t('a11y.openSearch')}">${icon('search')}</button>
         <button class="lang-btn" type="button" data-lang="${otherLang}" lang="${otherLang}" aria-label="${t('a11y.switchLang')}">${t('lang.switch')}</button>
-        <!-- Phase 2: the Sign in / Sign up button is rendered into this slot -->
-        <div class="auth-slot" id="auth-slot" hidden></div>
+        <!-- "Sign in", or the user's name + menu: filled by initAuthSlot() -->
+        <div class="auth-slot" id="auth-slot"></div>
       </div>
     </div>
 
@@ -146,6 +147,55 @@ function renderFooter() {
         <p class="latin">${t('brand.tagline')}</p>
       </div>
     </div>`;
+}
+
+/* ---------- Header: "Sign in" or the user's name + menu ---------- */
+
+async function initAuthSlot() {
+  const slot = document.getElementById('auth-slot');
+  slot.innerHTML = `
+    <a class="auth-link" href="/login">${icon('user')}<span class="auth-link__label">${t('auth.signIn')}</span></a>`;
+  try {
+    // auth.js (and supabase-js) load only now, and only download Supabase if needed
+    const { getCurrentUser, displayName, signOut } = await import('./auth.js');
+    const current = await getCurrentUser();
+    if (current) renderUserMenu(slot, current, displayName(current), signOut);
+  } catch (error) {
+    console.warn('[auth] Could not check the login:', error); // the "Sign in" link stays
+  }
+}
+
+function renderUserMenu(slot, { profile }, name, signOut) {
+  const firstName = name.split(' ')[0];
+  slot.innerHTML = `
+    <div class="user-menu">
+      <button class="auth-link user-menu__button" type="button" aria-expanded="false" aria-controls="user-menu-list" aria-label="${t('auth.userMenu')}: ${escapeHtml(name)}">
+        ${icon('user')}<span class="auth-link__label">${escapeHtml(firstName)}</span>
+      </button>
+      <ul class="user-menu__list" id="user-menu-list" hidden>
+        <li><a href="/account">${t('auth.account')}</a></li>
+        ${profile?.role === 'admin' ? `<li><a href="/admin/applications">${t('auth.admin')}</a></li>` : ''}
+        <li><button type="button" data-sign-out>${t('auth.signOut')}</button></li>
+      </ul>
+    </div>`;
+
+  const button = slot.querySelector('.user-menu__button');
+  const list = slot.querySelector('.user-menu__list');
+  const setOpen = (open) => {
+    list.hidden = !open;
+    button.setAttribute('aria-expanded', String(open));
+  };
+  button.addEventListener('click', () => setOpen(list.hidden));
+  slot.querySelector('[data-sign-out]').addEventListener('click', signOut);
+  document.addEventListener('click', (event) => {
+    if (!slot.contains(event.target)) setOpen(false);
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && !list.hidden) {
+      setOpen(false);
+      button.focus();
+    }
+  });
 }
 
 // <span data-icon="arrow"></span> in static HTML becomes an inline SVG icon

@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n="pages.storeSignup.title">Nexaro</title>
+  <meta name="description" content="" data-i18n-attr="content:pages.storeSignup.description">
+  <meta name="theme-color" content="#0A0909">
+  <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
+  <script>(function () { var l = 'ar'; try { var p = new URLSearchParams(location.search).get('lang'); l = p === 'en' || p === 'ar' ? p : (localStorage.getItem('nexaro.lang') === 'en' ? 'en' : 'ar'); } catch (e) {} document.documentElement.lang = l; document.documentElement.dir = l === 'ar' ? 'rtl' : 'ltr'; })();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500&family=Montserrat:wght@200;300;400;500&display=swap">
+  <link rel="stylesheet" href="/css/style.css">
+  <script type="module" src="/js/pages/store-signup.js"></script>
+</head>
+<body data-nav="for-stores">
+  <a class="skip-link" href="#main" data-i18n="a11y.skip"></a>
+  <header class="site-header" id="site-header"></header>
+
+  <main id="main" tabindex="-1">
+    <section class="auth-page container">
+      <div class="auth-card auth-card--wide">
+        <p class="eyebrow" data-i18n="storeSignup.eyebrow"></p>
+        <h1 class="page-title auth-title" data-i18n="storeSignup.title"></h1>
+        <p class="muted auth-intro" data-i18n="storeSignup.intro"></p>
+
+        <form class="form" id="store-form" novalidate>
+          <!-- Hidden when the visitor is already logged in -->
+          <fieldset class="form-section" id="account-section">
+            <legend class="form-section__title" data-i18n="storeSignup.accountSection"></legend>
+            <div class="field">
+              <label class="field__label" for="owner-name" data-i18n="join.ownerName"></label>
+              <input class="field__input" id="owner-name" name="fullName" type="text" autocomplete="name" maxlength="100" aria-describedby="owner-name-error">
+              <p class="field__error" id="owner-name-error" hidden></p>
+            </div>
+            <div class="form__row">
+              <div class="field">
+                <label class="field__label" for="owner-email" data-i18n="auth.email"></label>
+                <input class="field__input" id="owner-email" name="email" type="email" autocomplete="email" dir="ltr" aria-describedby="owner-email-error">
+                <p class="field__error" id="owner-email-error" hidden></p>
+              </div>
+              <div class="field">
+                <label class="field__label" for="owner-password" data-i18n="auth.password"></label>
+                <input class="field__input" id="owner-password" name="password" type="password" autocomplete="new-password" dir="ltr" aria-describedby="owner-password-hint owner-password-error">
+                <p class="field__hint" id="owner-password-hint" data-i18n="auth.passwordHint"></p>
+                <p class="field__error" id="owner-password-error" hidden></p>
+              </div>
+            </div>
+          </fieldset>
+          <p class="auth-notice" id="logged-in-note" hidden></p>
+
+          <fieldset class="form-section">
+            <legend class="form-section__title" data-i18n="storeSignup.storeSection"></legend>
+            <div class="field">
+              <label class="field__label" for="store-name" data-i18n="join.storeName"></label>
+              <input class="field__input" id="store-name" name="storeName" type="text" autocomplete="organization" maxlength="80" required aria-describedby="store-name-error">
+              <p class="field__error" id="store-name-error" hidden></p>
+            </div>
+            <div class="form__row">
+              <div class="field">
+                <label class="field__label" for="store-city" data-i18n="join.city"></label>
+                <input class="field__input" id="store-city" name="city" type="text" list="city-options" autocomplete="address-level2" maxlength="60" required aria-describedby="store-city-error">
+                <datalist id="city-options"></datalist>
+                <p class="field__error" id="store-city-error" hidden></p>
+              </div>
+              <div class="field">
+                <label class="field__label" for="store-phone" data-i18n="join.phone"></label>
+                <input class="field__input" id="store-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" dir="ltr" maxlength="20" required aria-describedby="store-phone-hint store-phone-error">
+                <p class="field__hint" id="store-phone-hint" data-i18n="join.phoneHint"></p>
+                <p class="field__error" id="store-phone-error" hidden></p>
+              </div>
+            </div>
+            <div class="field">
+              <label class="field__label" for="store-instagram"><span data-i18n="join.instagram"></span> <span class="field__optional" data-i18n="form.optional"></span></label>
+              <input class="field__input" id="store-instagram" name="instagram" type="text" inputmode="url" dir="ltr" maxlength="120" aria-describedby="store-instagram-hint store-instagram-error">
+              <p class="field__hint" id="store-instagram-hint" data-i18n="join.instagramHint"></p>
+              <p class="field__error" id="store-instagram-error" hidden></p>
+            </div>
+            <div class="field">
+              <label class="field__label" for="store-description"><span data-i18n="storeSignup.description"></span> <span class="field__optional" data-i18n="form.optional"></span></label>
+              <textarea class="field__textarea" id="store-description" name="description" maxlength="1000" data-i18n-attr="placeholder:join.messagePlaceholder"></textarea>
+            </div>
+          </fieldset>
+
+          <p class="field__error" id="store-error" role="alert" hidden></p>
+          <button class="btn btn--solid btn--block" type="submit" data-i18n="storeSignup.submit"></button>
+          <p class="form__note">
+            <span data-i18n="auth.termsBefore"></span>
+            <a class="text-link" href="/terms" data-i18n="footer.terms"></a><span data-i18n="auth.termsAnd"></span><a class="text-link" href="/privacy" data-i18n="footer.privacy"></a>.
+          </p>
+        </form>
+
+        <div class="success-panel" id="store-done" role="status" tabindex="-1" hidden>
+          <p class="eyebrow" data-i18n="storeSignup.eyebrow"></p>
+          <h2 class="section-title" data-i18n="storeSignup.pendingTitle"></h2>
+          <p class="lead" data-i18n="storeSignup.pendingText"></p>
+          <p class="muted" id="store-done-email" hidden></p>
+          <a class="link-arrow" href="/account" id="store-done-link"><span data-i18n="auth.goToAccount"></span><span data-icon="arrow"></span></a>
+        </div>
+
+        <div class="auth-alt" id="store-alt">
+          <p><span data-i18n="auth.haveAccount"></span> <a class="text-link" href="/login?next=/store-signup" data-i18n="auth.signIn"></a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+</body>
+</html>

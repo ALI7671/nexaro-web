@@ -625,9 +625,86 @@ a:hover .link-arrow {
 }
 
 .auth-slot {
+  position: relative;
   display: flex;
   align-items: center;
-  margin-inline-start: 8px;
+  margin-inline-start: 4px;
+}
+
+/* "Sign in" link, or the user's name, in the header */
+.auth-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 8px;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  transition: opacity var(--dur) var(--ease);
+}
+
+html[lang="ar"] .auth-link {
+  font-size: 0.88rem;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.auth-link:hover {
+  opacity: 0.65;
+}
+
+.auth-link__label {
+  max-width: 11ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* On phones only the person icon shows (the label is still read by screen readers) */
+@media (max-width: 767px) {
+  .auth-link__label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+}
+
+.user-menu__list {
+  position: absolute;
+  top: calc(100% + 8px);
+  inset-inline-end: 0;
+  z-index: 60;
+  min-width: 200px;
+  margin: 0;
+  padding: 8px 0;
+  list-style: none;
+  background: var(--bg);
+  border: 1px solid var(--line-strong);
+  box-shadow: 0 24px 48px rgb(0 0 0 / 0.5);
+}
+
+.user-menu__list a,
+.user-menu__list button {
+  display: block;
+  width: 100%;
+  padding: 12px 18px;
+  font-size: 0.9rem;
+  text-align: start;
+  transition: background-color 0.2s var(--ease);
+}
+
+.user-menu__list a:hover,
+.user-menu__list button:hover {
+  background: var(--surface-strong);
+}
+
+.user-menu__list li + li:last-child {
+  border-top: 1px solid var(--line);
 }
 
 /* Mobile first: the navigation is a full-screen panel */
@@ -2424,6 +2501,233 @@ html[lang="ar"] .product__price {
 
 .legal-list li + li {
   margin-top: 0.6em;
+}
+
+/* Login, signup, store signup and reset password */
+.auth-page {
+  display: grid;
+  justify-items: center;
+  padding-block: clamp(56px, 9vw, 120px);
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 460px;
+}
+
+.auth-card--wide {
+  max-width: 680px;
+}
+
+.auth-title {
+  margin-top: 18px;
+  font-size: clamp(1.8rem, 4vw, 2.75rem);
+}
+
+.auth-intro {
+  margin-top: 18px;
+}
+
+.auth-card .form,
+.auth-card .success-panel,
+.auth-card .auth-message {
+  margin-top: 40px;
+}
+
+.auth-notice {
+  margin-top: 24px;
+  padding: 14px 16px;
+  border: 1px solid var(--line-strong);
+  font-size: 0.88rem;
+  color: var(--text);
+}
+
+.auth-forgot {
+  justify-self: center;
+}
+
+.auth-reset {
+  padding-top: 32px;
+  border-top: 1px solid var(--line);
+}
+
+.auth-alt {
+  display: grid;
+  gap: 10px;
+  margin-top: 40px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.auth-message {
+  display: grid;
+  justify-items: start;
+  gap: 24px;
+}
+
+/* A titled group of fields (store signup: "Your account" / "Your store") */
+.form-section {
+  display: grid;
+  gap: 28px;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.form-section + .form-section {
+  padding-top: 32px;
+  border-top: 1px solid var(--line);
+}
+
+.form-section__title {
+  float: inline-start; /* lets the legend sit inside the grid like a normal heading */
+  width: 100%;
+  margin-bottom: 4px;
+  padding: 0;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+html[lang="ar"] .form-section__title {
+  font-size: 0.9rem;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.apply-cta {
+  display: grid;
+  gap: 28px;
+  align-content: start;
+}
+
+/* Account page */
+.account-email {
+  margin-top: 14px;
+  font-size: 0.9rem;
+  text-align: start;
+}
+
+.account-side {
+  display: grid;
+  gap: 24px;
+  align-content: start;
+}
+
+.account-box {
+  display: grid;
+  gap: 12px;
+  padding: 24px;
+  border: 1px solid var(--line-strong);
+}
+
+.account-box__title {
+  font-size: clamp(1.15rem, 2vw, 1.5rem);
+}
+
+.account-box__meta {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.account-value {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+/* Application status: told apart by line style, not color (monochrome) */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-self: start;
+  min-height: 30px;
+  padding: 0 12px;
+  border: 1px dashed var(--line-strong);
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
+.status-badge[data-status="approved"] {
+  border-style: solid;
+  border-color: var(--text);
+}
+
+.status-badge[data-status="rejected"] {
+  border-style: solid;
+  color: var(--muted);
+}
+
+/* Admin: store applications */
+.application-list {
+  display: grid;
+  gap: 20px;
+}
+
+@media (min-width: 900px) {
+  .application-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.application-card {
+  display: grid;
+  gap: 20px;
+  align-content: start;
+  padding: clamp(20px, 3vw, 28px);
+  border: 1px solid var(--line-strong);
+}
+
+.application-card__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.application-card__name {
+  font-size: 1.15rem;
+  font-weight: 400;
+}
+
+.application-card__meta {
+  margin-top: 4px;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.application-card__details {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 20px;
+  margin: 0;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+
+.application-card__details dt {
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
+.application-card__details dd {
+  margin: 4px 0 0;
+  font-size: 0.9rem;
+  overflow-wrap: anywhere;
+}
+
+.application-card__wide {
+  grid-column: 1 / -1;
+}
+
+.application-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 /* 15. Size tables

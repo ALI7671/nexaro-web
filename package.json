@@ -4,7 +4,7 @@
   "description": "Nexaro — online marketplace for Palestinian fashion stores",
   "main": "server.js",
   "engines": {
-    "node": ">=18"
+    "node": ">=20.12"
   },
   "scripts": {
     "start": "node server.js",

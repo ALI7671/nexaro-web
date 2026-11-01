@@ -30,7 +30,50 @@
   },
   "auth": {
     "signIn": "Sign in",
-    "signUp": "Sign up"
+    "signUp": "Sign up",
+    "account": "My account",
+    "admin": "Store applications",
+    "signOut": "Sign out",
+    "userMenu": "Account menu",
+    "email": "Email",
+    "password": "Password",
+    "passwordHint": "At least 8 characters",
+    "fullName": "Full name",
+    "phone": "Phone number",
+    "phoneHint": "e.g. 0599 123 456",
+    "city": "City",
+    "loginEyebrow": "Welcome",
+    "loginTitle": "Sign in",
+    "loginSubmit": "Sign in",
+    "loggingIn": "Signing in…",
+    "sending": "Sending…",
+    "forgot": "Forgot your password?",
+    "resetIntro": "Enter your email and we'll send you a link to set a new password.",
+    "resetSubmit": "Send the link",
+    "resetSent": "If this email is registered, a reset link will arrive within a few minutes.",
+    "noAccount": "Don't have an account?",
+    "haveAccount": "Already have an account?",
+    "storeOwner": "Own a store?",
+    "storeSignupLink": "Register your store",
+    "adminOnly": "This page is for admins only. Sign in with an admin account.",
+    "loginRequired": "Please sign in to continue.",
+    "signupEyebrow": "New account",
+    "signupTitle": "Create an account",
+    "signupIntro": "One account to follow your orders and keep your details for next time.",
+    "signupSubmit": "Create account",
+    "creating": "Creating your account…",
+    "termsBefore": "By creating an account, you agree to the",
+    "termsAnd": " and the ",
+    "checkEmailTitle": "Check your email",
+    "checkEmailText": "We sent a confirmation link to {email}. Open it to activate your account.",
+    "resetTitle": "New password",
+    "newPassword": "New password",
+    "confirmPassword": "Confirm password",
+    "resetSave": "Save password",
+    "resetDone": "Your password has been changed.",
+    "resetInvalid": "This reset link is invalid or has expired. Request a new one from the sign-in page.",
+    "goToAccount": "Go to my account",
+    "backToLogin": "Back to sign in"
   },
   "search": {
     "label": "Search Nexaro",
@@ -128,6 +171,25 @@
     "privacy": {
       "title": "Privacy policy | Nexaro",
       "description": "How Nexaro collects and uses your data."
+    },
+    "login": {
+      "title": "Sign in | Nexaro"
+    },
+    "signup": {
+      "title": "Sign up | Nexaro"
+    },
+    "storeSignup": {
+      "title": "Register your store | Nexaro",
+      "description": "Create your store account and apply to join Nexaro in one step."
+    },
+    "account": {
+      "title": "My account | Nexaro"
+    },
+    "resetPassword": {
+      "title": "New password | Nexaro"
+    },
+    "admin": {
+      "title": "Store applications | Nexaro"
     }
   },
   "home": {
@@ -293,7 +355,6 @@
     "ctaShop": "Start shopping"
   },
   "join": {
-    "formTitle": "Store details",
     "storeName": "Store name",
     "ownerName": "Owner name",
     "city": "City",
@@ -301,15 +362,7 @@
     "phoneHint": "e.g. 0599 123 456",
     "instagram": "Instagram link",
     "instagramHint": "e.g. instagram.com/yourstore",
-    "message": "Message",
-    "messagePlaceholder": "Tell us about your store and what it sells",
-    "submit": "Send application",
-    "sending": "Sending…",
-    "privacy": "We only use your details to contact you about joining.",
-    "successEyebrow": "Thank you",
-    "successTitle": "Application received",
-    "successText": "Thank you for your interest in Nexaro. Our team will contact you soon to learn more about your store.",
-    "successCta": "Back to home"
+    "messagePlaceholder": "Tell us about your store and what it sells"
   },
   "sizeGuide": {
     "eyebrow": "Size guide",
@@ -377,7 +430,10 @@
       "required": "This field is required",
       "phone": "Enter a valid Palestinian mobile number, e.g. 0599 123 456",
       "instagram": "Enter a valid Instagram link or username",
-      "generic": "Something went wrong while sending. Please try again."
+      "generic": "Something went wrong while sending. Please try again.",
+      "email": "Enter a valid email address",
+      "passwordShort": "Password must be at least 8 characters",
+      "passwordMismatch": "The passwords don't match"
     }
   },
   "forStores": {
@@ -407,7 +463,8 @@
     "step3Text": "Orders reach you on WhatsApp; you prepare the piece and it gets delivered to the customer.",
     "applyEyebrow": "Join now",
     "applyTitle": "Apply to join",
-    "applyText": "The form takes a minute. We review your application and contact you to learn about your store."
+    "applyText": "Create your store account and fill in your store details in one form. We review your application and contact you within 48 hours.",
+    "applyCta": "Create your store account"
   },
   "legal": {
     "draft": "First draft",
@@ -581,5 +638,70 @@
         }
       ]
     }
+  },
+  "authErrors": {
+    "invalidCredentials": "Wrong email or password.",
+    "emailNotConfirmed": "Your email isn't confirmed yet. Open the confirmation link we sent you.",
+    "userExists": "This email is already registered. Sign in instead.",
+    "weakPassword": "Password too weak. Use at least 8 characters.",
+    "samePassword": "The new password must be different from the old one.",
+    "invalidEmail": "That email address isn't valid.",
+    "rateLimit": "Too many attempts. Wait a moment and try again.",
+    "network": "Couldn't connect. Check your internet and try again.",
+    "signupDisabled": "Sign-ups are closed for now.",
+    "sessionExpired": "Your session has ended. Please sign in again.",
+    "duplicatePending": "You already have an application under review.",
+    "notAllowed": "You don't have permission to do that.",
+    "notConfigured": "Sign-in isn't available right now.",
+    "generic": "Something went wrong. Please try again."
+  },
+  "storeSignup": {
+    "eyebrow": "For stores",
+    "title": "Register your store",
+    "intro": "Create your account and apply for your store in one step.",
+    "accountSection": "Your account",
+    "storeSection": "Your store",
+    "description": "About your store",
+    "loggedInAs": "The application will be linked to your account: {email}",
+    "submit": "Send application",
+    "sending": "Sending…",
+    "pendingTitle": "Application received",
+    "pendingText": "Your application is under review. We'll contact you within 48 hours.",
+    "confirmEmail": "We also sent a confirmation link to {email}. Open it to activate your account."
+  },
+  "account": {
+    "eyebrow": "My account",
+    "hello": "Hello, {name}",
+    "profileTitle": "My details",
+    "save": "Save changes",
+    "saving": "Saving…",
+    "saved": "Changes saved.",
+    "role": "Account type",
+    "roleCustomer": "Customer",
+    "roleStore": "Store",
+    "roleAdmin": "Admin",
+    "applicationTitle": "Store application",
+    "statusPending": "Under review",
+    "statusApproved": "Approved",
+    "statusRejected": "Not approved",
+    "approvedText": "Your store is approved. We'll contact you to add your products.",
+    "rejectedText": "Your application wasn't approved this time. Contact us for details.",
+    "sentOn": "Sent on {date}",
+    "adminTitle": "Admin",
+    "adminLink": "Review store applications",
+    "applyCta": "Own a store? Apply to join"
+  },
+  "admin": {
+    "eyebrow": "Admin",
+    "title": "Store applications",
+    "filterLabel": "Filter by status",
+    "all": "All",
+    "approve": "Approve",
+    "reject": "Reject",
+    "approvedDone": "{store} approved.",
+    "rejectedDone": "{store} rejected.",
+    "empty": "No applications here.",
+    "applicant": "Applicant",
+    "whatsapp": "WhatsApp"
   }
 }

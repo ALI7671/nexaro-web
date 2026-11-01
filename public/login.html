@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n="pages.login.title">Nexaro</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#0A0909">
+  <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
+  <script>(function () { var l = 'ar'; try { var p = new URLSearchParams(location.search).get('lang'); l = p === 'en' || p === 'ar' ? p : (localStorage.getItem('nexaro.lang') === 'en' ? 'en' : 'ar'); } catch (e) {} document.documentElement.lang = l; document.documentElement.dir = l === 'ar' ? 'rtl' : 'ltr'; })();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500&family=Montserrat:wght@200;300;400;500&display=swap">
+  <link rel="stylesheet" href="/css/style.css">
+  <script type="module" src="/js/pages/login.js"></script>
+</head>
+<body data-nav="login">
+  <a class="skip-link" href="#main" data-i18n="a11y.skip"></a>
+  <header class="site-header" id="site-header"></header>
+
+  <main id="main" tabindex="-1">
+    <section class="auth-page container">
+      <div class="auth-card">
+        <p class="eyebrow" data-i18n="auth.loginEyebrow"></p>
+        <h1 class="page-title auth-title" data-i18n="auth.loginTitle"></h1>
+        <p class="auth-notice" id="login-notice" role="status" hidden></p>
+
+        <form class="form" id="login-form" novalidate>
+          <div class="field">
+            <label class="field__label" for="login-email" data-i18n="auth.email"></label>
+            <input class="field__input" id="login-email" name="email" type="email" autocomplete="email" dir="ltr" required aria-describedby="login-email-error">
+            <p class="field__error" id="login-email-error" hidden></p>
+          </div>
+          <div class="field">
+            <label class="field__label" for="login-password" data-i18n="auth.password"></label>
+            <input class="field__input" id="login-password" name="password" type="password" autocomplete="current-password" dir="ltr" required aria-describedby="login-password-error">
+            <p class="field__error" id="login-password-error" hidden></p>
+          </div>
+          <p class="field__error" id="login-error" role="alert" hidden></p>
+          <button class="btn btn--solid btn--block" type="submit" data-i18n="auth.loginSubmit"></button>
+          <button class="text-btn auth-forgot" id="forgot-toggle" type="button" aria-expanded="false" aria-controls="reset-form" data-i18n="auth.forgot"></button>
+        </form>
+
+        <form class="form auth-reset" id="reset-form" novalidate hidden>
+          <p class="muted" data-i18n="auth.resetIntro"></p>
+          <div class="field">
+            <label class="field__label" for="reset-email" data-i18n="auth.email"></label>
+            <input class="field__input" id="reset-email" name="email" type="email" autocomplete="email" dir="ltr" required aria-describedby="reset-email-error">
+            <p class="field__error" id="reset-email-error" hidden></p>
+          </div>
+          <p class="field__error" id="reset-error" role="alert" hidden></p>
+          <p class="auth-notice" id="reset-sent" role="status" hidden></p>
+          <button class="btn btn--block" type="submit" data-i18n="auth.resetSubmit"></button>
+        </form>
+
+        <div class="auth-alt">
+          <p><span data-i18n="auth.noAccount"></span> <a class="text-link" href="/signup" data-i18n="auth.signUp"></a></p>
+          <p><span data-i18n="auth.storeOwner"></span> <a class="text-link" href="/store-signup" data-i18n="auth.storeSignupLink"></a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+</body>
+</html>

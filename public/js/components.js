@@ -20,6 +20,7 @@ const ICONS = {
   share: '<circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="m8.3 10.8 7.4-3.6M8.3 13.2l7.4 3.6"/>',
   gift: '<rect x="4" y="10" width="16" height="10" rx="1"/><path d="M3 7h18v3H3zM12 7v13M12 7c-1.5-3-5-3.5-5-1s5 1 5 1Zm0 0c1.5-3 5-3.5 5-1s-5 1-5 1Z"/>',
   store: '<path d="M4 9h16l-1.5-4h-13zM5 9v10h14V9M10 19v-5h4v5"/>',
+  user: '<circle cx="12" cy="8" r="3.6"/><path d="M4.5 20c1.3-3.7 4.1-5.6 7.5-5.6s6.2 1.9 7.5 5.6"/>',
   cash: '<rect x="3" y="6" width="18" height="12" rx="1"/><circle cx="12" cy="12" r="2.5"/><path d="M6.5 9.5v5M17.5 9.5v5"/>',
   swap: '<path d="M4 9h13l-3.5-3.5M20 15H7l3.5 3.5"/>',
   truck: '<path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/>',

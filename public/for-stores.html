@@ -24,7 +24,7 @@
       <h1 class="page-title" data-i18n="forStores.title"></h1>
       <p class="lead" data-i18n="forStores.intro"></p>
       <div class="btn-row mt-lg">
-        <a class="btn btn--solid" href="#apply" data-i18n="forStores.ctaApply"></a>
+        <a class="btn btn--solid" href="/store-signup" data-i18n="forStores.ctaApply"></a>
         <a class="btn" id="stores-whatsapp" href="/contact" target="_blank" rel="noopener"><span data-icon="chat"></span><span data-i18n="forStores.ctaWhatsapp"></span></a>
       </div>
     </div>
@@ -58,69 +58,21 @@
       </ol>
     </section>
 
-    <section class="section section--line container" id="apply" aria-labelledby="join-form-title">
+    <section class="section section--line container" id="apply" aria-labelledby="apply-title">
       <div class="split split--wide-end">
         <div class="reveal">
           <p class="eyebrow" data-i18n="forStores.applyEyebrow"></p>
-          <h2 class="page-title story__title mt-lg" data-i18n="forStores.applyTitle"></h2>
-          <p class="lead muted mt-lg" data-i18n="forStores.applyText"></p>
+          <h2 class="page-title story__title mt-lg" id="apply-title" data-i18n="forStores.applyTitle"></h2>
         </div>
 
-        <div class="reveal">
-          <h2 class="section-title form-title" id="join-form-title" data-i18n="join.formTitle"></h2>
-
-          <form class="form" id="join-form" novalidate>
-            <div class="form__row">
-              <div class="field">
-                <label class="field__label" for="store-name" data-i18n="join.storeName"></label>
-                <input class="field__input" id="store-name" name="storeName" type="text" autocomplete="organization" maxlength="80" required aria-describedby="store-name-error">
-                <p class="field__error" id="store-name-error" hidden></p>
-              </div>
-              <div class="field">
-                <label class="field__label" for="owner-name" data-i18n="join.ownerName"></label>
-                <input class="field__input" id="owner-name" name="ownerName" type="text" autocomplete="name" maxlength="80" required aria-describedby="owner-name-error">
-                <p class="field__error" id="owner-name-error" hidden></p>
-              </div>
-            </div>
-
-            <div class="form__row">
-              <div class="field">
-                <label class="field__label" for="store-city" data-i18n="join.city"></label>
-                <input class="field__input" id="store-city" name="city" type="text" list="city-options" autocomplete="address-level2" maxlength="60" required aria-describedby="store-city-error">
-                <datalist id="city-options"></datalist>
-                <p class="field__error" id="store-city-error" hidden></p>
-              </div>
-              <div class="field">
-                <label class="field__label" for="store-phone" data-i18n="join.phone"></label>
-                <input class="field__input" id="store-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" dir="ltr" maxlength="20" required aria-describedby="store-phone-hint store-phone-error">
-                <p class="field__hint" id="store-phone-hint" data-i18n="join.phoneHint"></p>
-                <p class="field__error" id="store-phone-error" hidden></p>
-              </div>
-            </div>
-
-            <div class="field">
-              <label class="field__label" for="store-instagram"><span data-i18n="join.instagram"></span> <span class="field__optional" data-i18n="form.optional"></span></label>
-              <input class="field__input" id="store-instagram" name="instagram" type="text" inputmode="url" autocomplete="url" dir="ltr" maxlength="120" aria-describedby="store-instagram-hint store-instagram-error">
-              <p class="field__hint" id="store-instagram-hint" data-i18n="join.instagramHint"></p>
-              <p class="field__error" id="store-instagram-error" hidden></p>
-            </div>
-
-            <div class="field">
-              <label class="field__label" for="store-message"><span data-i18n="join.message"></span> <span class="field__optional" data-i18n="form.optional"></span></label>
-              <textarea class="field__textarea" id="store-message" name="message" maxlength="1000" data-i18n-attr="placeholder:join.messagePlaceholder"></textarea>
-            </div>
-
-            <p class="field__error" id="join-form-error" role="alert" hidden></p>
-            <button class="btn btn--solid btn--block" type="submit" data-i18n="join.submit"></button>
-            <p class="form__note"><span data-i18n="join.privacy"></span> <a class="text-link" href="/privacy" data-i18n="footer.privacy"></a></p>
-          </form>
-
-          <div class="success-panel" id="join-success" role="status" hidden>
-            <p class="eyebrow" data-i18n="join.successEyebrow"></p>
-            <h2 class="section-title" tabindex="-1" data-i18n="join.successTitle"></h2>
-            <p class="muted" data-i18n="join.successText"></p>
-            <a class="link-arrow" href="/"><span data-i18n="join.successCta"></span><span data-icon="arrow"></span></a>
+        <!-- The application form lives on /store-signup: account + store in one step -->
+        <div class="reveal apply-cta">
+          <p class="lead muted" data-i18n="forStores.applyText"></p>
+          <div class="btn-row">
+            <a class="btn btn--solid" href="/store-signup" data-i18n="forStores.applyCta"></a>
+            <a class="btn" id="apply-whatsapp" href="/contact" target="_blank" rel="noopener"><span data-icon="chat"></span><span data-i18n="forStores.ctaWhatsapp"></span></a>
           </div>
+          <p class="form__note"><span data-i18n="auth.haveAccount"></span> <a class="text-link" href="/login?next=/store-signup" data-i18n="auth.signIn"></a></p>
         </div>
       </div>
     </section>

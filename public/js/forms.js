@@ -45,3 +45,41 @@ export function clearErrorsOnInput(form) {
 }
 
 export const required = (value) => (value ? '' : 'form.errors.required');
+
+// Palestinian mobile numbers: 059/056 + 7 digits, optionally with +970 / +972 / 00970
+const PHONE_PATTERN = /^(?:(?:\+|00)?97[02]|0)5[69]\d{7}$/;
+// "@yourstore", "yourstore" or an instagram.com/yourstore link
+const INSTAGRAM_PATTERN = /^(?:@?[\w.]{1,30}|(?:https?:\/\/)?(?:www\.)?instagram\.com\/[\w.]{1,30}\/?(?:\?.*)?)$/i;
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+export const MIN_PASSWORD = 8;
+
+export const phone = (value) => {
+  if (!value) return 'form.errors.required';
+  return PHONE_PATTERN.test(value.replace(/[\s\-()]/g, '')) ? '' : 'form.errors.phone';
+};
+export const instagram = (value) => (!value || INSTAGRAM_PATTERN.test(value) ? '' : 'form.errors.instagram');
+export const email = (value) => {
+  if (!value) return 'form.errors.required';
+  return EMAIL_PATTERN.test(value) ? '' : 'form.errors.email';
+};
+export const password = (value) => {
+  if (!value) return 'form.errors.required';
+  return value.length >= MIN_PASSWORD ? '' : 'form.errors.passwordShort';
+};
+
+// Disables a submit button while a request runs, and shows e.g. "Sending…"
+export function setBusy(button, busy, busyText) {
+  if (busy) {
+    button.dataset.label ??= button.textContent;
+    button.textContent = busyText;
+  } else if (button.dataset.label) {
+    button.textContent = button.dataset.label;
+  }
+  button.disabled = busy;
+}
+
+// Shows (or hides, with an empty message) a form-wide message element
+export function showMessage(element, message) {
+  element.textContent = message;
+  element.hidden = !message;
+}

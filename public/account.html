@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n="pages.account.title">Nexaro</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#0A0909">
+  <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
+  <script>(function () { var l = 'ar'; try { var p = new URLSearchParams(location.search).get('lang'); l = p === 'en' || p === 'ar' ? p : (localStorage.getItem('nexaro.lang') === 'en' ? 'en' : 'ar'); } catch (e) {} document.documentElement.lang = l; document.documentElement.dir = l === 'ar' ? 'rtl' : 'ltr'; })();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500&family=Montserrat:wght@200;300;400;500&display=swap">
+  <link rel="stylesheet" href="/css/style.css">
+  <script type="module" src="/js/pages/account.js"></script>
+</head>
+<body data-nav="account">
+  <a class="skip-link" href="#main" data-i18n="a11y.skip"></a>
+  <header class="site-header" id="site-header"></header>
+
+  <!-- Only shown to logged-in users (js/pages/account.js redirects everyone else to /login).
+       The data itself is protected by Row Level Security in Supabase. -->
+  <main id="main" tabindex="-1">
+    <div class="page-head container">
+      <p class="eyebrow" data-i18n="account.eyebrow"></p>
+      <h1 class="page-title" id="account-hello"></h1>
+      <p class="muted account-email"><bdi id="account-email" dir="ltr"></bdi></p>
+    </div>
+
+    <section class="section section--line container section-bottom">
+      <div class="split">
+        <div>
+          <h2 class="section-title form-title" data-i18n="account.profileTitle"></h2>
+          <form class="form" id="profile-form" novalidate>
+            <div class="field">
+              <label class="field__label" for="profile-name" data-i18n="auth.fullName"></label>
+              <input class="field__input" id="profile-name" name="fullName" type="text" autocomplete="name" maxlength="100" required aria-describedby="profile-name-error">
+              <p class="field__error" id="profile-name-error" hidden></p>
+            </div>
+            <div class="form__row">
+              <div class="field">
+                <label class="field__label" for="profile-phone" data-i18n="auth.phone"></label>
+                <input class="field__input" id="profile-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" dir="ltr" maxlength="20" aria-describedby="profile-phone-error">
+                <p class="field__error" id="profile-phone-error" hidden></p>
+              </div>
+              <div class="field">
+                <label class="field__label" for="profile-city" data-i18n="auth.city"></label>
+                <input class="field__input" id="profile-city" name="city" type="text" list="city-options" autocomplete="address-level2" maxlength="60" aria-describedby="profile-city-error">
+                <datalist id="city-options"></datalist>
+                <p class="field__error" id="profile-city-error" hidden></p>
+              </div>
+            </div>
+            <div class="field">
+              <span class="field__label" data-i18n="account.role"></span>
+              <p class="account-value" id="profile-role"></p>
+            </div>
+            <p class="field__error" id="profile-error" role="alert" hidden></p>
+            <p class="auth-notice" id="profile-saved" role="status" hidden></p>
+            <button class="btn btn--solid btn--block" type="submit" data-i18n="account.save"></button>
+          </form>
+        </div>
+        <div class="account-side">
+          <div class="account-box" id="application-box" hidden>
+            <p class="eyebrow" data-i18n="account.applicationTitle"></p>
+            <h2 class="section-title account-box__title" id="application-store"></h2>
+            <p class="status-badge" id="application-status"></p>
+            <p class="muted" id="application-text"></p>
+            <p class="account-box__meta" id="application-date"></p>
+          </div>
+
+          <div class="account-box" id="admin-box" hidden>
+            <p class="eyebrow" data-i18n="account.adminTitle"></p>
+            <a class="link-arrow" href="/admin/applications"><span data-i18n="account.adminLink"></span><span data-icon="arrow"></span></a>
+          </div>
+
+          <div class="account-box" id="apply-box" hidden>
+            <a class="link-arrow" href="/store-signup"><span data-i18n="account.applyCta"></span><span data-icon="arrow"></span></a>
+          </div>
+
+          <button class="btn btn--block" type="button" id="sign-out" data-i18n="auth.signOut"></button>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+</body>
+</html>

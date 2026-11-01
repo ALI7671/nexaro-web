@@ -84,6 +84,16 @@ The script uses the site if it's already running on http://localhost:3000; other
 
 First time on a new computer: `npm install`, then `npx playwright install chromium`. If npm says the `ffmpeg-static` install script was blocked, run `npm install-scripts approve ffmpeg-static` and `npm install` again.
 
+## Accounts (Supabase Auth + Postgres)
+
+- **Keys**: `.env` holds `SUPABASE_URL` and `SUPABASE_ANON_KEY` (see `.env.example`). `.env` is git-ignored. The server exposes only these two at `/config.js`. The service_role key is never used.
+- **Database**: run `supabase/schema.sql` once in the Supabase SQL Editor. It creates `profiles` and `store_applications`, the signup trigger, `is_admin()`, `review_application()` and all Row Level Security rules. It is safe to run again.
+- **Pages**: `/login` (with "forgot password"), `/signup`, `/store-signup` (account + store application), `/reset-password`, `/account`, `/admin/applications`.
+- **Code**: `js/auth.js` is the only file that talks to Supabase Auth. supabase-js loads from a CDN only on pages that need it, and only for visitors who have logged in before.
+- **Security**: the page checks in the browser only decide what to show. Row Level Security in the database is the real protection.
+- **Make yourself admin**: sign up on the site, then run the last (commented) line of `schema.sql` with your email.
+- **Render**: add `SUPABASE_URL` and `SUPABASE_ANON_KEY` as environment variables. In Supabase → Authentication → URL Configuration, add your live address next to `http://localhost:3000`.
+
 ## Placeholders to replace before launch
 
 - WhatsApp number `970599000000` and the display number `+970 599 000 000` (`js/config.js`)
@@ -94,7 +104,7 @@ First time on a new computer: `npm install`, then `npx playwright install chromi
 ## Roadmap
 
 1. **Phase 1 (done):** pages, bilingual, fictional data, live search, filters, size guide, WhatsApp ordering, join form
-2. **Phase 2:** Supabase auth (the header has an empty `#auth-slot` ready), wishlist, reviews with approval, newsletter, saving store applications (`submitStoreApplication` in `data.js`)
+2. **Phase 2 (in progress):** Supabase auth, profiles and store applications with admin review (done); wishlist, reviews with approval and newsletter (next)
 3. **Phase 3:** admin dashboard, discount codes, GA4 + Meta Pixel, UTM tracking
 4. **Phase 4:** SEO, deploy to Render, custom domain
 

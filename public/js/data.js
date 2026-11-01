@@ -176,11 +176,3 @@ export async function search(query, { maxProducts = 6, maxStores = 3, maxCategor
     categories: lookups.categories.filter((category) => matchesTerms(category.searchText, terms)).slice(0, maxCategories),
   };
 }
-
-// "Join as a store" form
-export async function submitStoreApplication(application) {
-  // Phase 2: insert `application` into a Supabase table, e.g. store_applications
-  await new Promise((resolve) => setTimeout(resolve, 600));
-  console.info('[Nexaro] Store application (not saved until Phase 2):', application);
-  return { ok: true };
-}

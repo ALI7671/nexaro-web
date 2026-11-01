@@ -1,5 +1,11 @@
 // Small helpers shared by every page.
 import { WHATSAPP_NUMBER } from './config.js';
+import { getLang } from './i18n.js';
+
+// "1 Nov 2026" / "١ نوفمبر ٢٠٢٦" style dates (Arabic text, Western digits like the rest of the site)
+export function formatDate(value, options = { dateStyle: 'medium' }) {
+  return new Intl.DateTimeFormat(getLang() === 'ar' ? 'ar-u-nu-latn' : 'en-GB', options).format(new Date(value));
+}
 
 // Always escape data before putting it into innerHTML
 export function escapeHtml(value) {
