@@ -73,7 +73,10 @@
     "resetDone": "Your password has been changed.",
     "resetInvalid": "This reset link is invalid or has expired. Request a new one from the sign-in page.",
     "goToAccount": "Go to my account",
-    "backToLogin": "Back to sign in"
+    "backToLogin": "Back to sign in",
+    "dashboard": "Store dashboard",
+    "adminProducts": "Review products",
+    "storeOnly": "This page is for store owners only. Sign in with a store account."
   },
   "search": {
     "label": "Search Nexaro",
@@ -99,7 +102,8 @@
     "madeInPalestine": "Made in Palestine"
   },
   "sizes": {
-    "oneSize": "One size"
+    "oneSize": "One size",
+    "age": "Age {n}"
   },
   "footer": {
     "about": "The best Palestinian fashion stores for men, women and youth, in one place and delivered to your door.",
@@ -190,6 +194,12 @@
     },
     "admin": {
       "title": "Store applications | Nexaro"
+    },
+    "dashboard": {
+      "title": "Store dashboard | Nexaro"
+    },
+    "adminProducts": {
+      "title": "Review products | Nexaro"
     }
   },
   "home": {
@@ -268,7 +278,8 @@
     "copied": "Link copied",
     "copyFailed": "Couldn't copy automatically. Copy the link from the box: {url}",
     "shareWhatsapp": "Share on WhatsApp",
-    "shareMessage": "Have a look at {store} from {city} on Nexaro:\n{url}"
+    "shareMessage": "Have a look at {store} from {city} on Nexaro:\n{url}",
+    "noProducts": "No pieces published in this store yet."
   },
   "product": {
     "priceNote": "We send you the price on WhatsApp before you confirm.",
@@ -286,7 +297,7 @@
     "notFoundTitle": "Piece not found",
     "notFoundText": "This piece's link may have changed, or it's no longer available.",
     "backToShop": "Back to the shop",
-    "whatsappMessage": "Hello Nexaro, I'd like to order this piece:\n\nPiece: {product}\nStore: {store} – {city}\nSize: {size}\nColour: {color}\nHow I'd like it: {method}{gift}\n\n{url}",
+    "whatsappMessage": "Hello Nexaro, I'd like to order this piece:\n\nPiece: {product}\nStore: {store} – {city}\nSize: {size}\nColour: {color}{price}\nHow I'd like it: {method}{promo}{gift}\n\n{url}",
     "trustLabel": "Ordering with confidence",
     "badgeCod": "Cash on delivery",
     "badgeExchange": "Exchange within 3 days",
@@ -301,7 +312,13 @@
     "giftCity": "Recipient's city",
     "giftMessage": "A short gift message",
     "whatsappGift": "\n\nGift for: {name} – {city}",
-    "whatsappGiftMessage": "\nGift message: {message}"
+    "whatsappGiftMessage": "\nGift message: {message}",
+    "priceConfirmNote": "We confirm the final price and delivery fee with you on WhatsApp.",
+    "photos": "Photos of this piece",
+    "photoN": "Photo {n}",
+    "whatsappPrice": "\nPrice: {price}",
+    "whatsappPromo": "\nDiscount code: {code} ({percent}% off)",
+    "whatsappPromoPrice": "\nPrice after discount: {price}"
   },
   "about": {
     "eyebrow": "About",
@@ -653,7 +670,9 @@
     "duplicatePending": "You already have an application under review.",
     "notAllowed": "You don't have permission to do that.",
     "notConfigured": "Sign-in isn't available right now.",
-    "generic": "Something went wrong. Please try again."
+    "generic": "Something went wrong. Please try again.",
+    "invalidData": "Some details are not valid. Check them and try again.",
+    "fileTooLarge": "That image is too large. Try another one."
   },
   "storeSignup": {
     "eyebrow": "For stores",
@@ -689,7 +708,8 @@
     "sentOn": "Sent on {date}",
     "adminTitle": "Admin",
     "adminLink": "Review store applications",
-    "applyCta": "Own a store? Apply to join"
+    "applyCta": "Own a store? Apply to join",
+    "dashboardLink": "Open your store dashboard"
   },
   "admin": {
     "eyebrow": "Admin",
@@ -703,5 +723,106 @@
     "empty": "No applications here.",
     "applicant": "Applicant",
     "whatsapp": "WhatsApp"
+  },
+  "theme": {
+    "toLight": "Light mode",
+    "toDark": "Dark mode"
+  },
+  "price": {
+    "was": "Was"
+  },
+  "promo": {
+    "label": "Discount code",
+    "apply": "Apply",
+    "invalid": "That code isn't valid.",
+    "applied": "{code} applied: {percent}% off, worked out when your order is confirmed.",
+    "appliedWithPrice": "{code} applied: {percent}% off. Price after discount: {price}."
+  },
+  "dash": {
+    "eyebrow": "Store dashboard",
+    "title": "Store dashboard",
+    "viewStore": "View store page",
+    "myProducts": "My products",
+    "storeInfo": "Store details",
+    "search": "Search your products",
+    "addProduct": "New product",
+    "filterLabel": "Filter by status",
+    "backToProducts": "Back to my products",
+    "publishedNote": "This product is published. Any change sends it back for review before it shows again.",
+    "sectionNames": "Name and description",
+    "nameAr": "Name in Arabic",
+    "nameEn": "Name in English",
+    "descAr": "Description in Arabic",
+    "descEn": "Description in English",
+    "sectionImages": "Photos",
+    "imagesHint": "Up to 5 photos. The first is the main photo. Photos are shrunk automatically before uploading.",
+    "addImages": "Add photos",
+    "sectionDetails": "Details",
+    "section": "Section",
+    "colors": "Colours",
+    "sectionPrice": "Price",
+    "price": "Price (₪)",
+    "priceHint": "Leave empty to show \"Price on request\".",
+    "comparePrice": "Price before discount (₪)",
+    "compareHint": "Shown crossed out next to the price.",
+    "submitReview": "Send for review",
+    "saveDraft": "Save as draft",
+    "changeLogo": "Change logo",
+    "lockedFields": "To change the store name or city, contact us.",
+    "whatsapp": "Store WhatsApp number",
+    "noStore": "Your store isn't set up yet. We'll be in touch soon.",
+    "productNotFound": "We couldn't find this product in your store.",
+    "statusDraft": "Draft",
+    "statusPending": "In review",
+    "statusPublished": "Published",
+    "statusRejected": "Rejected",
+    "noMatches": "No products match your search.",
+    "empty": "You haven't added any products yet.",
+    "addFirst": "Add your first product",
+    "rejectedBecause": "Reason:",
+    "updated": "Updated {date}",
+    "edit": "Edit",
+    "delete": "Delete",
+    "confirmDelete": "Delete \"{name}\"? This can't be undone.",
+    "confirmYes": "Yes, delete",
+    "cancel": "Cancel",
+    "deleting": "Deleting…",
+    "deleted": "\"{name}\" deleted.",
+    "chooseCategory": "Choose a category",
+    "editProduct": "Edit product",
+    "newProduct": "New product",
+    "deleteProduct": "Delete this product",
+    "mainImage": "Main",
+    "moveEarlier": "Move photo {n} earlier",
+    "moveLater": "Move photo {n} later",
+    "removeImage": "Remove photo {n}",
+    "errorName": "Give the product a name (Arabic or English).",
+    "errorSection": "Choose a section.",
+    "errorSizes": "Choose at least one size.",
+    "errorImages": "Add at least one photo.",
+    "errorPrice": "Enter a valid price.",
+    "errorCompare": "Must be higher than the current price.",
+    "saving": "Saving…",
+    "uploading": "Uploading photos {n}/{total}…",
+    "sentForReview": "\"{name}\" sent for review. We'll check it soon.",
+    "savedDraft": "\"{name}\" saved as a draft.",
+    "tooManyImages": "Maximum {max} photos.",
+    "preparingImages": "Preparing photos…",
+    "imageError": "Couldn't read the photo {name}.",
+    "logoAlt": "{name} logo"
+  },
+  "adminProducts": {
+    "title": "Review products",
+    "empty": "No products here.",
+    "publish": "Publish",
+    "reject": "Reject",
+    "noImages": "No photos",
+    "reason": "Reason",
+    "viewLive": "View on the site",
+    "reasonLabel": "Reason for rejecting (shown to the store)",
+    "confirmReject": "Confirm rejection",
+    "reasonRequired": "Write a short reason.",
+    "published": "\"{name}\" published.",
+    "rejected": "\"{name}\" rejected."
   }
 }

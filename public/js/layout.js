@@ -1,6 +1,6 @@
 // Shared page frame: header, footer, mobile menu, language switch and scroll reveals.
 // Every page script starts with: startPage(async () => { ...page code... })
-import { CONTACT } from './config.js';
+import { CONTACT, STORAGE_KEYS } from './config.js';
 import { initI18n, t, translateDom, getLang, setLang } from './i18n.js';
 import { initSearch } from './search.js';
 import { icon } from './components.js';
@@ -27,7 +27,9 @@ export async function startPage(init) {
     initLogos();
     initMenu();
     initSearch();
+    initTheme();
     initAuthSlot(); // not awaited: the page never waits for the login check
+    registerServiceWorker();
     if (init) await init();
   } catch (error) {
     console.error(error);
@@ -63,8 +65,10 @@ function renderHeader() {
       <nav class="header__nav" id="site-nav" aria-label="${t('a11y.mainNav')}">
         <ul class="nav-list">${links}</ul>
         <a class="link-arrow nav-extra" href="/for-stores#apply">${t('nav.join')}${icon('arrow')}</a>
+        ${themeButton('theme-toggle--menu')}
       </nav>
       <div class="header__actions">
+        ${themeButton('theme-toggle--header icon-btn')}
         <button class="icon-btn" type="button" data-search-open aria-expanded="false" aria-controls="search-panel" aria-label="${t('a11y.openSearch')}">${icon('search')}</button>
         <button class="lang-btn" type="button" data-lang="${otherLang}" lang="${otherLang}" aria-label="${t('a11y.switchLang')}">${t('lang.switch')}</button>
         <!-- "Sign in", or the user's name + menu: filled by initAuthSlot() -->
@@ -149,6 +153,45 @@ function renderFooter() {
     </div>`;
 }
 
+/* ---------- Light / dark theme ---------- */
+
+// The browser's status-bar color (PWA) for each theme
+const THEME_COLORS = { dark: '#0A0909', light: '#F5F3F0' };
+const currentTheme = () => (document.documentElement.dataset.theme === 'light' ? 'light' : 'dark');
+
+// One button with both icons: CSS shows the sun in dark mode and the moon in light mode
+function themeButton(extraClass) {
+  return `<button class="theme-toggle ${extraClass}" type="button" data-theme-toggle>${icon('sun')}${icon('moon')}<span class="theme-toggle__label"></span></button>`;
+}
+
+function initTheme() {
+  const label = () => t(currentTheme() === 'dark' ? 'theme.toLight' : 'theme.toDark');
+  const update = () => document.querySelectorAll('[data-theme-toggle]').forEach((button) => {
+    button.setAttribute('aria-label', label());
+    button.querySelector('.theme-toggle__label').textContent = label();
+  });
+
+  document.querySelectorAll('[data-theme-toggle]').forEach((button) => button.addEventListener('click', () => {
+    const theme = currentTheme() === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = theme;
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', THEME_COLORS[theme]);
+    try {
+      localStorage.setItem(STORAGE_KEYS.theme, theme);
+    } catch {
+      // Storage blocked (private mode): the theme still changes for this page
+    }
+    update();
+  }));
+  update();
+}
+
+// Installable app (PWA). Browsers only allow it on https or localhost.
+function registerServiceWorker() {
+  if (!('serviceWorker' in navigator)) return;
+  if (location.protocol !== 'https:' && location.hostname !== 'localhost') return;
+  navigator.serviceWorker.register('/sw.js').catch((error) => console.warn('[pwa]', error));
+}
+
 /* ---------- Header: "Sign in" or the user's name + menu ---------- */
 
 async function initAuthSlot() {
@@ -174,7 +217,10 @@ function renderUserMenu(slot, { profile }, name, signOut) {
       </button>
       <ul class="user-menu__list" id="user-menu-list" hidden>
         <li><a href="/account">${t('auth.account')}</a></li>
-        ${profile?.role === 'admin' ? `<li><a href="/admin/applications">${t('auth.admin')}</a></li>` : ''}
+        ${profile?.role === 'store' ? `<li><a href="/store/dashboard">${t('auth.dashboard')}</a></li>` : ''}
+        ${profile?.role === 'admin' ? `
+          <li><a href="/admin/applications">${t('auth.admin')}</a></li>
+          <li><a href="/admin/products">${t('auth.adminProducts')}</a></li>` : ''}
         <li><button type="button" data-sign-out>${t('auth.signOut')}</button></li>
       </ul>
     </div>`;

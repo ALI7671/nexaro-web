@@ -18,7 +18,8 @@
   "audiences": [
     { "id": "men", "name": { "ar": "رجال", "en": "Men" } },
     { "id": "women", "name": { "ar": "نساء", "en": "Women" } },
-    { "id": "youth", "name": { "ar": "شباب", "en": "Youth" } }
+    { "id": "youth", "name": { "ar": "شباب", "en": "Youth" } },
+    { "id": "kids", "name": { "ar": "أطفال", "en": "Kids" } }
   ],
   "styles": [
     { "id": "sport", "name": { "ar": "رياضي", "en": "Sport" } },
@@ -51,6 +52,7 @@
     { "id": "tops", "name": { "ar": "مقاسات الملابس", "en": "Clothing (S–XXL)" }, "sizes": ["S", "M", "L", "XL", "XXL"] },
     { "id": "pants", "name": { "ar": "بناطيل (الخصر بالإنش)", "en": "Pants (waist, in)" }, "sizes": ["28", "30", "32", "34", "36", "38"] },
     { "id": "shoes", "name": { "ar": "أحذية (EU)", "en": "Shoes (EU)" }, "sizes": ["39", "40", "41", "42", "43", "44", "45"] },
+    { "id": "kids", "name": { "ar": "أطفال (العمر)", "en": "Kids (age)" }, "sizes": ["2y", "4y", "6y", "8y", "10y", "12y", "14y"] },
     { "id": "one-size", "name": { "ar": "مقاس واحد", "en": "One size" }, "sizes": ["one-size"] }
   ]
 }

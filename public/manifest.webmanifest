@@ -1,0 +1,21 @@
+{
+  "name": "Nexaro — Wear Your Next",
+  "short_name": "Nexaro",
+  "description": "أفضل متاجر الأزياء الفلسطينية في مكان واحد، تصل إلى باب بيتك.",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0A0909",
+  "theme_color": "#0A0909",
+  "icons": [
+    { "src": "/images/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/images/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/images/icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "لوحة المتجر", "short_name": "لوحتي", "url": "/store/dashboard", "icons": [{ "src": "/images/icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "تسوّق", "short_name": "تسوّق", "url": "/shop", "icons": [{ "src": "/images/icons/icon-192.png", "sizes": "192x192" }] }
+  ]
+}

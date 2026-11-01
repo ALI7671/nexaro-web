@@ -3,8 +3,8 @@
 import { startPage, observeReveals } from '../layout.js';
 import { getStore, getStoreBySlug, getProducts, getLookups } from '../data.js';
 import { t, tn, localize } from '../i18n.js';
-import { productCard, storeVisual, verifiedBadge, breadcrumb, notFound, icon } from '../components.js';
-import { escapeHtml, getParam, storeUrl, whatsappShareLink, copyText } from '../utils.js';
+import { productCard, storeVisual, verifiedBadge, breadcrumb, notFound, icon, emptyState } from '../components.js';
+import { escapeHtml, getParam, storeUrl, whatsappShareLink, copyText, instagramProfile } from '../utils.js';
 
 // "/store/dar-alrajul" → "dar-alrajul"; old links "/store?id=dar-alrajul" still work
 async function findStore() {
@@ -37,6 +37,8 @@ startPage(async () => {
   // Only show category buttons this store actually has
   const categories = lookups.categories.filter((category) => products.some((p) => p.category === category.id));
 
+  const instagram = instagramProfile(store.instagram);
+
   root.innerHTML = `
     ${breadcrumb([{ href: '/', label: t('nav.home') }, { href: '/stores', label: t('nav.stores') }, { label: name }])}
     <section class="store-hero container">
@@ -47,6 +49,7 @@ startPage(async () => {
         ${verifiedBadge(store)}
         <p class="lead">${escapeHtml(localize(store.bio))}</p>
         <p class="muted store-hero__count">${tn('common.pieces', products.length)}</p>
+        ${instagram ? `<a class="text-link store-hero__instagram" href="${instagram.url}" target="_blank" rel="noopener" dir="ltr">${icon('instagram')}<span>@${escapeHtml(instagram.handle)}</span></a>` : ''}
         <div class="share-row" role="group" aria-label="${t('store.share')}">
           <button class="btn btn--small" type="button" id="copy-link">${icon('link')}<span>${t('store.copyLink')}</span></button>
           <a class="btn btn--small" id="share-whatsapp" href="#" target="_blank" rel="noopener">${icon('share')}<span>${t('store.shareWhatsapp')}</span></a>
@@ -73,7 +76,7 @@ startPage(async () => {
 
   function render(category) {
     const visible = category ? products.filter((p) => p.category === category) : products;
-    grid.innerHTML = visible.map(productCard).join('');
+    grid.innerHTML = visible.length ? visible.map(productCard).join('') : emptyState(t('store.noProducts'));
     filter.querySelectorAll('[data-category]').forEach((button) => {
       button.setAttribute('aria-pressed', String(button.dataset.category === category));
     });

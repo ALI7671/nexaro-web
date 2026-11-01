@@ -7,7 +7,10 @@
   <meta name="description" content="" data-i18n-attr="content:pages.sizeGuide.description">
   <meta name="theme-color" content="#0A0909">
   <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
-  <script>(function () { var l = 'ar'; try { var p = new URLSearchParams(location.search).get('lang'); l = p === 'en' || p === 'ar' ? p : (localStorage.getItem('nexaro.lang') === 'en' ? 'en' : 'ar'); } catch (e) {} document.documentElement.lang = l; document.documentElement.dir = l === 'ar' ? 'rtl' : 'ltr'; })();</script>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
+  <!-- Language, direction and theme are set here, before anything paints (no flash) -->
+  <script>(function () { var d = document.documentElement, l = 'ar', t = 'dark'; try { var p = new URLSearchParams(location.search).get('lang'); l = p === 'en' || p === 'ar' ? p : (localStorage.getItem('nexaro.lang') === 'en' ? 'en' : 'ar'); t = localStorage.getItem('nexaro.theme') === 'light' ? 'light' : 'dark'; } catch (e) {} d.lang = l; d.dir = l === 'ar' ? 'rtl' : 'ltr'; d.setAttribute('data-theme', t); var m = document.querySelector('meta[name="theme-color"]'); if (m) m.content = t === 'light' ? '#F5F3F0' : '#0A0909'; })();</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500&family=Montserrat:wght@200;300;400;500&display=swap">

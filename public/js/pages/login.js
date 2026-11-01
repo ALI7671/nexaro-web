@@ -15,11 +15,13 @@ startPage(async () => {
   const formError = document.getElementById('login-error');
 
   // Why the visitor was sent here
-  if (params.get('reason') === 'admin') showMessage(notice, t('auth.adminOnly'));
+  const reason = params.get('reason'); // set when a logged-in user lacked the right account type
+  if (reason === 'admin') showMessage(notice, t('auth.adminOnly'));
+  else if (reason === 'store') showMessage(notice, t('auth.storeOnly'));
   else if (params.get('next')) showMessage(notice, t('auth.loginRequired'));
 
-  // Already logged in (and not sent here for lacking admin rights)? Go straight on.
-  if (params.get('reason') !== 'admin') {
+  // Already logged in (and not sent here for lacking the right account type)? Go straight on.
+  if (!reason) {
     const current = await getCurrentUser().catch(() => null);
     if (current) {
       location.replace(next);

@@ -5,7 +5,7 @@ import { startPage } from '../layout.js';
 import { t } from '../i18n.js';
 import { getSupabase, requireUser, errorKey } from '../auth.js';
 import { icon } from '../components.js';
-import { escapeHtml, formatDate } from '../utils.js';
+import { escapeHtml, formatDate, instagramProfile } from '../utils.js';
 import { showMessage } from '../forms.js';
 
 const STATUSES = ['pending', 'approved', 'rejected'];
@@ -59,7 +59,7 @@ function render() {
 
 // Everything that came from an applicant is escaped before it goes into the page
 function applicationCard(app) {
-  const instagram = instagramLink(app.instagram);
+  const instagram = instagramProfile(app.instagram);
   const whatsapp = whatsappNumber(app.phone);
   const actions = ['approved', 'rejected']
     .filter((status) => status !== app.status)
@@ -114,12 +114,6 @@ async function onReview(event) {
   render();
 }
 
-// "@shop", "shop" or "instagram.com/shop" → a safe link to that profile
-function instagramLink(value) {
-  if (!value) return null;
-  const handle = value.trim().match(/^@?([\w.]{1,30})$/)?.[1] ?? value.match(/instagram\.com\/([\w.]{1,30})/i)?.[1];
-  return handle ? { handle, url: `https://www.instagram.com/${handle}` } : null;
-}
 
 // Palestinian mobile in any common format → the international number WhatsApp needs
 function whatsappNumber(value) {

@@ -1,7 +1,7 @@
 // HTML builders for pieces used on several pages (cards, icons, breadcrumbs...).
 // Each returns a string; pages put it into the DOM with innerHTML.
 import { t, tn, localize } from './i18n.js';
-import { escapeHtml, storeUrl } from './utils.js';
+import { escapeHtml, storeUrl, formatPrice } from './utils.js';
 
 const ICONS = {
   search: '<circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/>',
@@ -21,6 +21,13 @@ const ICONS = {
   gift: '<rect x="4" y="10" width="16" height="10" rx="1"/><path d="M3 7h18v3H3zM12 7v13M12 7c-1.5-3-5-3.5-5-1s5 1 5 1Zm0 0c1.5-3 5-3.5 5-1s-5 1-5 1Z"/>',
   store: '<path d="M4 9h16l-1.5-4h-13zM5 9v10h14V9M10 19v-5h4v5"/>',
   user: '<circle cx="12" cy="8" r="3.6"/><path d="M4.5 20c1.3-3.7 4.1-5.6 7.5-5.6s6.2 1.9 7.5 5.6"/>',
+  sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/>',
+  moon: '<path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/>',
+  image: '<rect x="3" y="4" width="18" height="16" rx="1"/><circle cx="9" cy="10" r="2"/><path d="m3 17 5-4 4 3 3-2 6 4"/>',
+  trash: '<path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/>',
+  edit: '<path d="M4 20h4L19 9l-4-4L4 16v4ZM13 7l4 4"/>',
+  chevron: '<path d="m9 6 6 6-6 6"/>',
+  dashboard: '<rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="5" rx="1"/><rect x="13" y="10" width="8" height="11" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/>',
   cash: '<rect x="3" y="6" width="18" height="12" rx="1"/><circle cx="12" cy="12" r="2.5"/><path d="M6.5 9.5v5M17.5 9.5v5"/>',
   swap: '<path d="M4 9h13l-3.5-3.5M20 15H7l3.5 3.5"/>',
   truck: '<path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/>',
@@ -32,13 +39,26 @@ export function icon(name) {
 }
 
 export function sizeLabel(size) {
-  return size === 'one-size' ? t('sizes.oneSize') : size;
+  if (size === 'one-size') return t('sizes.oneSize');
+  const age = /^(\d+)y$/.exec(size); // kids' sizes: "6y" → "عمر 6" / "Age 6"
+  return age ? t('sizes.age', { n: age[1] }) : size;
 }
 
-// Stores have no photos yet, so they get a typographic monogram instead
+// "120 ₪", with the old price crossed out when there is one; or "Price on request"
+export function priceHtml(product, className = 'product-card__price') {
+  if (product.price === null || product.price === undefined) {
+    return `<p class="${className}">${t('common.priceOnRequest')}</p>`;
+  }
+  const old = product.compareAtPrice > product.price
+    ? ` <s class="price-old"><span class="sr-only">${t('price.was')} </span>${formatPrice(product.compareAtPrice)}</s>`
+    : '';
+  return `<p class="${className} has-price"><span class="price-now">${formatPrice(product.price)}</span>${old}</p>`;
+}
+
+// A store's logo, or (no logo yet) a typographic monogram
 export function storeVisual(store) {
   if (store.logo) return `<img src="${escapeHtml(store.logo)}" alt="" loading="lazy">`;
-  return `<span class="monogram" aria-hidden="true">${escapeHtml(store.name.en.charAt(0))}</span>`;
+  return `<span class="monogram" aria-hidden="true">${escapeHtml((store.name.en || store.name.ar).charAt(0))}</span>`;
 }
 
 // ✓ "متجر موثّق / Verified" for verified stores, nothing otherwise.
@@ -68,7 +88,7 @@ export function productCard(product, index = 0) {
         <div class="product-card__body">
           <p class="product-card__store">${escapeHtml(localize(product.store.name))}${verifiedBadge(product.store, { compact: true })} · ${escapeHtml(localize(product.store.cityName))}</p>
           <h3 class="product-card__name">${escapeHtml(localize(product.name))}</h3>
-          <p class="product-card__price">${t('common.priceOnRequest')}</p>
+          ${priceHtml(product)}
         </div>
       </a>
     </article>`;

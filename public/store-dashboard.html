@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n="pages.dashboard.title">Nexaro</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#0A0909">
+  <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
+  <!-- Language, direction and theme are set here, before anything paints (no flash) -->
+  <script>(function () { var d = document.documentElement, l = 'ar', t = 'dark'; try { var p = new URLSearchParams(location.search).get('lang'); l = p === 'en' || p === 'ar' ? p : (localStorage.getItem('nexaro.lang') === 'en' ? 'en' : 'ar'); t = localStorage.getItem('nexaro.theme') === 'light' ? 'light' : 'dark'; } catch (e) {} d.lang = l; d.dir = l === 'ar' ? 'rtl' : 'ltr'; d.setAttribute('data-theme', t); var m = document.querySelector('meta[name="theme-color"]'); if (m) m.content = t === 'light' ? '#F5F3F0' : '#0A0909'; })();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500&family=Montserrat:wght@200;300;400;500&display=swap">
+  <link rel="stylesheet" href="/css/style.css">
+  <script type="module" src="/js/pages/store-dashboard.js"></script>
+</head>
+<body data-nav="dashboard">
+  <a class="skip-link" href="#main" data-i18n="a11y.skip"></a>
+  <header class="site-header" id="site-header"></header>
+
+  <!-- Store owners only (js/pages/store-dashboard.js sends everyone else to /login).
+       The real protection is Row Level Security in supabase/phase4.sql: an owner can
+       only read and change their own store's products, images and files. -->
+  <main id="main" tabindex="-1">
+    <div class="container dash-head">
+      <p class="eyebrow" data-i18n="dash.eyebrow"></p>
+      <h1 class="dash-title" id="dash-store-name"></h1>
+      <p class="dash-store-meta">
+        <span id="dash-verified"></span>
+        <a class="text-link" id="dash-store-link" href="/stores" data-i18n="dash.viewStore"></a>
+      </p>
+      <nav class="dash-tabs" aria-label="" data-i18n-attr="aria-label:dash.title">
+        <a class="dash-tab" href="#products" data-tab="products"><span data-icon="dashboard"></span><span data-i18n="dash.myProducts"></span></a>
+        <a class="dash-tab" href="#store" data-tab="store"><span data-icon="store"></span><span data-i18n="dash.storeInfo"></span></a>
+      </nav>
+    </div>
+
+    <section class="container section-bottom">
+      <p class="auth-notice" id="dash-message" role="status" hidden></p>
+
+      <!-- 1. My products -->
+      <div class="dash-view" id="view-products" hidden>
+        <div class="dash-toolbar">
+          <div class="dash-search">
+            <span data-icon="search"></span>
+            <label class="sr-only" for="product-search" data-i18n="dash.search"></label>
+            <input class="field__input" id="product-search" type="search" autocomplete="off" data-i18n-attr="placeholder:dash.search">
+          </div>
+          <a class="btn btn--solid dash-add" href="#new"><span data-icon="plus"></span><span data-i18n="dash.addProduct"></span></a>
+        </div>
+        <div class="pill-row dash-filter" id="status-filter" role="group" data-i18n-attr="aria-label:dash.filterLabel"></div>
+        <ul class="dash-list" id="product-list"></ul>
+      </div>
+
+      <!-- 2. Add / edit a product -->
+      <form class="form dash-form" id="product-form" novalidate hidden>
+        <div class="dash-form__head">
+          <a class="text-link dash-back" href="#products" data-i18n="dash.backToProducts"></a>
+          <h2 class="section-title" id="pf-title"></h2>
+          <span class="status-badge" id="pf-status" hidden></span>
+        </div>
+        <div class="auth-notice" id="pf-review-note" hidden></div>
+        <p class="auth-notice" id="pf-published-note" hidden data-i18n="dash.publishedNote"></p>
+
+        <fieldset class="form-section">
+          <legend class="form-section__title" data-i18n="dash.sectionNames"></legend>
+          <div class="form__row">
+            <div class="field">
+              <label class="field__label" for="pf-name-ar" data-i18n="dash.nameAr"></label>
+              <input class="field__input" id="pf-name-ar" name="name_ar" type="text" dir="rtl" lang="ar" maxlength="120" aria-describedby="pf-name-ar-error">
+              <p class="field__error" id="pf-name-ar-error" hidden></p>
+            </div>
+            <div class="field">
+              <label class="field__label" for="pf-name-en" data-i18n="dash.nameEn"></label>
+              <input class="field__input" id="pf-name-en" name="name_en" type="text" dir="ltr" lang="en" maxlength="120" aria-describedby="pf-name-en-error">
+              <p class="field__error" id="pf-name-en-error" hidden></p>
+            </div>
+          </div>
+          <div class="field">
+            <label class="field__label" for="pf-desc-ar"><span data-i18n="dash.descAr"></span> <span class="field__optional" data-i18n="form.optional"></span></label>
+            <textarea class="field__textarea field__textarea--short" id="pf-desc-ar" name="description_ar" dir="rtl" lang="ar" maxlength="2000"></textarea>
+          </div>
+          <div class="field">
+            <label class="field__label" for="pf-desc-en"><span data-i18n="dash.descEn"></span> <span class="field__optional" data-i18n="form.optional"></span></label>
+            <textarea class="field__textarea field__textarea--short" id="pf-desc-en" name="description_en" dir="ltr" lang="en" maxlength="2000"></textarea>
+          </div>
+        </fieldset>
+
+        <fieldset class="form-section">
+          <legend class="form-section__title" data-i18n="dash.sectionImages"></legend>
+          <p class="field__hint" data-i18n="dash.imagesHint"></p>
+          <ul class="image-grid" id="pf-images"></ul>
+          <label class="btn btn--block image-add" id="pf-images-add">
+            <span data-icon="image"></span><span data-i18n="dash.addImages"></span> <span id="pf-images-count"></span>
+            <input class="sr-only" id="pf-images-input" type="file" accept="image/*" multiple>
+          </label>
+          <p class="field__error" id="pf-images-error" role="alert" hidden></p>
+        </fieldset>
+
+        <fieldset class="form-section">
+          <legend class="form-section__title" data-i18n="dash.sectionDetails"></legend>
+          <div class="option-group">
+            <span class="option-group__legend" id="pf-section-label" data-i18n="dash.section"></span>
+            <div class="chips" id="pf-section" role="radiogroup" aria-labelledby="pf-section-label"></div>
+            <p class="field__error" id="pf-section-error" hidden></p>
+          </div>
+          <div class="field">
+            <label class="field__label" for="pf-category" data-i18n="shop.category"></label>
+            <select class="field__select" id="pf-category" name="category" aria-describedby="pf-category-error"></select>
+            <p class="field__error" id="pf-category-error" hidden></p>
+          </div>
+          <div class="option-group">
+            <span class="option-group__legend" data-i18n="product.size"></span>
+            <div id="pf-sizes"></div>
+            <p class="field__error" id="pf-sizes-error" hidden></p>
+          </div>
+          <div class="option-group">
+            <span class="option-group__legend" id="pf-colors-label" data-i18n="dash.colors"></span>
+            <div class="chips" id="pf-colors" role="group" aria-labelledby="pf-colors-label"></div>
+          </div>
+          <div class="option-group">
+            <span class="option-group__legend" id="pf-occasions-label" data-i18n="shop.occasion"></span>
+            <div class="chips" id="pf-occasions" role="group" aria-labelledby="pf-occasions-label"></div>
+          </div>
+          <label class="check-field">
+            <input type="checkbox" id="pf-made" name="made_in_palestine">
+            <span data-i18n="common.madeInPalestine"></span>
+          </label>
+        </fieldset>
+
+        <fieldset class="form-section">
+          <legend class="form-section__title" data-i18n="dash.sectionPrice"></legend>
+          <div class="form__row">
+            <div class="field">
+              <label class="field__label" for="pf-price"><span data-i18n="dash.price"></span> <span class="field__optional" data-i18n="form.optional"></span></label>
+              <input class="field__input" id="pf-price" name="price" type="number" inputmode="decimal" min="0" step="0.5" dir="ltr" aria-describedby="pf-price-hint pf-price-error">
+              <p class="field__hint" id="pf-price-hint" data-i18n="dash.priceHint"></p>
+              <p class="field__error" id="pf-price-error" hidden></p>
+            </div>
+            <div class="field">
+              <label class="field__label" for="pf-compare"><span data-i18n="dash.comparePrice"></span> <span class="field__optional" data-i18n="form.optional"></span></label>
+              <input class="field__input" id="pf-compare" name="compare_at_price" type="number" inputmode="decimal" min="0" step="0.5" dir="ltr" aria-describedby="pf-compare-hint pf-compare-error">
+              <p class="field__hint" id="pf-compare-hint" data-i18n="dash.compareHint"></p>
+              <p class="field__error" id="pf-compare-error" hidden></p>
+            </div>
+          </div>
+        </fieldset>
+
+        <p class="field__error" id="pf-error" role="alert" hidden></p>
+        <p class="dash-progress" id="pf-progress" role="status" hidden></p>
+        <div class="dash-actions">
+          <button class="btn btn--solid" type="submit" data-status="pending" data-i18n="dash.submitReview"></button>
+          <button class="btn" type="submit" data-status="draft" data-i18n="dash.saveDraft"></button>
+        </div>
+        <div class="dash-danger" id="pf-delete" hidden></div>
+      </form>
+
+      <!-- 3. Store details -->
+      <form class="form dash-form" id="store-form" novalidate hidden>
+        <h2 class="section-title" data-i18n="dash.storeInfo"></h2>
+        <div class="dash-logo">
+          <div class="dash-logo__preview" id="sf-logo-preview"></div>
+          <label class="btn btn--small">
+            <span data-icon="image"></span><span data-i18n="dash.changeLogo"></span>
+            <input class="sr-only" id="sf-logo-input" type="file" accept="image/*">
+          </label>
+        </div>
+        <div class="form__row">
+          <div class="field">
+            <span class="field__label" data-i18n="join.storeName"></span>
+            <p class="account-value" id="sf-name"></p>
+          </div>
+          <div class="field">
+            <span class="field__label" data-i18n="join.city"></span>
+            <p class="account-value" id="sf-city"></p>
+          </div>
+        </div>
+        <p class="field__hint" data-i18n="dash.lockedFields"></p>
+        <div class="field">
+          <label class="field__label" for="sf-description" data-i18n="storeSignup.description"></label>
+          <textarea class="field__textarea" id="sf-description" name="description" maxlength="1000"></textarea>
+        </div>
+        <div class="form__row">
+          <div class="field">
+            <label class="field__label" for="sf-instagram"><span data-i18n="join.instagram"></span> <span class="field__optional" data-i18n="form.optional"></span></label>
+            <input class="field__input" id="sf-instagram" name="instagram" type="text" inputmode="url" dir="ltr" maxlength="120" aria-describedby="sf-instagram-error">
+            <p class="field__error" id="sf-instagram-error" hidden></p>
+          </div>
+          <div class="field">
+            <label class="field__label" for="sf-whatsapp" data-i18n="dash.whatsapp"></label>
+            <input class="field__input" id="sf-whatsapp" name="whatsapp" type="tel" inputmode="tel" dir="ltr" maxlength="20" aria-describedby="sf-whatsapp-hint sf-whatsapp-error">
+            <p class="field__hint" id="sf-whatsapp-hint" data-i18n="join.phoneHint"></p>
+            <p class="field__error" id="sf-whatsapp-error" hidden></p>
+          </div>
+        </div>
+        <p class="field__error" id="sf-error" role="alert" hidden></p>
+        <p class="auth-notice" id="sf-saved" role="status" hidden></p>
+        <button class="btn btn--solid btn--block" type="submit" data-i18n="account.save"></button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+</body>
+</html>

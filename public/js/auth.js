@@ -51,14 +51,17 @@ export function displayName({ user, profile }) {
   return profile?.full_name || user.user_metadata?.full_name || user.email.split('@')[0];
 }
 
-// For protected pages (/account, /admin/*). Sends visitors who aren't allowed to /login.
-// Resolves with { user, profile } only when the visitor may see the page.
-export async function requireUser({ admin = false } = {}) {
+// For protected pages (/account, /admin/*, /store/dashboard). Sends visitors who aren't
+// allowed to /login. Resolves with { user, profile } only when the visitor may see the page.
+//   requireUser()                  any logged-in user
+//   requireUser({ admin: true })   admins only
+//   requireUser({ role: 'store' }) store owners only
+export async function requireUser({ admin = false, role = admin ? 'admin' : null } = {}) {
   const current = await getCurrentUser().catch(() => null);
-  if (current && (!admin || current.profile?.role === 'admin')) return current;
+  if (current && (!role || current.profile?.role === role)) return current;
 
   const params = new URLSearchParams({ next: location.pathname });
-  if (current && admin) params.set('reason', 'admin');
+  if (current && role) params.set('reason', role); // logged in, but the wrong kind of account
   location.replace(`/login?${params}`);
   return new Promise(() => {}); // never resolves: the page stays hidden while the browser leaves
 }
@@ -90,14 +93,18 @@ const ERROR_KEYS = {
   signup_disabled: 'signupDisabled',
   session_not_found: 'sessionExpired',
   23505: 'duplicatePending', // unique index: already has a pending application
+  23514: 'invalidData', // a database check failed (e.g. more than 5 images)
   42501: 'notAllowed', // blocked by Row Level Security or a permission check
 };
 
 export function errorKey(error) {
   if (!error) return 'authErrors.generic';
   if (error.message === 'not-configured') return 'authErrors.notConfigured';
+  const status = Number(error.status ?? error.statusCode); // Storage errors use statusCode
   const key = ERROR_KEYS[error.code]
-    ?? (error.status === 429 ? 'rateLimit' : null)
+    ?? (status === 429 ? 'rateLimit' : null)
+    ?? (status === 413 || /too large|exceeded the maximum/i.test(error.message) ? 'fileTooLarge' : null)
+    ?? (/row-level security|unauthorized/i.test(error.message) ? 'notAllowed' : null)
     ?? (/invalid login credentials/i.test(error.message) ? 'invalidCredentials' : null)
     ?? (error.name === 'AuthRetryableFetchError' || /failed to fetch|network/i.test(error.message) ? 'network' : null)
     ?? 'generic';

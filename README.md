@@ -94,6 +94,22 @@ First time on a new computer: `npm install`, then `npx playwright install chromi
 - **Make yourself admin**: sign up on the site, then run the last (commented) line of `schema.sql` with your email.
 - **Render**: add `SUPABASE_URL` and `SUPABASE_ANON_KEY` as environment variables. In Supabase → Authentication → URL Configuration, add your live address next to `http://localhost:3000`.
 
+## Stores, products and the dashboard (Phase 4)
+
+- **Database**: run `supabase/phase4.sql` after `schema.sql`. It adds `stores`, `products`, `product_images`, the `product-images` storage bucket and their security rules. Approving a store application creates the store automatically.
+- **Store dashboard** `/store/dashboard` (store accounts only): store details and logo, "My products" with search and status filters, and an add/edit form (AR/EN, section, category, sizes, colours, occasions, price, price before discount, Made in Palestine, up to 5 photos). Photos are shrunk in the browser to WebP (max 1600px) before uploading. "حفظ كمسودة" / "أرسل للمراجعة"; owners can never publish.
+- **Admin** `/admin/products`: publish or reject (with a reason the store sees) the products sent for review.
+- **Public site**: Shop, Store and Product pages show real stores and *published* products from Supabase (read with the anon key; RLS hides everything else). Prices show when set, otherwise "السعر عند الطلب".
+- **Demo data**: `DEMO_CATALOG` in `js/config.js`: `'auto'` (demo stores only until the first real store exists), `'always'` or `'never'`.
+- **Discount codes**: `PROMO_CODES` in `js/config.js` (NEXARO10 = 10%). The code and the discounted price go into the WhatsApp order message.
+
+## Light / dark theme and the app (PWA)
+
+- **Theme**: dark is the default. The sun/moon button (header on desktop, menu on phones) saves the choice in `localStorage` (`nexaro.theme`). The inline script in every page's `<head>` applies it before the page paints, and updates `<meta name="theme-color">`.
+- **Colours** all live in CSS variables at the top of `css/style.css` (`:root` and `:root[data-theme="light"]`).
+- **Logo**: a light, single-colour `logo.png` is inverted automatically in light mode (`--logo-filter`). If your logo has colours, set `--logo-filter: none` for the light theme and add a version made for light backgrounds.
+- **PWA**: `manifest.webmanifest`, icons in `images/icons/`, and `sw.js` (network first; it never caches Supabase, logins or `/config.js`). It's installable on https (Render) and on localhost.
+
 ## Placeholders to replace before launch
 
 - WhatsApp number `970599000000` and the display number `+970 599 000 000` (`js/config.js`)

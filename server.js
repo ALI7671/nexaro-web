@@ -27,22 +27,57 @@ app.get('/config.js', (req, res) => {
     .join('\n'));
 });
 
-// /admin on its own goes to the only admin page for now
+// /admin on its own goes to the store applications
 app.get(['/admin', '/admin/'], (req, res) => res.redirect('/admin/applications'));
 
 // The join form moved to the For Stores page; keep old links working
 app.get(['/join', '/join.html'], (req, res) => res.redirect(301, '/for-stores'));
 
 // Read on every request (it's tiny), so editing stores.json needs no restart.
-// Phase 2: this becomes a Supabase query.
 const readStores = () => JSON.parse(fs.readFileSync(path.join(PUBLIC_DIR, 'data', 'stores.json'), 'utf8'));
 const sendNotFound = (res) => res.status(404).sendFile(path.join(PUBLIC_DIR, '404.html'));
 
+// Is there a real (Supabase) store with this slug? Uses the public anon key, like the
+// browser does. Answers are remembered for a minute. null = couldn't check.
+const slugCache = new Map();
+async function realStoreExists(slug) {
+  const { SUPABASE_URL: url, SUPABASE_ANON_KEY: key } = process.env;
+  if (!url || !key) return false;
+  const cached = slugCache.get(slug);
+  if (cached && cached.time > Date.now() - 60_000) return cached.exists;
+  try {
+    const response = await fetch(`${url}/rest/v1/stores?select=id&slug=eq.${encodeURIComponent(slug)}`, {
+      headers: { apikey: key },
+      signal: AbortSignal.timeout(4000),
+    });
+    if (!response.ok) return null;
+    const exists = (await response.json()).length > 0;
+    slugCache.set(slug, { exists, time: Date.now() });
+    return exists;
+  } catch {
+    return null;
+  }
+}
+
+// The store owner's dashboard (must come before /store/:slug)
+app.get(['/store/dashboard', '/store/dashboard/'], (req, res) => {
+  res.sendFile(path.join(PUBLIC_DIR, 'store-dashboard.html'));
+});
+
 // Clean store links: /store/dar-alrajul serves the store page template.
-// An unknown slug gets a real 404, which matters for search engines later.
-app.get('/store/:slug', (req, res) => {
-  if (!readStores().some((store) => store.slug === req.params.slug)) return sendNotFound(res);
+// An unknown slug gets a real 404, which matters for search engines.
+// If Supabase can't be reached, the page is served and shows its own "not found".
+app.get('/store/:slug', async (req, res) => {
+  const { slug } = req.params;
+  const known = readStores().some((store) => store.slug === slug) || (await realStoreExists(slug)) !== false;
+  if (!known) return sendNotFound(res);
   res.sendFile(path.join(PUBLIC_DIR, 'store.html'));
+});
+
+// The service worker must never be cached, or updates to it wouldn't reach people
+app.get('/sw.js', (req, res) => {
+  res.set('Cache-Control', 'no-cache');
+  res.sendFile(path.join(PUBLIC_DIR, 'sw.js'));
 });
 
 // Old links (/store?id=aseel) move permanently to the clean URL

@@ -1,6 +1,22 @@
 // Small helpers shared by every page.
-import { WHATSAPP_NUMBER } from './config.js';
+import { WHATSAPP_NUMBER, CURRENCY, PROMO_CODES } from './config.js';
 import { getLang } from './i18n.js';
+
+// 120 → "120 ₪" (Arabic) / "₪120" (English); decimals only when there are some
+export function formatPrice(amount) {
+  return new Intl.NumberFormat(getLang() === 'ar' ? 'ar-u-nu-latn' : 'en', {
+    style: 'currency',
+    currency: CURRENCY,
+    minimumFractionDigits: Number.isInteger(amount) ? 0 : 2,
+    maximumFractionDigits: 2,
+  }).format(amount);
+}
+
+// " nexaro10 " → { code: 'NEXARO10', percent: 10 }, or null if the code doesn't exist
+export function findPromo(input) {
+  const code = String(input ?? '').trim().toUpperCase();
+  return PROMO_CODES[code] ? { code, ...PROMO_CODES[code] } : null;
+}
 
 // "1 Nov 2026" / "١ نوفمبر ٢٠٢٦" style dates (Arabic text, Western digits like the rest of the site)
 export function formatDate(value, options = { dateStyle: 'medium' }) {
@@ -64,6 +80,13 @@ export function whatsappLink(message) {
 // No phone number: WhatsApp asks the user which chat to share with
 export function whatsappShareLink(message) {
   return `https://wa.me/?text=${encodeURIComponent(message)}`;
+}
+
+// "@shop", "shop" or "instagram.com/shop" → { handle, url } for a safe link, or null
+export function instagramProfile(value) {
+  if (!value) return null;
+  const handle = value.trim().match(/^@?([\w.]{1,30})$/)?.[1] ?? value.match(/instagram\.com\/([\w.]{1,30})/i)?.[1];
+  return handle ? { handle, url: `https://www.instagram.com/${handle}` } : null;
 }
 
 // The one place store links are built: /store/dar-alrajul

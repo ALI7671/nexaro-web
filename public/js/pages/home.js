@@ -13,7 +13,9 @@ startPage(async () => {
     getStores(),
   ]);
 
-  document.getElementById('home-audiences').innerHTML = lookups.audiences.map(audienceTile).join('');
+  // Only sections that have pieces (e.g. "Kids" appears once a store adds kids' products)
+  document.getElementById('home-audiences').innerHTML = lookups.audiences
+    .filter((audience) => audience.productCount > 0).map(audienceTile).join('');
   document.getElementById('home-occasions').innerHTML = lookups.occasions.map(occasionTile).join('');
   document.getElementById('home-categories').innerHTML = lookups.categories.map(categoryTile).join('');
   document.getElementById('home-featured').innerHTML = featured.slice(0, 8).map(productCard).join('');

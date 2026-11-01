@@ -73,7 +73,10 @@
     "resetDone": "تم تغيير كلمة المرور بنجاح.",
     "resetInvalid": "رابط إعادة التعيين غير صالح أو انتهت صلاحيته. اطلب رابطاً جديداً من صفحة تسجيل الدخول.",
     "goToAccount": "إلى حسابي",
-    "backToLogin": "العودة لتسجيل الدخول"
+    "backToLogin": "العودة لتسجيل الدخول",
+    "dashboard": "لوحة المتجر",
+    "adminProducts": "مراجعة المنتجات",
+    "storeOnly": "هذه الصفحة لأصحاب المتاجر فقط. سجّل الدخول بحساب متجر."
   },
   "search": {
     "label": "ابحث في Nexaro",
@@ -107,7 +110,8 @@
     "madeInPalestine": "صُنع في فلسطين"
   },
   "sizes": {
-    "oneSize": "مقاس واحد"
+    "oneSize": "مقاس واحد",
+    "age": "عمر {n}"
   },
   "footer": {
     "about": "أفضل متاجر الأزياء الفلسطينية للرجال والنساء والشباب في مكان واحد، وتصل إلى باب بيتك.",
@@ -198,6 +202,12 @@
     },
     "admin": {
       "title": "طلبات المتاجر | Nexaro"
+    },
+    "dashboard": {
+      "title": "لوحة المتجر | Nexaro"
+    },
+    "adminProducts": {
+      "title": "مراجعة المنتجات | Nexaro"
     }
   },
   "home": {
@@ -276,7 +286,8 @@
     "copied": "تم نسخ الرابط",
     "copyFailed": "تعذّر النسخ تلقائياً. انسخ الرابط من الخانة: {url}",
     "shareWhatsapp": "مشاركة على واتساب",
-    "shareMessage": "شوف متجر {store} من {city} على Nexaro:\n{url}"
+    "shareMessage": "شوف متجر {store} من {city} على Nexaro:\n{url}",
+    "noProducts": "لا توجد قطع منشورة في هذا المتجر بعد."
   },
   "product": {
     "priceNote": "نرسل لك السعر عبر واتساب قبل تأكيد الطلب.",
@@ -294,7 +305,7 @@
     "notFoundTitle": "القطعة غير موجودة",
     "notFoundText": "ربما تغيّر رابط هذه القطعة أو لم تعد متوفرة.",
     "backToShop": "العودة إلى التسوّق",
-    "whatsappMessage": "مرحباً Nexaro، أود طلب هذه القطعة:\n\nالقطعة: {product}\nالمتجر: {store} – {city}\nالمقاس: {size}\nاللون: {color}\nطريقة الاستلام: {method}{gift}\n\n{url}",
+    "whatsappMessage": "مرحباً Nexaro، أود طلب هذه القطعة:\n\nالقطعة: {product}\nالمتجر: {store} – {city}\nالمقاس: {size}\nاللون: {color}{price}\nطريقة الاستلام: {method}{promo}{gift}\n\n{url}",
     "trustLabel": "ضمانات الطلب",
     "badgeCod": "الدفع عند الاستلام",
     "badgeExchange": "تبديل خلال 3 أيام",
@@ -309,7 +320,13 @@
     "giftCity": "مدينة المستلم",
     "giftMessage": "رسالة قصيرة مع الهدية",
     "whatsappGift": "\n\nهدية إلى: {name} – {city}",
-    "whatsappGiftMessage": "\nرسالة الهدية: {message}"
+    "whatsappGiftMessage": "\nرسالة الهدية: {message}",
+    "priceConfirmNote": "نؤكد معك السعر النهائي ورسوم التوصيل عبر واتساب.",
+    "photos": "صور القطعة",
+    "photoN": "الصورة {n}",
+    "whatsappPrice": "\nالسعر: {price}",
+    "whatsappPromo": "\nكود الخصم: {code} (خصم {percent}%)",
+    "whatsappPromoPrice": "\nالسعر بعد الخصم: {price}"
   },
   "about": {
     "eyebrow": "من نحن",
@@ -661,7 +678,9 @@
     "duplicatePending": "لديك طلب قيد المراجعة بالفعل.",
     "notAllowed": "ليس لديك صلاحية للقيام بذلك.",
     "notConfigured": "تسجيل الدخول غير متاح حالياً.",
-    "generic": "حدث خطأ. حاول مرة أخرى."
+    "generic": "حدث خطأ. حاول مرة أخرى.",
+    "invalidData": "بعض البيانات غير صالحة. راجعها وحاول مرة أخرى.",
+    "fileTooLarge": "الصورة كبيرة جداً. جرّب صورة أخرى."
   },
   "storeSignup": {
     "eyebrow": "للمتاجر",
@@ -697,7 +716,8 @@
     "sentOn": "أُرسل في {date}",
     "adminTitle": "الإدارة",
     "adminLink": "مراجعة طلبات المتاجر",
-    "applyCta": "تملك متجراً؟ قدّم طلب انضمام"
+    "applyCta": "تملك متجراً؟ قدّم طلب انضمام",
+    "dashboardLink": "افتح لوحة متجرك"
   },
   "admin": {
     "eyebrow": "الإدارة",
@@ -711,5 +731,106 @@
     "empty": "لا توجد طلبات هنا.",
     "applicant": "مقدّم الطلب",
     "whatsapp": "واتساب"
+  },
+  "theme": {
+    "toLight": "الوضع الفاتح",
+    "toDark": "الوضع الداكن"
+  },
+  "price": {
+    "was": "السعر قبل الخصم:"
+  },
+  "promo": {
+    "label": "كود الخصم",
+    "apply": "تطبيق",
+    "invalid": "الكود غير صحيح.",
+    "applied": "تم تطبيق {code}: خصم {percent}% يُحسب عند تأكيد الطلب.",
+    "appliedWithPrice": "تم تطبيق {code}: خصم {percent}%. السعر بعد الخصم {price}."
+  },
+  "dash": {
+    "eyebrow": "لوحة المتجر",
+    "title": "لوحة المتجر",
+    "viewStore": "عرض صفحة المتجر",
+    "myProducts": "منتجاتي",
+    "storeInfo": "بيانات المتجر",
+    "search": "ابحث في منتجاتك",
+    "addProduct": "منتج جديد",
+    "filterLabel": "تصفية حسب الحالة",
+    "backToProducts": "العودة إلى منتجاتي",
+    "publishedNote": "هذا المنتج منشور. أي تعديل يعيده للمراجعة قبل أن يظهر مرة أخرى.",
+    "sectionNames": "الاسم والوصف",
+    "nameAr": "الاسم بالعربية",
+    "nameEn": "الاسم بالإنجليزية",
+    "descAr": "الوصف بالعربية",
+    "descEn": "الوصف بالإنجليزية",
+    "sectionImages": "الصور",
+    "imagesHint": "حتى 5 صور. الأولى هي الصورة الرئيسية. تُصغَّر الصور تلقائياً قبل الرفع.",
+    "addImages": "أضف صوراً",
+    "sectionDetails": "التفاصيل",
+    "section": "القسم",
+    "colors": "الألوان",
+    "sectionPrice": "السعر",
+    "price": "السعر (₪)",
+    "priceHint": "اتركه فارغاً ليظهر «السعر عند الطلب».",
+    "comparePrice": "السعر قبل الخصم (₪)",
+    "compareHint": "يظهر مشطوباً بجانب السعر.",
+    "submitReview": "أرسل للمراجعة",
+    "saveDraft": "حفظ كمسودة",
+    "changeLogo": "تغيير الشعار",
+    "lockedFields": "لتغيير اسم المتجر أو المدينة، تواصل معنا.",
+    "whatsapp": "رقم واتساب المتجر",
+    "noStore": "لم يتم تجهيز متجرك بعد. سنتواصل معك قريباً.",
+    "productNotFound": "لم نجد هذا المنتج في متجرك.",
+    "statusDraft": "مسودة",
+    "statusPending": "قيد المراجعة",
+    "statusPublished": "منشور",
+    "statusRejected": "مرفوض",
+    "noMatches": "لا توجد منتجات تطابق بحثك.",
+    "empty": "لم تضف أي منتج بعد.",
+    "addFirst": "أضف أول منتج",
+    "rejectedBecause": "سبب الرفض:",
+    "updated": "آخر تعديل {date}",
+    "edit": "تعديل",
+    "delete": "حذف",
+    "confirmDelete": "متأكد من حذف «{name}»؟ لا يمكن التراجع عن الحذف.",
+    "confirmYes": "نعم، احذف",
+    "cancel": "إلغاء",
+    "deleting": "جارٍ الحذف…",
+    "deleted": "تم حذف «{name}».",
+    "chooseCategory": "اختر الفئة",
+    "editProduct": "تعديل المنتج",
+    "newProduct": "منتج جديد",
+    "deleteProduct": "حذف هذا المنتج",
+    "mainImage": "الرئيسية",
+    "moveEarlier": "تقديم الصورة {n}",
+    "moveLater": "تأخير الصورة {n}",
+    "removeImage": "إزالة الصورة {n}",
+    "errorName": "اكتب اسم المنتج (بالعربية أو بالإنجليزية).",
+    "errorSection": "اختر القسم.",
+    "errorSizes": "اختر مقاساً واحداً على الأقل.",
+    "errorImages": "أضف صورة واحدة على الأقل.",
+    "errorPrice": "أدخل سعراً صحيحاً.",
+    "errorCompare": "يجب أن يكون أعلى من السعر الحالي.",
+    "saving": "جارٍ الحفظ…",
+    "uploading": "جارٍ رفع الصور {n}/{total}…",
+    "sentForReview": "أُرسل «{name}» للمراجعة. سنراجعه قريباً.",
+    "savedDraft": "تم حفظ «{name}» كمسودة.",
+    "tooManyImages": "الحد الأقصى {max} صور.",
+    "preparingImages": "جارٍ تجهيز الصور…",
+    "imageError": "تعذّر قراءة الصورة {name}.",
+    "logoAlt": "شعار {name}"
+  },
+  "adminProducts": {
+    "title": "مراجعة المنتجات",
+    "empty": "لا توجد منتجات هنا.",
+    "publish": "نشر",
+    "reject": "رفض",
+    "noImages": "بدون صور",
+    "reason": "سبب الرفض",
+    "viewLive": "عرض في الموقع",
+    "reasonLabel": "سبب الرفض (يظهر للمتجر)",
+    "confirmReject": "تأكيد الرفض",
+    "reasonRequired": "اكتب سبباً قصيراً للرفض.",
+    "published": "تم نشر «{name}».",
+    "rejected": "تم رفض «{name}»."
   }
 }

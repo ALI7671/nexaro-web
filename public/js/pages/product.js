@@ -4,9 +4,9 @@
 import { startPage, observeReveals } from '../layout.js';
 import { getProduct, getProducts, getLookups } from '../data.js';
 import { t, localize } from '../i18n.js';
-import { productCard, icon, sizeLabel, breadcrumb, notFound, verifiedBadge, madeBadge } from '../components.js';
+import { productCard, icon, sizeLabel, breadcrumb, notFound, verifiedBadge, madeBadge, priceHtml } from '../components.js';
 import { showFieldError, clearFieldError, clearErrorsOnInput } from '../forms.js';
-import { escapeHtml, getParam, whatsappLink, storeUrl } from '../utils.js';
+import { escapeHtml, getParam, whatsappLink, storeUrl, formatPrice, findPromo } from '../utils.js';
 
 // How the customer receives the piece. The first one is the default.
 const RECEIVE_OPTIONS = ['delivery', 'pickup', 'gift'];
@@ -35,16 +35,29 @@ startPage(async () => {
   const tagLink = (filter, value, label) =>
     `<a class="pill" href="/shop?${filter}=${encodeURIComponent(value)}">${escapeHtml(localize(label))}</a>`;
 
+  // Real products can have up to 5 photos; demo products have one drawing
+  const images = product.images?.length ? product.images : [product.image];
+  const hasPrice = product.price !== null && product.price !== undefined;
+
   root.innerHTML = `
     ${breadcrumb([
       { href: '/', label: t('nav.home') },
       { href: '/shop', label: t('nav.shop') },
-      { href: `/shop?category=${product.category}`, label: localize(product.categoryName) },
+      ...(product.categoryName ? [{ href: `/shop?category=${product.category}`, label: localize(product.categoryName) }] : []),
       { label: name },
     ])}
     <article class="product container">
-      <div class="product__media reveal">
-        <img src="${escapeHtml(product.image)}" alt="${escapeHtml(name)}" width="800" height="1000">
+      <div class="product__gallery reveal">
+        <div class="product__media">
+          <img id="product-image" src="${escapeHtml(images[0])}" alt="${escapeHtml(name)}" width="800" height="1000">
+        </div>
+        ${images.length > 1 ? `
+          <div class="product__thumbs" role="group" aria-label="${t('product.photos')}">
+            ${images.map((src, i) => `
+              <button class="product__thumb" type="button" data-src="${escapeHtml(src)}" aria-pressed="${i === 0}" aria-label="${t('product.photoN', { n: i + 1 })}">
+                <img src="${escapeHtml(src)}" alt="" loading="lazy">
+              </button>`).join('')}
+          </div>` : ''}
       </div>
       <div class="product__info">
         <p class="product__store-line">
@@ -52,19 +65,19 @@ startPage(async () => {
           ${verifiedBadge(product.store)}
         </p>
         <h1 class="product__name">${escapeHtml(name)}</h1>
-        <p class="product__price">${t('common.priceOnRequest')}</p>
-        <p class="product__price-note">${t('product.priceNote')}</p>
+        ${priceHtml(product, 'product__price')}
+        <p class="product__price-note">${t(hasPrice ? 'product.priceConfirmNote' : 'product.priceNote')}</p>
         <div class="pill-row product__tags">
           ${madeBadge(product)}
-          ${tagLink('audience', product.audience, product.audienceName)}
-          ${tagLink('style', product.style, product.styleName)}
+          ${product.audienceName ? tagLink('audience', product.audience, product.audienceName) : ''}
+          ${product.styleName ? tagLink('style', product.style, product.styleName) : ''}
           ${product.occasionOptions.map((occasion) => tagLink('occasion', occasion.id, occasion.name)).join('')}
         </div>
         <p class="product__desc">${escapeHtml(localize(product.description))}</p>
 
         <div class="order">
-          ${optionGroup('color', t('product.color'), product.colorOptions.map((c) => ({ value: c.id, label: localize(c.name) })))}
-          ${optionGroup('size', t('product.size'), product.sizes.map((s) => ({ value: s, label: sizeLabel(s) })))}
+          ${product.colorOptions.length ? optionGroup('color', t('product.color'), product.colorOptions.map((c) => ({ value: c.id, label: localize(c.name) }))) : ''}
+          ${product.sizes.length ? optionGroup('size', t('product.size'), product.sizes.map((s) => ({ value: s, label: sizeLabel(s) }))) : ''}
           ${product.sizeGuide ? `<a class="text-link order__guide" href="/size-guide#${product.sizeGuide}">${t('product.sizeGuide')}</a>` : ''}
 
           ${optionGroup('receive', t('product.receive'), RECEIVE_OPTIONS.map((option) => ({
@@ -93,6 +106,15 @@ startPage(async () => {
             </div>
           </fieldset>
 
+          <div class="promo" id="promo">
+            <label class="field__label" for="promo-code">${t('promo.label')} <span class="field__optional">${t('form.optional')}</span></label>
+            <div class="promo__row">
+              <input class="field__input" id="promo-code" type="text" autocomplete="off" autocapitalize="characters" spellcheck="false" dir="ltr" maxlength="20" aria-describedby="promo-result">
+              <button class="btn btn--small" type="button" id="promo-apply">${t('promo.apply')}</button>
+            </div>
+            <p class="promo__result" id="promo-result" role="status"></p>
+          </div>
+
           <a class="btn btn--solid btn--block" id="order-button" href="#" target="_blank" rel="noopener">
             ${icon('chat')}<span>${t('product.order')}</span>
           </a>
@@ -120,6 +142,14 @@ startPage(async () => {
     </section>`;
 
   initOrder(root, product, { name, storeName, city });
+
+  // Gallery: tapping a thumbnail shows that photo
+  root.querySelector('.product__thumbs')?.addEventListener('click', (event) => {
+    const thumb = event.target.closest('.product__thumb');
+    if (!thumb) return;
+    document.getElementById('product-image').src = thumb.dataset.src;
+    root.querySelectorAll('.product__thumb').forEach((b) => b.setAttribute('aria-pressed', String(b === thumb)));
+  });
 
   const related = (await getProducts({ storeId: product.storeId })).filter((p) => p.id !== product.id).slice(0, 4);
   if (related.length) {
@@ -160,6 +190,34 @@ function initOrder(root, product, { name, storeName, city }) {
   };
   const selected = (group) => root.querySelector(`input[name="${group}"]:checked`);
   const isGift = () => selected('receive')?.value === 'gift';
+  const hasPrice = product.price !== null && product.price !== undefined;
+  let promo = null; // { code, percent } once a valid code is applied
+
+  // Discount code (e.g. NEXARO10): checked against PROMO_CODES in config.js
+  const promoInput = document.getElementById('promo-code');
+  const promoResult = document.getElementById('promo-result');
+  const discounted = () => Math.round(product.price * (100 - promo.percent)) / 100;
+  function applyPromo() {
+    const typed = promoInput.value.trim();
+    promo = typed ? findPromo(typed) : null;
+    promoResult.classList.toggle('is-error', Boolean(typed && !promo));
+    if (!typed) promoResult.textContent = '';
+    else if (!promo) promoResult.textContent = t('promo.invalid');
+    else {
+      promoInput.value = promo.code;
+      promoResult.textContent = hasPrice
+        ? t('promo.appliedWithPrice', { code: promo.code, percent: promo.percent, price: formatPrice(discounted()) })
+        : t('promo.applied', { code: promo.code, percent: promo.percent });
+    }
+    updateLink();
+  }
+  document.getElementById('promo-apply').addEventListener('click', applyPromo);
+  promoInput.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      applyPromo();
+    }
+  });
 
   function setError(group, message) {
     const error = document.getElementById(`${group}-error`);
@@ -185,13 +243,20 @@ function initOrder(root, product, { name, storeName, city }) {
       const note = gift.message.value.trim();
       if (note) giftDetails += t('product.whatsappGiftMessage', { message: note });
     }
+    let promoDetails = '';
+    if (promo) {
+      promoDetails = t('product.whatsappPromo', { code: promo.code, percent: promo.percent });
+      if (hasPrice) promoDetails += t('product.whatsappPromoPrice', { price: formatPrice(discounted()) });
+    }
     const message = t('product.whatsappMessage', {
       product: name,
       store: storeName,
       city,
       color: selected('color')?.dataset.label ?? '—',
       size: selected('size')?.dataset.label ?? '—',
+      price: hasPrice ? t('product.whatsappPrice', { price: formatPrice(product.price) }) : '',
       method: selected('receive').dataset.label,
+      promo: promoDetails,
       gift: giftDetails,
       url: `${location.origin}/product?id=${encodeURIComponent(product.id)}`,
     });
@@ -214,7 +279,8 @@ function initOrder(root, product, { name, storeName, city }) {
   button.addEventListener('click', (event) => {
     const missing = [];
     for (const group of ['color', 'size']) {
-      if (!selected(group)) {
+      const hasChoices = Boolean(root.querySelector(`input[name="${group}"]`)); // some products list no colors
+      if (hasChoices && !selected(group)) {
         setError(group, t(group === 'size' ? 'product.errorSize' : 'product.errorColor'));
         missing.push(root.querySelector(`input[name="${group}"]`));
       }

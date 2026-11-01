@@ -1,8 +1,12 @@
-// Data layer: the ONLY file that knows where the data comes from.
+// Data layer: the ONLY file that knows where the catalog comes from.
 //
-// Phase 1: static JSON files in /data.
-// Phase 2: replace the inside of these functions with Supabase queries.
-// Pages only call the exported functions, so they won't need to change.
+// Real stores and PUBLISHED products come from Supabase (Row Level Security only
+// returns published ones to the public). The demo stores in /data/*.json are shown
+// according to DEMO_CATALOG in config.js ('auto' = only until real stores exist).
+// Supabase rows are turned into the same shape as the demo data, so every page
+// (shop, search, filters, store, product) works the same with both.
+import { SUPABASE_URL, SUPABASE_ANON_KEY } from '/config.js';
+import { DEMO_CATALOG } from './config.js';
 import { normalize } from './utils.js';
 
 let catalogPromise = null;
@@ -13,14 +17,88 @@ async function fetchJson(path) {
   return response.json();
 }
 
+// Reads public data straight from Supabase's REST API with the anon key.
+// (No supabase-js download needed for shoppers.)
+async function fetchSupabase(path) {
+  const response = await fetch(`${SUPABASE_URL}/rest/v1/${path}`, { headers: { apikey: SUPABASE_ANON_KEY } });
+  if (!response.ok) throw new Error(`Supabase ${path.split('?')[0]}: ${response.status}`);
+  return response.json();
+}
+
+// Real stores and published products, or null when Supabase isn't set up / reachable
+async function loadRealCatalog() {
+  if (!SUPABASE_URL || !SUPABASE_ANON_KEY) return null;
+  try {
+    const [stores, products] = await Promise.all([
+      fetchSupabase('stores?select=id,name,slug,city,description,instagram,whatsapp,logo_url,verified,created_at&order=created_at.asc'),
+      fetchSupabase('products?select=*,product_images(url,position)&status=eq.published&order=created_at.desc'),
+    ]);
+    return { stores, products };
+  } catch (error) {
+    console.warn('[data] Real catalog unavailable, showing the demo catalog:', error.message);
+    return null;
+  }
+}
+
+// Supabase row → the demo data's shape
+function fromSupabaseStore(row, cities) {
+  const city = cities.find((c) => normalize(c.name.ar) === normalize(row.city) || normalize(c.name.en) === normalize(row.city));
+  return {
+    id: row.id,
+    slug: row.slug,
+    name: { ar: row.name, en: row.name },
+    bio: { ar: row.description ?? '', en: row.description ?? '' },
+    city: city?.id ?? null,
+    customCity: city ? null : row.city, // a city that isn't in lookups.json
+    logo: row.logo_url,
+    verified: row.verified,
+    instagram: row.instagram,
+    source: 'supabase',
+  };
+}
+
+function fromSupabaseProduct(row, categories) {
+  const images = [...(row.product_images ?? [])].sort((a, b) => a.position - b.position).map((image) => image.url);
+  const toNumber = (value) => (value === null || value === undefined ? null : Number(value));
+  return {
+    id: row.id,
+    storeId: row.store_id,
+    category: row.category,
+    audience: row.section, // men / women / kids
+    style: null,
+    featured: false,
+    occasions: row.occasions ?? [],
+    madeInPalestine: row.made_in_palestine,
+    name: { ar: row.name_ar || row.name_en, en: row.name_en || row.name_ar },
+    description: { ar: row.description_ar || row.description_en || '', en: row.description_en || row.description_ar || '' },
+    sizes: row.sizes ?? [],
+    colors: row.colors ?? [],
+    image: images[0] ?? categories.find((c) => c.id === row.category)?.image ?? '/images/placeholders/shirts.svg',
+    images,
+    price: toNumber(row.price), // null = "Price on request"
+    compareAtPrice: toNumber(row.compare_at_price),
+    source: 'supabase',
+  };
+}
+
 // Loads everything once per page and keeps it in memory
 function loadCatalog() {
   catalogPromise ??= Promise.all([
     fetchJson('/data/stores.json'),
     fetchJson('/data/products.json'),
     fetchJson('/data/lookups.json'),
+    loadRealCatalog(),
   ])
-    .then(([stores, products, lookups]) => buildCatalog(stores, products, lookups))
+    .then(([demoStores, demoProducts, lookups, real]) => {
+      const realStores = (real?.stores ?? []).map((row) => fromSupabaseStore(row, lookups.cities));
+      const realProducts = (real?.products ?? []).map((row) => fromSupabaseProduct(row, lookups.categories));
+      const showDemo = DEMO_CATALOG === 'always' || (DEMO_CATALOG === 'auto' && realStores.length === 0);
+      return buildCatalog(
+        [...realStores, ...(showDemo ? demoStores : [])],
+        [...realProducts, ...(showDemo ? demoProducts : [])],
+        lookups,
+      );
+    })
     .catch((error) => {
       catalogPromise = null; // allow a retry
       throw error;
@@ -44,7 +122,7 @@ function buildCatalog(rawStores, rawProducts, lookups) {
     normalize(fields.flatMap((field) => (field ? [field.ar, field.en] : [])).join(' '));
 
   const stores = rawStores.map((store) => {
-    const cityName = cities[store.city]?.name;
+    const cityName = cities[store.city]?.name ?? (store.customCity ? { ar: store.customCity, en: store.customCity } : undefined);
     return {
       ...store,
       cityName,
@@ -54,7 +132,7 @@ function buildCatalog(rawStores, rawProducts, lookups) {
   });
   const storesById = byId(stores);
 
-  const products = rawProducts.map((product) => {
+  const products = rawProducts.filter((product) => storesById[product.storeId]).map((product) => {
     const store = storesById[product.storeId];
     const category = categories[product.category];
     const audienceName = audiences[product.audience]?.name;
@@ -74,6 +152,9 @@ function buildCatalog(rawStores, rawProducts, lookups) {
         ...occasionOptions.map((occasion) => occasion.name), store?.name, store?.cityName),
     };
   });
+
+  // Real products have no "featured" flag: the home page then shows the newest 8
+  if (!products.some((product) => product.featured)) products.slice(0, 8).forEach((product) => { product.featured = true; });
 
   // Adds how many products use each value (shown on the home page tiles).
   // Works for single values ("audience": "men") and lists ("occasions": ["eid", "work"]).

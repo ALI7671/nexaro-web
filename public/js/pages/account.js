@@ -23,6 +23,7 @@ startPage(async () => {
   const role = profile?.role ?? 'customer';
   document.getElementById('profile-role').textContent = t(`account.role${role[0].toUpperCase()}${role.slice(1)}`);
   document.getElementById('admin-box').hidden = role !== 'admin';
+  document.getElementById('dashboard-box').hidden = role !== 'store';
 
   const { cities } = await getLookups();
   document.getElementById('city-options').innerHTML = cities

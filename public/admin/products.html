@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n="pages.adminProducts.title">Nexaro</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#0A0909">
+  <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
+  <!-- Language, direction and theme are set here, before anything paints (no flash) -->
+  <script>(function () { var d = document.documentElement, l = 'ar', t = 'dark'; try { var p = new URLSearchParams(location.search).get('lang'); l = p === 'en' || p === 'ar' ? p : (localStorage.getItem('nexaro.lang') === 'en' ? 'en' : 'ar'); t = localStorage.getItem('nexaro.theme') === 'light' ? 'light' : 'dark'; } catch (e) {} d.lang = l; d.dir = l === 'ar' ? 'rtl' : 'ltr'; d.setAttribute('data-theme', t); var m = document.querySelector('meta[name="theme-color"]'); if (m) m.content = t === 'light' ? '#F5F3F0' : '#0A0909'; })();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500&family=Montserrat:wght@200;300;400;500&display=swap">
+  <link rel="stylesheet" href="/css/style.css">
+  <script type="module" src="/js/pages/admin-products.js"></script>
+</head>
+<body data-nav="admin">
+  <a class="skip-link" href="#main" data-i18n="a11y.skip"></a>
+  <header class="site-header" id="site-header"></header>
+
+  <!-- Admins only. The page sends others to /login; the database (RLS) only lets
+       admins see unpublished products and change their status. -->
+  <main id="main" tabindex="-1">
+    <div class="page-head container">
+      <p class="eyebrow" data-i18n="admin.eyebrow"></p>
+      <h1 class="page-title" data-i18n="adminProducts.title"></h1>
+    </div>
+
+    <section class="container section-bottom" aria-labelledby="review-list-title">
+      <h2 class="sr-only" id="review-list-title" data-i18n="adminProducts.title"></h2>
+      <div class="pill-row" id="status-filter" role="group" data-i18n-attr="aria-label:admin.filterLabel"></div>
+      <p class="sr-only" id="review-status" role="status"></p>
+      <p class="field__error mt-lg" id="review-error" role="alert" hidden></p>
+      <div class="review-list mt-lg" id="review-list"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+</body>
+</html>
